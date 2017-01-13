@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.nutrons.nu17.OI;
 import com.nutrons.nu17.subsystems.Shooter;
+import com.nutrons.nu17.subsystems.Drivetrain;
 import com.nutrons.nu17.subsystems.GroundIntake;
 
 public class Robot extends IterativeRobot {
@@ -17,7 +18,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter = new Shooter();
 	public static GroundIntake groundIntake = new GroundIntake(); 
 	public static OI oi;
-
+	public static Drivetrain driveTrain = new Drivetrain();
 	
 	/**
 	 * This function is run when the robot is first started up and should be

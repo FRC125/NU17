@@ -12,13 +12,15 @@ public class RobotMap {
 	public static final int SHOOTER = 0;
 	public static final int ROLLER_A = 1;
 	public static final int ROLLER_B = 2;
+	public static final int DRIVE_LEFT_A = 0;
+	public static final int DRIVE_LEFT_B = 1;
+	public static final int DRIVE_RIGHT_A = 0; 
+	public static final int DRIVE_RIGHT_B = 3;
 	
 	//Analog
 	public static final int ULTRASONIC_RX = 0;
 	public static final int ULTRASONIC_TX = 1;
 	
-	
-
 	
 	
 }
