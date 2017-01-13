@@ -14,19 +14,20 @@ public class OI {
 	/**
 	 * make robot shoot
 	 */
-	private Button shootShooterCmd = new JoystickButton(null, 0);
+	private Button shootShooterCmd = new JoystickButton(this.OpPad, 0);
 	/**
 	 * ground intake
 	 */
-	private Button GroundIntake = new JoystickButton(null, 1);
+	private Button GroundIntake = new JoystickButton(this.OpPad, 1);
 	/** 
 	 * ground intake spit
 	 */
-	private Button GroundIntakespit = new JoystickButton(null, 2);
+	private Button GroundIntakespit = new JoystickButton(this.OpPad, 2);
 	/** 
 	 * drives the robot using joystick values
 	 */
 	public Joystick driverPad = new Joystick(1);
+	public Joystick OpPad = new Joystick(2);
 	/**
 	 * Left joystick value 
 	 * @return
