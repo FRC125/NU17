@@ -13,6 +13,7 @@ import com.nutrons.nu17.OI;
 import com.nutrons.nu17.subsystems.Shooter;
 import com.nutrons.nu17.subsystems.DrivetrainGyro;
 import com.nutrons.nu17.subsystems.GearPlacer;
+import com.nutrons.nu17.subsystems.Climber;
 import com.nutrons.nu17.subsystems.Drivetrain;
 import com.nutrons.nu17.subsystems.GroundIntake;
 
@@ -24,6 +25,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static GearPlacer gp = new GearPlacer();
 	public static Drivetrain driveTrain = new Drivetrain();
+	public static Climber climber = new Climber();
 
 	
 	/**
