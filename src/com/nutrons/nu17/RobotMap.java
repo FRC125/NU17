@@ -27,6 +27,9 @@ public class RobotMap {
 	public static final int ENCODERA2 = 2;
 	public static final int ENCODERB1 = 3;
 	public static final int ENCODERB2 = 4;
+	public static final int ENCODER_FLY_R = 5;
+	public static final int ENCODER_FLY_L = 6;
+	
 
 	// Max position for Gear Placer
 	public static final double PLACER_MAX_POSITION = 1;
@@ -39,6 +42,8 @@ public class RobotMap {
 	public static final int TWIN_B = 4;
 	public static final int ENCODER_A = 5;
 	public static final int ENCODER_B = 6;
+	public static final int FLY_WHEEL_L = 7;
+	public static final int FLY_WHEEL_R = 8;
 
 	// Can
 	public static final int DRIVE_LEFT_A = 0;
@@ -59,5 +64,11 @@ public class RobotMap {
 	public static final double P_HEADING = 0;
 	public static final double I_HEADING = 0;
 	public static final double D_HEADING = 0;
+	// PID constants for Flywheel
+	public static final double P_TURN = 0;
+	public static final double I_TURN = 0;
+	public static final double D_TURN = 0;
+	
+	
 
 }
