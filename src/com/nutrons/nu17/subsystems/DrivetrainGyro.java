@@ -14,11 +14,6 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * Drivetrain class
- * 
- * @author Man Nguyen
- */
 public class DrivetrainGyro extends Subsystem {
 
 	private Talon frontRight = new Talon(RobotMap.FRONT_RIGHT);
@@ -42,19 +37,24 @@ public class DrivetrainGyro extends Subsystem {
 			new EncoderWrapper(), 
 			new DriveOutput());
 	public PIDController holdHeading = new PIDController(
-			RobotMap.P_HEADING, 
-			RobotMap.I_HEADING, 
-			RobotMap.D_HEADING,
+			this.P_HEADING, 
+			this.I_HEADING, 
+			this.D_HEADING,
 			new GyroWrapper(), 
 			new GyroOutput());
 
 	private static double driveOutput;
 	private volatile double headingGyro;
 	
-	// TODO: tune these constants
+	// TODO tune these constants
 	private final double P_DRIVE = 0;
 	private final double I_DRIVE = 0;
 	private final double D_DRIVE = 0;
+	
+	// TODO tune these constants
+	private final double P_HEADING = 0;
+	private final double I_HEADING = 0;
+	private final double D_HEADING = 0;
 
 	public DrivetrainGyro() {
 		driveEncoderA.setDistancePerPulse(1);

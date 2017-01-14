@@ -11,16 +11,13 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.util.*;
 
-/**
- * @author Josh Young
- */
 public class Shooter extends Subsystem {
-	// Motors
+
 	private Talon shooter;
 	private Encoder shooterEncoder;
 
 	public Shooter() {
-
+		//empty
 	}
 
 	public Shooter(int PORT, int E_A, int E_B) {
@@ -28,7 +25,7 @@ public class Shooter extends Subsystem {
 		shooterEncoder = new Encoder(E_A, E_B);
 	}
 
-	// PID Constants
+	// TODO: tune these constants
 	public double P_SHOOT = 0.025;
 	public double I_SHOOT = 0.0;
 	public double D_SHOOT = 0.01;

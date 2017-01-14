@@ -4,9 +4,6 @@ import com.nutrons.nu17.Robot;
 import com.nutrons.nu17.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- * @author Man Nguyen
- */
 public class ChangePlacerPositionCmd extends Command {
 
 	private double position;

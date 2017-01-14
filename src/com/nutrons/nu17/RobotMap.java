@@ -50,13 +50,4 @@ public class RobotMap {
 	// Analogs
 	public static final int ULTRASONIC_RX = 0;
 	public static final int ULTRASONIC_TX = 1;
-
-	// PID constants of gyro
-	public static final double P_HEADING = 0;
-	public static final double I_HEADING = 0;
-	public static final double D_HEADING = 0;
-	// PID constants for Flywheel
-	public static final double P_TURN = 0;
-	public static final double I_TURN = 0;
-	public static final double D_TURN = 0;
 }

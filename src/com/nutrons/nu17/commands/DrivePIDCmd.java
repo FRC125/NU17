@@ -3,9 +3,6 @@ package com.nutrons.nu17.commands;
 import com.nutrons.nu17.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- * @author Man Nguyen
- */
 public class DrivePIDCmd extends Command {
 
 	private double target;

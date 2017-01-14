@@ -10,9 +10,6 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * @author Andr3aslc1103
- */
 public class HoodShooterFlywheel extends Subsystem {
 
 	private Talon Flywheel_L = new Talon(RobotMap.FLY_WHEEL_L);
@@ -20,7 +17,17 @@ public class HoodShooterFlywheel extends Subsystem {
 	private Encoder Turn_r = new Encoder(RobotMap.ENCODER_FLY_R,2);
 	private Encoder Turn_l = new Encoder(RobotMap.ENCODER_FLY_L,3);
 	
-	public PIDController AngleShotPID = new PIDController(RobotMap.P_TURN,RobotMap.I_TURN,RobotMap.D_TURN,new TurnSourcePID(),new Turn_Out_PID());
+	public PIDController AngleShotPID = new PIDController(
+			this.P_TURN,
+			this.I_TURN,
+			this.D_TURN,
+			new TurnSourcePID(),
+			new Turn_Out_PID());
+
+	// TODO tune these constants
+	private final double P_TURN = 0;
+	private final double I_TURN = 0;
+	private final double D_TURN = 0;
 
 	public void HoodShooterFLywheel(){
 	
