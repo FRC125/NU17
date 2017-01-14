@@ -6,7 +6,7 @@ import com.nutrons.nu17.subsystems.Shooter;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * 
  */
 public class ShootShooterCmd extends Command {
 
@@ -16,12 +16,12 @@ public class ShootShooterCmd extends Command {
 
    
     protected void initialize() { 
-    Robot.shooter.runShooter(1.0);
+    	Robot.shooter.runShooter(1.0);
     }
 
  
     protected void execute() {
-    Robot.shooter.runShooter(Shooter.holdShoot);
+    	Robot.shooter.runShooter(Shooter.holdShoot);
     }
     
 

@@ -1,5 +1,6 @@
 package com.nutrons.nu17;
 
+import edu.wpi.first.wpilibj.DigitalSource;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -21,7 +22,13 @@ public class RobotMap {
 	// Port of gear placer
 	public static final int PLACER = 0;
 	
-	// 
+	// Ports of encoders
+	public static final int ENCODERA1 = 1;
+	public static final int ENCODERA2 = 2;
+	public static final int ENCODERB1 = 3;
+	public static final int ENCODERB2 = 4;
+	
+	// Max position for Gear Placer
 	public static final double PLACER_MAX_POSITION = 1;
 
 	// PWM
@@ -46,6 +53,8 @@ public class RobotMap {
 	public static final double P_HEADING = 0;
 	public static final double I_HEADING = 0;
 	public static final double D_HEADING = 0;
+	
+	
 	
 	
 	

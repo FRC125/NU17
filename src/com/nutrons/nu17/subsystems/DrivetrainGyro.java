@@ -24,7 +24,8 @@ public class DrivetrainGyro extends Subsystem {
     private Talon frontLeft = new Talon(RobotMap.FRONT_LEFT);
     private Talon backRight = new Talon(RobotMap.BACK_RIGHT);
     private Talon backLeft = new Talon(RobotMap.BACK_LEFT);    
-    private Encoder driveEncoder = new Encoder(1, 2);
+    private Encoder driveEncoderA = new Encoder(RobotMap.ENCODERA1, RobotMap.ENCODERA2);
+    private Encoder driveEncoderB = new Encoder(RobotMap.ENCODERB1, RobotMap.ENCODERB2);
     
     private AnalogGyro driveGyro = new AnalogGyro(RobotMap.GYRO);
     
@@ -34,7 +35,8 @@ public class DrivetrainGyro extends Subsystem {
 	public static double driveOutput;
 	
 	public DrivetrainGyro() {
-    	driveEncoder.setDistancePerPulse(1);
+    	driveEncoderA.setDistancePerPulse(1);
+    	driveEncoderB.setDistancePerPulse(1);
     }
 
     public void initDefaultCommand() {
@@ -46,12 +48,15 @@ public class DrivetrainGyro extends Subsystem {
     }
     
     public void resetEncoder() {
-    	this.driveEncoder.reset();
+    	this.driveEncoderA.reset();
+    	this.driveEncoderB.reset();
     }
     
     public void driveLR(double leftPower, double rightPower) {
     	this.frontLeft.set(leftPower);
-    	this.backRight.set(-rightPower);
+		this.frontRight.set(-rightPower);
+		this.backLeft.set(leftPower);
+		this.backRight.set(-rightPower);
 	}
     
     private volatile double headingGyro;
@@ -69,7 +74,7 @@ public class DrivetrainGyro extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return driveEncoder.getDistance();
+			return driveEncoderA.getDistance();
 		}
 
 		@Override
