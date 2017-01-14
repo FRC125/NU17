@@ -25,17 +25,36 @@ public class DrivetrainGyro extends Subsystem {
 	private Talon frontLeft = new Talon(RobotMap.FRONT_LEFT);
 	private Talon backRight = new Talon(RobotMap.BACK_RIGHT);
 	private Talon backLeft = new Talon(RobotMap.BACK_LEFT);
-	private Encoder driveEncoderA = new Encoder(RobotMap.ENCODERA1, RobotMap.ENCODERA2);
-	private Encoder driveEncoderB = new Encoder(RobotMap.ENCODERB1, RobotMap.ENCODERB2);
+	
+	private Encoder driveEncoderA = new Encoder(
+			RobotMap.ENCODERA1, 
+			RobotMap.ENCODERA2);
+	private Encoder driveEncoderB = new Encoder(
+			RobotMap.ENCODERB1, 
+			RobotMap.ENCODERB2);
 
 	private AnalogGyro driveGyro = new AnalogGyro(RobotMap.GYRO);
 
-	public PIDController driveDistanceControl = new PIDController(RobotMap.P_DRIVE, RobotMap.I_DRIVE, RobotMap.D_DRIVE,
-			new EncoderWrapper(), new DriveOutput());
-	public PIDController holdHeading = new PIDController(RobotMap.P_HEADING, RobotMap.I_HEADING, RobotMap.D_HEADING,
-			new GyroWrapper(), new GyroOutput());
+	public PIDController driveDistanceControl = new PIDController(
+			this.P_DRIVE, 
+			this.I_DRIVE, 
+			this.D_DRIVE,
+			new EncoderWrapper(), 
+			new DriveOutput());
+	public PIDController holdHeading = new PIDController(
+			RobotMap.P_HEADING, 
+			RobotMap.I_HEADING, 
+			RobotMap.D_HEADING,
+			new GyroWrapper(), 
+			new GyroOutput());
 
-	public static double driveOutput;
+	private static double driveOutput;
+	private volatile double headingGyro;
+	
+	// TODO: tune these constants
+	private final double P_DRIVE = 0;
+	private final double I_DRIVE = 0;
+	private final double D_DRIVE = 0;
 
 	public DrivetrainGyro() {
 		driveEncoderA.setDistancePerPulse(1);
@@ -43,27 +62,42 @@ public class DrivetrainGyro extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		setDefaultCommand(new TankDriveCmd());
+		//empty
 	}
 
+	/**
+	 * Stops driving.
+	 */
 	public void stop() {
 		this.driveLR(0.0, 0.0);
 	}
 
+	/**
+	 * Resets the encoders
+	 */
 	public void resetEncoder() {
 		this.driveEncoderA.reset();
 		this.driveEncoderB.reset();
 	}
 
+	/**
+	 * Drives the motors according to leftPower and rightPower.
+	 * 
+	 * @param leftPower power left motors are set to
+	 * @param rightPower power right motors are set to
+	 */
 	public void driveLR(double leftPower, double rightPower) {
 		this.frontLeft.set(leftPower);
 		this.frontRight.set(-rightPower);
 		this.backLeft.set(leftPower);
 		this.backRight.set(-rightPower);
 	}
-
-	private volatile double headingGyro;
-
+	
+	/**
+	 * Returns the angle away from the original by using the gyro.
+	 * 
+	 * @return angle displacement from the gyro
+	 */
 	public double getAngleInDegrees() {
 		return this.driveGyro.getAngle();
 	}
@@ -82,7 +116,7 @@ public class DrivetrainGyro extends Subsystem {
 
 		@Override
 		public void setPIDSourceType(PIDSourceType arg0) {
-
+			//empty
 		}
 	}
 
@@ -92,14 +126,13 @@ public class DrivetrainGyro extends Subsystem {
 		public void pidWrite(double wheel) {
 			headingGyro = wheel;
 		}
-
 	}
 
 	private class EncoderWrapper implements PIDSource {
 
 		@Override
 		public void setPIDSourceType(PIDSourceType pidSource) {
-
+			//empty
 		}
 
 		@Override

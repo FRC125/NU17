@@ -15,6 +15,9 @@ public class DrivePIDCmd extends Command {
 		this.target = target;
 	}
 
+	/**
+	 * Sets a target to drive to. Sets how much error is allowed.
+	 */
 	protected void initialize() {
 		Robot.dt.resetEncoder();
 		Robot.dt.driveDistanceControl.setSetpoint(this.target);
@@ -23,7 +26,7 @@ public class DrivePIDCmd extends Command {
 	}
 
 	protected void execute() {
-
+		//empty
 	}
 
 	protected boolean isFinished() {
@@ -36,5 +39,6 @@ public class DrivePIDCmd extends Command {
 	}
 
 	protected void interrupted() {
+		end();
 	}
 }

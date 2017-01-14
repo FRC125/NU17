@@ -11,28 +11,31 @@ import com.nutrons.nu17.OI;
 import com.nutrons.nu17.subsystems.*;
 
 public class Robot extends IterativeRobot {
-	public static TwinShooter twinShooter = new TwinShooter(RobotMap.TWIN_A, RobotMap.TWIN_B, RobotMap.ENCODER_A,
-			RobotMap.ENCODER_B, RobotMap.ENCODER_A, RobotMap.ENCODER_B);
+	
+	public static TwinShooter twinShooter = new TwinShooter(
+			RobotMap.TWIN_A, 
+			RobotMap.TWIN_B, 
+			RobotMap.ENCODER_A,
+			RobotMap.ENCODER_B, 
+			RobotMap.ENCODER_A, 
+			RobotMap.ENCODER_B);
 	public static Shooter shooter = new Shooter();
 	public static GroundIntake groundIntake = new GroundIntake();
 	public static DrivetrainGyro dt = new DrivetrainGyro();
-	public static OI oi;
 	public static GearPlacer gp = new GearPlacer();
 	public static Drivetrain driveTrain = new Drivetrain();
 	public static Climber climber = new Climber();
+	
+	public static OI oi;
 
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
 	@Override
 	public void robotInit() {
-
+		//empty
 	}
 
 	@Override
 	public void disabledInit() {
-
+		//empty
 	}
 
 	@Override
@@ -42,12 +45,9 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-
+		//empty
 	}
 
-	/**
-	 * This function is called periodically during autonomous
-	 */
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
@@ -57,17 +57,11 @@ public class Robot extends IterativeRobot {
 	public void teleopInit() {
 	}
 
-	/**
-	 * This function is called periodically during operator control
-	 */
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
-	/**
-	 * This function is called periodically during test mode
-	 */
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();

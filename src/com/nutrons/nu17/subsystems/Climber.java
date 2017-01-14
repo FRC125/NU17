@@ -1,43 +1,46 @@
 package com.nutrons.nu17.subsystems;
 
+import com.nutrons.nu17.RobotMap;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * @author Kevin Henriquez
- */
 public class Climber extends Subsystem {
 	public DigitalInput MicroSwitch = new DigitalInput(0);
 
-	private Talon Climb = new Talon(3);
+	private Talon climb = new Talon(RobotMap.CLIMBER);
 
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		//empty
 	}
 
+	/**
+	 * Runs the motor at power speed.
+	 * 
+	 * @param power speed to run climber at, between 0.0 to 1.0.
+	 */
 	public void runClimb(double power) {
-		this.Climb.set(1.0);
+		this.climb.set(power);
 	}
-
+	
+	/**
+	 * Stops the motor pulling the robot up.
+	 */
 	public void stopClimb() {
 		if (MicroSwitch.get()) {
-			this.Climb.set(0);
+			this.climb.set(0);
 		}
 	}
 
+	/**
+	 * Runs the motor until touching pad.
+	 */
 	public void padCheck() {
 		if (MicroSwitch.get()) {
-			stopClimb(0);
-
+			stopClimb();
 		} else {
-			this.Climb.set(1.0);
+			runClimb(1);
 		}
-
-	}
-
-	public void stopClimb(double power) {
-		this.Climb.set(0);
 	}
 }

@@ -3,19 +3,22 @@ package com.nutrons.nu17.commands;
 import com.nutrons.nu17.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- * @author Josh Young
- */
 public class GroundIntake extends Command {
 
 	public GroundIntake() {
 		requires(Robot.groundIntake);
 	}
 
+	/**
+	 * Runs first motor.
+	 */
 	protected void initialize() {
 		Robot.groundIntake.driveRollerA(1.0);
 	}
 
+	/**
+	 * Keeps running motor until the ball is ready to be taken in straight.
+	 */
 	protected void execute() {
 		Robot.groundIntake.driveRollerA(1.0);
 		if (Robot.groundIntake.isBallCentered()) {
@@ -28,8 +31,11 @@ public class GroundIntake extends Command {
 	}
 
 	protected void end() {
+		Robot.groundIntake.stopRollerA();
+		Robot.groundIntake.stopRollerB();
 	}
 
 	protected void interrupted() {
+		end();
 	}
 }

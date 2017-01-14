@@ -15,6 +15,9 @@ public class ChangePlacerPositionCmd extends Command {
 		requires(Robot.gp);
 	}
 
+	/**
+	 * Switches between Gear Placer being up and down.
+	 */
 	protected void initialize() {
 		if (Robot.gp.getPosition() >= 0.5) {
 			this.position = 0;
@@ -25,6 +28,7 @@ public class ChangePlacerPositionCmd extends Command {
 	}
 
 	protected void execute() {
+		//empty
 	}
 
 	protected boolean isFinished() {
@@ -32,8 +36,10 @@ public class ChangePlacerPositionCmd extends Command {
 	}
 
 	protected void end() {
+		//empty
 	}
 
 	protected void interrupted() {
+		//empty
 	}
 }

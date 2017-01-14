@@ -2,12 +2,6 @@ package com.nutrons.nu17;
 
 import edu.wpi.first.wpilibj.DigitalSource;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
 public class RobotMap {
 
 	// Ports of wheels
@@ -30,6 +24,8 @@ public class RobotMap {
 	public static final int ENCODER_FLY_R = 5;
 	public static final int ENCODER_FLY_L = 6;
 	
+	// Port of climber
+	public static final int CLIMBER = 0;
 
 	// Max position for Gear Placer
 	public static final double PLACER_MAX_POSITION = 1;
@@ -55,11 +51,6 @@ public class RobotMap {
 	public static final int ULTRASONIC_RX = 0;
 	public static final int ULTRASONIC_TX = 1;
 
-	// PID constants of drive train
-	public static final double P_DRIVE = 0;
-	public static final double I_DRIVE = 0;
-	public static final double D_DRIVE = 0;
-
 	// PID constants of gyro
 	public static final double P_HEADING = 0;
 	public static final double I_HEADING = 0;
@@ -68,7 +59,4 @@ public class RobotMap {
 	public static final double P_TURN = 0;
 	public static final double I_TURN = 0;
 	public static final double D_TURN = 0;
-	
-	
-
 }

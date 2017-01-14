@@ -4,21 +4,23 @@ import com.nutrons.nu17.Robot;
 import com.nutrons.nu17.subsystems.Shooter;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- * @author Josh Young
- * 
- */
 public class ShootShooterCmd extends Command {
 
 	public ShootShooterCmd() {
 		requires(Robot.shooter);
 	}
 
+	/**
+	 * Resets encoder and starts running motor at speed.
+	 */
 	protected void initialize() {
 		Robot.shooter.resetEncoder();
 		Robot.shooter.runShooter(1.0);
 	}
-
+	
+	/**
+	 * Keeps running motor at the same speed.
+	 */
 	protected void execute() {
 		Robot.shooter.runShooter(Robot.shooter.ShootSpeedControl.get());
 		Robot.shooter.runShooter(Shooter.holdShoot);
@@ -29,8 +31,10 @@ public class ShootShooterCmd extends Command {
 	}
 
 	protected void end() {
+		Robot.shooter.stopShooter();
 	}
 
 	protected void interrupted() {
+		end();
 	}
 }

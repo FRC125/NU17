@@ -4,21 +4,24 @@ import com.nutrons.nu17.Robot;
 import com.nutrons.nu17.subsystems.TwinShooter;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- * @author Josh Young
- */
 public class ShootTwinShooterCmd extends Command {
 
 	public ShootTwinShooterCmd() {
 		requires(Robot.twinShooter);
 	}
-
+	
+	/**
+	 * Resets the encoders and starts each motors.
+	 */
 	protected void initialize() {
 		Robot.twinShooter.twinReset();
 		Robot.twinShooter.ShootSpeedControlA.enable();
 		Robot.twinShooter.ShootSpeedControlB.enable();
 	}
 
+	/**
+	 * Spins motors using PID controllers.
+	 */
 	protected void execute() {
 		Robot.twinShooter.runTwinA(Robot.twinShooter.ShootSpeedControlA.get());
 		Robot.twinShooter.runTwinB(Robot.twinShooter.ShootSpeedControlB.get());
@@ -29,8 +32,10 @@ public class ShootTwinShooterCmd extends Command {
 	}
 
 	protected void end() {
+		Robot.twinShooter.stopTwins();
 	}
 
 	protected void interrupted() {
+		end();
 	}
 }

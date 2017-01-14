@@ -3,9 +3,6 @@ package com.nutrons.nu17.commands;
 import com.nutrons.nu17.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- * @author Man Nguyen
- */
 public class TankDriveCmd extends Command {
 
 	public TankDriveCmd() {
@@ -13,8 +10,14 @@ public class TankDriveCmd extends Command {
 	}
 
 	protected void initialize() {
+		//empty
 	}
 
+	/**
+	 * Drives the robot depending on the left and right joystick's y values.
+	 * Left joystick controls left wheels while right joystick controls right
+	 * wheels.
+	 */
 	protected void execute() {
 		Robot.dt.driveLR(Robot.oi.getLeftJoystickY(), Robot.oi.getRightJoystickY());
 	}

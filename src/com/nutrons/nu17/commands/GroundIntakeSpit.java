@@ -3,9 +3,6 @@ package com.nutrons.nu17.commands;
 import com.nutrons.nu17.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- * @author Josh Young
- */
 public class GroundIntakeSpit extends Command {
 
 	public GroundIntakeSpit() {
@@ -27,8 +24,11 @@ public class GroundIntakeSpit extends Command {
 	}
 
 	protected void end() {
+		Robot.groundIntake.stopRollerA();
+		Robot.groundIntake.stopRollerB();
 	}
 
 	protected void interrupted() {
+		end();
 	}
 }
