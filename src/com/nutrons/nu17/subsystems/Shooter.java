@@ -2,6 +2,8 @@ package com.nutrons.nu17.subsystems;
 
 import com.nutrons.nu17.Robot;
 import com.nutrons.nu17.RobotMap;
+
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
@@ -15,7 +17,15 @@ import edu.wpi.first.wpilibj.util.*;
  */
 public class Shooter extends Subsystem {
 	//Motors
-	private Talon shooter = new Talon(0);
+	private Talon shooter; 
+	private Encoder shooterEncoder;
+	public Shooter() {
+		
+	}
+	public Shooter(int PORT, int E_A, int E_B) {
+		shooter = new Talon(PORT);
+		shooterEncoder = new Encoder(E_A, E_B);
+	}
 	
 	// PID Constants
 	public double P_SHOOT = 0.025;
@@ -23,7 +33,7 @@ public class Shooter extends Subsystem {
 	public double D_SHOOT = 0.01;
 	
 	//PID Controller Stuff
-	private PIDController ShootSpeedControl = new PIDController(this.P_SHOOT,this.I_SHOOT,this.D_SHOOT,new EncoderWrapper(), new HoldShooterOutput());
+	public PIDController ShootSpeedControl = new PIDController(this.P_SHOOT,this.I_SHOOT,this.D_SHOOT,new EncoderWrapper(), new HoldShooterOutput());
 	public static double holdShoot;
 		
 
@@ -45,15 +55,19 @@ public void runShooter(double power) {
 public void stopShooter(){
 	runShooter(0.0);
 }
-/** This creates the source and retrieves the data from the PID calculation
- * 
- *
+/**
+ * Resets Encoder;
  */
-private class EncoderWrapper implements PIDSource {
+public void resetEncoder(){
+	shooterEncoder.reset();
+}
+/** 
+ * This holds the output from the PID Controller
+ */
+public class EncoderWrapper implements PIDSource {
 	@Override
 	public void setPIDSourceType(PIDSourceType pidSource) {
 		// Encoder Value
-		//Harambe was just a gorilla
 	}
 	@Override
 	public PIDSourceType getPIDSourceType() {
@@ -61,15 +75,14 @@ private class EncoderWrapper implements PIDSource {
 	}
 	@Override
 	public double pidGet() {
-		return Robot.shooter.shooter.getPosition();
+		return Robot.shooter.shooterEncoder.getRate();
 	}
 	
 	}
-/** This holds the output from the PID Controller
- * 
- *
+/** 
+ * This holds the output from the PID Controller
  */
-private class HoldShooterOutput implements PIDOutput {
+public class HoldShooterOutput implements PIDOutput {
 	
 	@Override
 	public void pidWrite(double output) {

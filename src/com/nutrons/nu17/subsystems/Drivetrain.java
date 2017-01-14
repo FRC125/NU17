@@ -1,8 +1,6 @@
 package com.nutrons.nu17.subsystems;
 //will add cheesy drive once library is found
 import com.nutrons.nu17.RobotMap;
-import com.nutrons.nu17.commands.JoystickDriveCmd;
-
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -40,7 +38,7 @@ public class Drivetrain extends Subsystem {
 	   driveEncoder2.setDistancePerPulse(1);
    }
 	public void initDefaultCommand() {
-		setDefaultCommand(new JoystickDriveCmd());
+		
 	}
 	
 	/**

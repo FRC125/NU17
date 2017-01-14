@@ -19,8 +19,8 @@ public class Climber extends Subsystem {
     public void runClimb (double power){
     	this.Climb.set(1.0);
     }
-    public void stopClimb (DigitalInput MicroSwitch){
-    	if(MicroSwitch.get() > 0){
+    public void stopClimb (){
+    	if(MicroSwitch.get()){
     		this.Climb.set(0);
     	}
     	else{

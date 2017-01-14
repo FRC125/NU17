@@ -7,12 +7,21 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ *@author Josh Young
  */
 public class GroundIntake extends Subsystem {
 	// Motors
 	private Talon rollerA = new Talon(RobotMap.ROLLER_A);
 	private Talon rollerB = new Talon(RobotMap.ROLLER_B);
+	
+	public GroundIntake() {
+		
+	}
+	public GroundIntake(int PORT_A,int PORT_B) {
+		rollerA = new Talon(PORT_A);
+		rollerB = new Talon(PORT_B);
+
+	}
 	
 	// Sensors
 	private Ultrasonic isBallCenter = new Ultrasonic(RobotMap.ULTRASONIC_RX, RobotMap.ULTRASONIC_TX);

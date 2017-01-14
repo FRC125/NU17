@@ -1,36 +1,41 @@
 package com.nutrons.nu17.commands;
 
+import com.nutrons.nu17.Robot;
+import com.nutrons.nu17.subsystems.TwinShooter;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *@author Josh Young
  */
 public class ShootTwinShooterCmd extends Command {
 
     public ShootTwinShooterCmd() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.twinShooter);
     }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
+   
+    protected void initialize() { 
+    Robot.twinShooter.twinReset();
+    Robot.twinShooter.ShootSpeedControlA.enable();
+    Robot.twinShooter.ShootSpeedControlB.enable();
     }
 
-    // Called repeatedly when this Command is scheduled to run
+ 
     protected void execute() {
+    Robot.twinShooter.runTwinA(Robot.twinShooter.ShootSpeedControlA.get());
+    Robot.twinShooter.runTwinB(Robot.twinShooter.ShootSpeedControlB.get());
     }
+    
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
     }
 
-    // Called once after isFinished returns true
+
     protected void end() {
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
     }
 }

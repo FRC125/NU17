@@ -12,6 +12,13 @@ public class RobotMap {
 	public static final int SHOOTER = 0;
 	public static final int ROLLER_A = 1;
 	public static final int ROLLER_B = 2;
+	public static final int TWIN_A = 3;
+	public static final int TWIN_B = 4;
+	public static final int ENCODER_A = 5;
+	public static final int ENCODER_B = 6; 
+	
+	
+	//Can
 	public static final int DRIVE_LEFT_A = 0;
 	public static final int DRIVE_LEFT_B = 1;
 	public static final int DRIVE_RIGHT_A = 0; 
