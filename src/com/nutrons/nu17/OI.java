@@ -1,6 +1,7 @@
 package com.nutrons.nu17;
 
-import com.nutrons.nu17.commands.ChangePlacerPositionCmd;
+import com.nutrons.nu17.commands.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -10,7 +11,7 @@ public class OI {
 
 	private Button shootShooterCmd = new JoystickButton(this.operatorPad, 0);
 	private Button GroundIntake = new JoystickButton(this.operatorPad, 1);
-	private Button GroundIntakespit = new JoystickButton(this.operatorPad, 2);
+	private Button GroundIntakeSpit = new JoystickButton(this.operatorPad, 2);
 	private Button changePlacerPosition = new JoystickButton(this.operatorPad, 3);
 
 	public Joystick driverPad = new Joystick(1);
@@ -18,6 +19,9 @@ public class OI {
 
 	public OI() {
 		this.changePlacerPosition.whenPressed(new ChangePlacerPositionCmd());
+		this.shootShooterCmd.whenPressed(new ShootShooterCmd());
+		this.GroundIntake.whenPressed(new GroundIntakeCmd());
+		this.GroundIntakeSpit.whenPressed(new GroundIntakeSpitCmd());
 	}
 
 	/**

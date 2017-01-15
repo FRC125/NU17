@@ -1,7 +1,6 @@
 package com.nutrons.nu17.subsystems;
 
 import com.nutrons.nu17.Robot;
-import com.nutrons.nu17.RobotMap;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -9,7 +8,6 @@ import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.util.*;
 
 public class Shooter extends Subsystem {
 
@@ -30,7 +28,6 @@ public class Shooter extends Subsystem {
 	public double I_SHOOT = 0.0;
 	public double D_SHOOT = 0.01;
 
-	// PID Controller Stuff
 	public PIDController ShootSpeedControl = new PIDController(this.P_SHOOT, this.I_SHOOT, this.D_SHOOT,
 			new EncoderWrapper(), new HoldShooterOutput());
 	public static double holdShoot;
@@ -39,30 +36,30 @@ public class Shooter extends Subsystem {
 	}
 
 	/**
-	 * Runs shooter at given param double "power"
+	 * Runs shooter at given param double "power".
 	 * 
-	 * @param power
+	 * @param power how fast to run the motor shooting.
 	 */
 	public void runShooter(double power) {
 		this.shooter.set(power);
 	}
 
 	/**
-	 * Cuts the power to the shooter setting it to 0.0
+	 * Cuts the power to the shooter setting it to 0.0.
 	 */
 	public void stopShooter() {
 		runShooter(0.0);
 	}
 
 	/**
-	 * Resets Encoder;
+	 * Resets Encoder.
 	 */
 	public void resetEncoder() {
 		shooterEncoder.reset();
 	}
 
 	/**
-	 * This holds the output from the PID Controller
+	 * This holds the output from the PID Controller.
 	 */
 	public class EncoderWrapper implements PIDSource {
 		@Override
@@ -81,7 +78,7 @@ public class Shooter extends Subsystem {
 	}
 
 	/**
-	 * This holds the output from the PID Controller
+	 * This holds the output from the PID Controller.
 	 */
 	public class HoldShooterOutput implements PIDOutput {
 		@Override

@@ -1,7 +1,5 @@
 package com.nutrons.nu17;
 
-import edu.wpi.first.wpilibj.DigitalSource;
-
 public class RobotMap {
 
 	// Ports of wheels

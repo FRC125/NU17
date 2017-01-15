@@ -27,8 +27,12 @@ public class Drivetrain extends Subsystem {
 	public double I_DISTANCE = 0.0;
 	public double D_DISTANCE = 0.01;
 
-	public PIDController driveDistance = new PIDController(this.P_DISTANCE, this.I_DISTANCE, this.D_DISTANCE,
-			new DriveSourcePID(), new DriveOutputPID());
+	public PIDController driveDistance = new PIDController(
+			this.P_DISTANCE, 
+			this.I_DISTANCE, 
+			this.D_DISTANCE,
+			new DriveSourcePID(), 
+			new DriveOutputPID());
 
 	public Drivetrain() {
 		driveEncoder1.setDistancePerPulse(1);
@@ -47,7 +51,11 @@ public class Drivetrain extends Subsystem {
 	 * @param rightA Powers the Right A motor.
 	 * @param rightB Powers the Right B motor.
 	 */
-	public void drive(double leftA, double leftB, double rightA, double rightB) {
+	public void drive(
+			double leftA, 
+			double leftB, 
+			double rightA, 
+			double rightB) {
 		this.driveLeftA.set(leftA);
 		this.driveLeftB.set(leftB);
 		this.driveRightA.set(rightA);
@@ -55,7 +63,7 @@ public class Drivetrain extends Subsystem {
 	}
 
 	/**
-	 * Stops the drivetrain
+	 * Stops the drivetrain.
 	 */
 	public void stop() {
 		this.drive(0, 0, 0, 0);

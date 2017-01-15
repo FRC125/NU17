@@ -2,15 +2,12 @@ package com.nutrons.nu17.subsystems;
 
 import com.nutrons.nu17.Robot;
 import com.nutrons.nu17.RobotMap;
-import com.nutrons.nu17.commands.TankDriveCmd;
-import com.nutrons.nu17.OI;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -43,7 +40,6 @@ public class DrivetrainGyro extends Subsystem {
 			new GyroWrapper(), 
 			new GyroOutput());
 
-	private static double driveOutput;
 	private volatile double headingGyro;
 	
 	// TODO tune these constants
@@ -73,7 +69,7 @@ public class DrivetrainGyro extends Subsystem {
 	}
 
 	/**
-	 * Resets the encoders
+	 * Resets the encoders.
 	 */
 	public void resetEncoder() {
 		this.driveEncoderA.reset();
@@ -83,8 +79,8 @@ public class DrivetrainGyro extends Subsystem {
 	/**
 	 * Drives the motors according to leftPower and rightPower.
 	 * 
-	 * @param leftPower power left motors are set to
-	 * @param rightPower power right motors are set to
+	 * @param leftPower power left motors are set to.
+	 * @param rightPower power right motors are set to.
 	 */
 	public void driveLR(double leftPower, double rightPower) {
 		this.frontLeft.set(leftPower);
@@ -96,7 +92,7 @@ public class DrivetrainGyro extends Subsystem {
 	/**
 	 * Returns the angle away from the original by using the gyro.
 	 * 
-	 * @return angle displacement from the gyro
+	 * @return angle displacement from the gyro.
 	 */
 	public double getAngleInDegrees() {
 		return this.driveGyro.getAngle();

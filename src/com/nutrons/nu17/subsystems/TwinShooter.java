@@ -1,15 +1,10 @@
 package com.nutrons.nu17.subsystems;
 
-import com.nutrons.nu17.Robot;
-import com.nutrons.nu17.subsystems.Shooter.EncoderWrapper;
-import com.nutrons.nu17.subsystems.Shooter.HoldShooterOutput;
-
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class TwinShooter extends Subsystem {
@@ -54,27 +49,27 @@ public class TwinShooter extends Subsystem {
 	public static double holdShootB;
 
 	/**
-	 * Runs TwinA given param power
+	 * Runs TwinA given param power.
 	 * 
-	 * @param power run first motor at this speed
+	 * @param power run first motor at this speed.
 	 */
 	public void runTwinA(double power) {
 		twinA.runShooter(power);
 	}
 
 	/**
-	 * Runs TwinB given param power
+	 * Runs TwinB given param power.
 	 * 
-	 * @param power run second motors at this speed
+	 * @param power run second motors at this speed.
 	 */
 	public void runTwinB(double power) {
 		twinB.runShooter(power);
 	}
 
 	/**
-	 * Runs boths twins at the same time
+	 * Runs boths twins at the same time.
 	 * 
-	 * @param power run motors at this speed
+	 * @param power run motors at this speed.
 	 */
 	public void twinRun(double power) {
 		runTwinA(power);
@@ -82,21 +77,21 @@ public class TwinShooter extends Subsystem {
 	}
 
 	/**
-	 * Stops TwinA
+	 * Stops TwinA.
 	 */
 	public void stopTwinA() {
 		twinA.runShooter(0.0);
 	}
 
 	/**
-	 * Stops TwinB
+	 * Stops TwinB.
 	 */
 	public void stopTwinB() {
 		twinB.runShooter(0.0);
 	}
 
 	/**
-	 * Stops both Twins
+	 * Stops both Twins.
 	 */
 	public void stopTwins() {
 		runTwinA(0.0);
@@ -117,7 +112,7 @@ public class TwinShooter extends Subsystem {
 	}
 
 	/**
-	 * This creates the source and retrieves the data from the PID calculation A
+	 * This creates the source and retrieves the data from the PID calculation A.
 	 */
 	private class EncoderWrapperA implements PIDSource {
 		@Override
@@ -137,7 +132,7 @@ public class TwinShooter extends Subsystem {
 	}
 
 	/**
-	 * This holds the output from the PID Controller A
+	 * This holds the output from the PID Controller A.
 	 */
 	private class HoldShooterOutputA implements PIDOutput {
 
@@ -150,7 +145,7 @@ public class TwinShooter extends Subsystem {
 	}
 
 	/**
-	 * This creates the source and retrieves the data from the PID calculation B
+	 * This creates the source and retrieves the data from the PID calculation B.
 	 */
 	private class EncoderWrapperB implements PIDSource {
 		@Override
@@ -170,7 +165,7 @@ public class TwinShooter extends Subsystem {
 	}
 
 	/**
-	 * This holds the output from the PID Controller B
+	 * This holds the output from the PID Controller B.
 	 */
 	private class HoldShooterOutputB implements PIDOutput {
 		@Override

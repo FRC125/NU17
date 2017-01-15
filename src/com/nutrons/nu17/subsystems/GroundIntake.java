@@ -19,7 +19,9 @@ public class GroundIntake extends Subsystem {
 		rollerB = new Talon(PORT_B);
 	}
 
-	private Ultrasonic isBallCenter = new Ultrasonic(RobotMap.ULTRASONIC_RX, RobotMap.ULTRASONIC_TX);
+	private Ultrasonic isBallCenter = new Ultrasonic(
+			RobotMap.ULTRASONIC_RX, 
+			RobotMap.ULTRASONIC_TX);
 
 	// TODO: untuned constant
 	private final double BALL_CENTER_MARGIN = 5.0;
@@ -38,7 +40,7 @@ public class GroundIntake extends Subsystem {
 	}
 
 	/**
-	 * Drive's RollerB given param power
+	 * Drive's RollerB given param power.
 	 * 
 	 * @param power double from 0.0 to 1.0 to set rollerB motor to.
 	 */
@@ -47,14 +49,14 @@ public class GroundIntake extends Subsystem {
 	}
 
 	/**
-	 * Stops rollerA
+	 * Stops rollerA.
 	 */
 	public void stopRollerA() {
 		driveRollerA(0.0);
 	}
 
 	/**
-	 * Stops rollerB
+	 * Stops rollerB.
 	 */
 	public void stopRollerB() {
 		driveRollerB(0.0);
@@ -62,7 +64,7 @@ public class GroundIntake extends Subsystem {
 
 	/**
 	 * Returns a boolean checking if the US Sensors value in inches is less then
-	 * the give margin
+	 * the give margin.
 	 * 
 	 * @return true if ball will go into robot once intake is run.
 	 */
