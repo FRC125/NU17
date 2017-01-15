@@ -16,9 +16,9 @@ public class Climber extends Subsystem {
 	}
 
 	/**
-	 * Runs the motor at power speed.
+	 * Pulls the robot up using the climbing motor.
 	 * 
-	 * @param power speed to run climber at, between 0.0 to 1.0.
+	 * @param power Speed to run the climbing motor at, between 0.0 to 1.0.
 	 */
 	public void runClimb(double power) {
 		this.climb.set(power);

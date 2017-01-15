@@ -9,9 +9,6 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- * @author Brian Estevez
- */
 public class Drivetrain extends Subsystem {
 	
 	private Talon driveLeftA = new Talon(RobotMap.DRIVE_LEFT_A);
@@ -44,12 +41,12 @@ public class Drivetrain extends Subsystem {
 	}
 
 	/**
-	 * Powers all the motor.
+	 * Drives the robot depending on speed of each motor.
 	 * 
-	 * @param leftA Powers the Left A motor.
-	 * @param leftB Powers the Left B motor.
-	 * @param rightA Powers the Right A motor.
-	 * @param rightB Powers the Right B motor.
+	 * @param leftA Speed of the Left A motor.
+	 * @param leftB Speed of the Left B motor.
+	 * @param rightA Speed of the Right A motor.
+	 * @param rightB Speed of the Right B motor.
 	 */
 	public void drive(
 			double leftA, 

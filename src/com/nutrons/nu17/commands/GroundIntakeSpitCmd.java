@@ -9,11 +9,17 @@ public class GroundIntakeSpitCmd extends Command {
 		requires(Robot.groundIntake);
 	}
 
+	/**
+	 * Stops intaking.
+	 */
 	protected void initialize() {
 		Robot.groundIntake.stopRollerA();
 		Robot.groundIntake.stopRollerB();
 	}
 
+	/**
+	 * Reverses the motors in order for the ball to be spit out.
+	 */
 	protected void execute() {
 		Robot.groundIntake.driveRollerA(-1.0);
 		Robot.groundIntake.driveRollerB(-1.0);

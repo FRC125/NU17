@@ -10,7 +10,7 @@ public class ShootTwinShooterCmd extends Command {
 	}
 	
 	/**
-	 * Resets the encoders and starts each motors.
+	 * Resets the encoders and starts each motor.
 	 */
 	protected void initialize() {
 		Robot.twinShooter.twinReset();

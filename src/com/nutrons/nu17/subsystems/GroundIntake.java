@@ -33,7 +33,7 @@ public class GroundIntake extends Subsystem {
 	/**
 	 * Drive's rollerA given param power.
 	 * 
-	 * @param power double from 0.0 to 1.0 to set rollerA motor to.
+	 * @param power Speed that the first roller is set to.
 	 */
 	public void driveRollerA(double power) {
 		this.rollerA.set(power);
@@ -42,7 +42,7 @@ public class GroundIntake extends Subsystem {
 	/**
 	 * Drive's RollerB given param power.
 	 * 
-	 * @param power double from 0.0 to 1.0 to set rollerB motor to.
+	 * @param power Speed that the second roller is set to.
 	 */
 	public void driveRollerB(double power) {
 		this.rollerB.set(power);
@@ -66,7 +66,7 @@ public class GroundIntake extends Subsystem {
 	 * Returns a boolean checking if the US Sensors value in inches is less then
 	 * the give margin.
 	 * 
-	 * @return true if ball will go into robot once intake is run.
+	 * @return Tells us whether the ball is directly in front of the robot and centered.
 	 */
 	public boolean isBallCentered() {
 		return (isBallCenter.getRangeInches() < BALL_CENTER_MARGIN);

@@ -11,7 +11,7 @@ public class ShootShooterCmd extends Command {
 	}
 
 	/**
-	 * Resets encoder and starts running motor at speed.
+	 * Resets encoder and starts running motor at a consistent speed.
 	 */
 	protected void initialize() {
 		Robot.shooter.resetEncoder();
@@ -19,7 +19,7 @@ public class ShootShooterCmd extends Command {
 	}
 	
 	/**
-	 * Keeps running motor at the same speed.
+	 * Keeps running motor to a consistent speed.
 	 */
 	protected void execute() {
 		Robot.shooter.runShooter(Robot.shooter.ShootSpeedControl.get());

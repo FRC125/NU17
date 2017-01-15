@@ -13,7 +13,7 @@ public class DrivePIDCmd extends Command {
 	}
 
 	/**
-	 * Sets a target to drive to. Sets how much error is allowed.
+	 * Sets a target to drive to. Sets how far the robot can be displaced from the target.
 	 */
 	protected void initialize() {
 		Robot.dt.resetEncoder();

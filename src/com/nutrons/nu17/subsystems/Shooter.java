@@ -36,16 +36,16 @@ public class Shooter extends Subsystem {
 	}
 
 	/**
-	 * Runs shooter at given param double "power".
+	 * Runs shooter at given param power.
 	 * 
-	 * @param power how fast to run the motor shooting.
+	 * @param power Speed to run the shooting motor.
 	 */
 	public void runShooter(double power) {
 		this.shooter.set(power);
 	}
 
 	/**
-	 * Cuts the power to the shooter setting it to 0.0.
+	 * Cuts the power to the shooter, setting it to 0.0.
 	 */
 	public void stopShooter() {
 		runShooter(0.0);
@@ -58,9 +58,6 @@ public class Shooter extends Subsystem {
 		shooterEncoder.reset();
 	}
 
-	/**
-	 * This holds the output from the PID Controller.
-	 */
 	public class EncoderWrapper implements PIDSource {
 		@Override
 		public void setPIDSourceType(PIDSourceType pidSource) {
@@ -77,9 +74,6 @@ public class Shooter extends Subsystem {
 		}
 	}
 
-	/**
-	 * This holds the output from the PID Controller.
-	 */
 	public class HoldShooterOutput implements PIDOutput {
 		@Override
 		public void pidWrite(double output) {

@@ -77,10 +77,10 @@ public class DrivetrainGyro extends Subsystem {
 	}
 
 	/**
-	 * Drives the motors according to leftPower and rightPower.
+	 * Drives the robot based on speeds of left and right wheels.
 	 * 
-	 * @param leftPower power left motors are set to.
-	 * @param rightPower power right motors are set to.
+	 * @param leftPower Speed that the left motors are set to.
+	 * @param rightPower Speed that right motors are set to.
 	 */
 	public void driveLR(double leftPower, double rightPower) {
 		this.frontLeft.set(leftPower);
@@ -90,9 +90,9 @@ public class DrivetrainGyro extends Subsystem {
 	}
 	
 	/**
-	 * Returns the angle away from the original by using the gyro.
+	 * Returns the angle, in degrees, away from the initial gyro position.
 	 * 
-	 * @return angle displacement from the gyro.
+	 * @return angle Angular displacement from the initial gyro position.
 	 */
 	public double getAngleInDegrees() {
 		return this.driveGyro.getAngle();

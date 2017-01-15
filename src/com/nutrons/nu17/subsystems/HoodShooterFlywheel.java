@@ -34,10 +34,10 @@ public class HoodShooterFlywheel extends Subsystem {
 	}
 
 	/**
-	 * drive the flywheel.
+	 * Drive the flywheel.
 	 * 
-	 * @param left power for left motor.
-	 * @param right power for right motor.
+	 * @param left Speed that the left fly wheel is set to.
+	 * @param right Speed that the right fly wheel is set to.
 	 */
 
 	public void turnShot(double left, double right) {
@@ -47,14 +47,14 @@ public class HoodShooterFlywheel extends Subsystem {
 	}
 
 	/**
-	 * stops flywheel.
+	 * Stops flywheel.
 	 */
 	public void stop() {
 		this.turnShot(0, 0);
 	}
 
 	/**
-	 * resets encoders.
+	 * Resets encoders.
 	 */
 	public void resetEncoder() {
 		this.turnLeft.reset();

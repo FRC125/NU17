@@ -16,9 +16,9 @@ public class GearPlacer extends Subsystem {
 	}
 	
 	/**
-	 * Sets the gear placer to position.
+	 * Sets the gear placer to a position.
 	 * 
-	 * @param position double from 0.0 to 1.0 to determine where gear placer is.
+	 * @param position Where the gear placer will be set to.
 	 */
 	public void set(double position) {
 		gearPlacer.setPosition(position);
@@ -27,7 +27,7 @@ public class GearPlacer extends Subsystem {
 	/**
 	 * Returns the current position of the gear placer.
 	 * 
-	 * @return double from 0.0 to 1.0 of where gear placer is.
+	 * @return Gives us where the gear placer is at this moment.
 	 */
 	public double getPosition() {
 		return gearPlacer.getPosition();

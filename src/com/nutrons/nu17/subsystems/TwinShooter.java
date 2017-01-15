@@ -49,27 +49,27 @@ public class TwinShooter extends Subsystem {
 	public static double holdShootB;
 
 	/**
-	 * Runs TwinA given param power.
+	 * Runs the first shooting motor to a speed.
 	 * 
-	 * @param power run first motor at this speed.
+	 * @param power Speed to run the first shooting motor at.
 	 */
 	public void runTwinA(double power) {
 		twinA.runShooter(power);
 	}
 
 	/**
-	 * Runs TwinB given param power.
+	 * Runs the second shooting motor to a speed
 	 * 
-	 * @param power run second motors at this speed.
+	 * @param power Speed to run the second shooting motor at.
 	 */
 	public void runTwinB(double power) {
 		twinB.runShooter(power);
 	}
 
 	/**
-	 * Runs boths twins at the same time.
+	 * Runs both shooting motors at the same time to the same speed.
 	 * 
-	 * @param power run motors at this speed.
+	 * @param power Speed to run both shooting motors at.
 	 */
 	public void twinRun(double power) {
 		runTwinA(power);
@@ -77,21 +77,21 @@ public class TwinShooter extends Subsystem {
 	}
 
 	/**
-	 * Stops TwinA.
+	 * Stops the first shooting motor.
 	 */
 	public void stopTwinA() {
 		twinA.runShooter(0.0);
 	}
 
 	/**
-	 * Stops TwinB.
+	 * Stops the second shooting motor.
 	 */
 	public void stopTwinB() {
 		twinB.runShooter(0.0);
 	}
 
 	/**
-	 * Stops both Twins.
+	 * Stops both shooting motors.
 	 */
 	public void stopTwins() {
 		runTwinA(0.0);
@@ -111,13 +111,10 @@ public class TwinShooter extends Subsystem {
 		resetEncoderB();
 	}
 
-	/**
-	 * This creates the source and retrieves the data from the PID calculation A.
-	 */
 	private class EncoderWrapperA implements PIDSource {
 		@Override
 		public void setPIDSourceType(PIDSourceType pidSource) {
-			// Encoder Value
+			//empty
 		}
 
 		@Override
@@ -131,26 +128,18 @@ public class TwinShooter extends Subsystem {
 		}
 	}
 
-	/**
-	 * This holds the output from the PID Controller A.
-	 */
 	private class HoldShooterOutputA implements PIDOutput {
 
 		@Override
 		public void pidWrite(double output) {
 			holdShootA = output;
-
 		}
-
 	}
 
-	/**
-	 * This creates the source and retrieves the data from the PID calculation B.
-	 */
 	private class EncoderWrapperB implements PIDSource {
 		@Override
 		public void setPIDSourceType(PIDSourceType pidSource) {
-			// Encoder Value
+			//empty
 		}
 
 		@Override
@@ -164,9 +153,6 @@ public class TwinShooter extends Subsystem {
 		}
 	}
 
-	/**
-	 * This holds the output from the PID Controller B.
-	 */
 	private class HoldShooterOutputB implements PIDOutput {
 		@Override
 		public void pidWrite(double output) {
@@ -175,5 +161,6 @@ public class TwinShooter extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-}
+		//empty
+	}
 }
