@@ -6,19 +6,19 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ClimberCmd extends Command {
 
 	public ClimberCmd() {
-		requires(Robot.climber);
+		requires(Robot.CLIMBER);
 	}
 
 	protected void initialize() {
-		Robot.climber.runClimb(1.0);
+		Robot.CLIMBER.runClimb(1.0);
 	}
 
 	/**
 	 * Keeps running the climbing motor until we touch the pad.
 	 */
 	protected void execute() {
-		Robot.climber.runClimb(1.0);
-		Robot.climber.padCheck();
+		Robot.CLIMBER.runClimb(1.0);
+		Robot.CLIMBER.padCheck();
 	}
 
 	protected boolean isFinished() {
@@ -26,7 +26,7 @@ public class ClimberCmd extends Command {
 	}
 
 	protected void end() {
-		Robot.climber.stopClimb();
+		Robot.CLIMBER.stopClimb();
 	}
 
 	protected void interrupted() {

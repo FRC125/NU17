@@ -40,7 +40,7 @@ public class DrivetrainGyro extends Subsystem {
 			new GyroWrapper(), 
 			new GyroOutput());
 
-	private volatile double headingGyro;
+	private double headingGyro;
 	
 	// TODO tune these constants
 	private final double P_DRIVE = 0;
@@ -138,7 +138,7 @@ public class DrivetrainGyro extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return Robot.dt.backRight.getPosition();
+			return Robot.DT.backRight.getPosition();
 		}
 	}
 

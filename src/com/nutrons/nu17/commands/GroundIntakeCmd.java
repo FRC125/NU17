@@ -6,23 +6,23 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GroundIntakeCmd extends Command {
 
 	public GroundIntakeCmd() {
-		requires(Robot.groundIntake);
+		requires(Robot.GROUND_INTAKE);
 	}
 
 	/**
 	 * Runs first motor.
 	 */
 	protected void initialize() {
-		Robot.groundIntake.driveRollerA(1.0);
+		Robot.GROUND_INTAKE.driveRollerA(1.0);
 	}
 
 	/**
 	 * Keeps running motor until the ball is ready to be centered, then runs other motor to intake.
 	 */
 	protected void execute() {
-		Robot.groundIntake.driveRollerA(1.0);
-		if (Robot.groundIntake.isBallCentered()) {
-			Robot.groundIntake.driveRollerB(1.0);
+		Robot.GROUND_INTAKE.driveRollerA(1.0);
+		if (Robot.GROUND_INTAKE.isBallCentered()) {
+			Robot.GROUND_INTAKE.driveRollerB(1.0);
 		}
 	}
 
@@ -31,8 +31,8 @@ public class GroundIntakeCmd extends Command {
 	}
 
 	protected void end() {
-		Robot.groundIntake.stopRollerA();
-		Robot.groundIntake.stopRollerB();
+		Robot.GROUND_INTAKE.stopRollerA();
+		Robot.GROUND_INTAKE.stopRollerB();
 	}
 
 	protected void interrupted() {

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class TankDriveCmd extends Command {
 
 	public TankDriveCmd() {
-		requires(Robot.dt);
+		requires(Robot.DT);
 	}
 
 	protected void initialize() {
@@ -19,7 +19,7 @@ public class TankDriveCmd extends Command {
 	 * wheels.
 	 */
 	protected void execute() {
-		Robot.dt.driveLR(Robot.oi.getLeftJoystickY(), Robot.oi.getRightJoystickY());
+		Robot.DT.driveLR(Robot.OI.getLeftJoystickY(), Robot.OI.getRightJoystickY());
 	}
 
 	protected boolean isFinished() {
@@ -27,7 +27,7 @@ public class TankDriveCmd extends Command {
 	}
 
 	protected void end() {
-		Robot.dt.stop();
+		Robot.DT.stop();
 	}
 
 	protected void interrupted() {

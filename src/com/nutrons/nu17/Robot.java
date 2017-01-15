@@ -8,21 +8,21 @@ import com.nutrons.nu17.subsystems.*;
 
 public class Robot extends IterativeRobot {
 	
-	public static TwinShooter twinShooter = new TwinShooter(
+	public final static TwinShooter TWIN_SHOOTER = new TwinShooter(
 			RobotMap.TWIN_A, 
 			RobotMap.TWIN_B, 
 			RobotMap.ENCODER_A,
 			RobotMap.ENCODER_B, 
 			RobotMap.ENCODER_A, 
 			RobotMap.ENCODER_B);
-	public static Shooter shooter = new Shooter();
-	public static GroundIntake groundIntake = new GroundIntake();
-	public static DrivetrainGyro dt = new DrivetrainGyro();
-	public static GearPlacer gp = new GearPlacer();
-	public static Drivetrain driveTrain = new Drivetrain();
-	public static Climber climber = new Climber();
+	public final static Shooter SHOOTER = new Shooter();
+	public final static GroundIntake GROUND_INTAKE = new GroundIntake();
+	public final static DrivetrainGyro DT = new DrivetrainGyro();
+	public final static GearPlacer GP = new GearPlacer();
+	public final static Drivetrain DRIVE_TRAIN = new Drivetrain();
+	public final static Climber CLIMBER = new Climber();
 	
-	public static OI oi;
+	public final static OI OI = new OI();
 
 	@Override
 	public void robotInit() {

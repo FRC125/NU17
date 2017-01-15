@@ -6,23 +6,23 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GroundIntakeSpitCmd extends Command {
 
 	public GroundIntakeSpitCmd() {
-		requires(Robot.groundIntake);
+		requires(Robot.GROUND_INTAKE);
 	}
 
 	/**
 	 * Stops intaking.
 	 */
 	protected void initialize() {
-		Robot.groundIntake.stopRollerA();
-		Robot.groundIntake.stopRollerB();
+		Robot.GROUND_INTAKE.stopRollerA();
+		Robot.GROUND_INTAKE.stopRollerB();
 	}
 
 	/**
 	 * Reverses the motors in order for the ball to be spit out.
 	 */
 	protected void execute() {
-		Robot.groundIntake.driveRollerA(-1.0);
-		Robot.groundIntake.driveRollerB(-1.0);
+		Robot.GROUND_INTAKE.driveRollerA(-1.0);
+		Robot.GROUND_INTAKE.driveRollerB(-1.0);
 	}
 
 	protected boolean isFinished() {
@@ -30,8 +30,8 @@ public class GroundIntakeSpitCmd extends Command {
 	}
 
 	protected void end() {
-		Robot.groundIntake.stopRollerA();
-		Robot.groundIntake.stopRollerB();
+		Robot.GROUND_INTAKE.stopRollerA();
+		Robot.GROUND_INTAKE.stopRollerB();
 	}
 
 	protected void interrupted() {

@@ -70,7 +70,7 @@ public class Shooter extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return Robot.shooter.shooterEncoder.getRate();
+			return Robot.SHOOTER.shooterEncoder.getRate();
 		}
 	}
 

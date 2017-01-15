@@ -7,15 +7,18 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import lib.Utils;
 
+/**
+ * Class to define joysticks and map all buttons to commands.
+ */
 public class OI {
 
-	private Button shootShooterCmd = new JoystickButton(this.operatorPad, 0);
-	private Button GroundIntake = new JoystickButton(this.operatorPad, 1);
-	private Button GroundIntakeSpit = new JoystickButton(this.operatorPad, 2);
-	private Button changePlacerPosition = new JoystickButton(this.operatorPad, 3);
+	private Button shootShooterCmd = new JoystickButton(this.operatorPad, RobotMap.JOYSTICK_A);
+	private Button GroundIntake = new JoystickButton(this.operatorPad, RobotMap.JOYSTICK_B);
+	private Button GroundIntakeSpit = new JoystickButton(this.operatorPad, RobotMap.JOYSTICK_X);
+	private Button changePlacerPosition = new JoystickButton(this.operatorPad, RobotMap.JOYSTICK_Y);
 
-	public Joystick driverPad = new Joystick(1);
-	public Joystick operatorPad = new Joystick(2);
+	public Joystick driverPad = new Joystick(RobotMap.JOYSTICK1);
+	public Joystick operatorPad = new Joystick(RobotMap.JOYSTICK2);
 
 	public OI() {
 		this.changePlacerPosition.whenPressed(new ChangePlacerPositionCmd());
@@ -25,18 +28,13 @@ public class OI {
 	}
 
 	/**
-	 * Returns the y axis of driver's left joystick.
-	 * 
 	 * @return driver's left joystick y value
 	 */
 	public double getLeftJoystickY() {
 		return Utils.deadband(this.driverPad.getRawAxis(1), 0.005, 0.0);
-
 	}
 
 	/**
-	 * Returns the x axis of driver's right joystick.
-	 * 
 	 * @return driver's right joystick x value
 	 */
 	public double getRightJoystickX() {
@@ -44,8 +42,6 @@ public class OI {
 	}
 
 	/**
-	 * Return the y axis of driver's right joystick.
-	 * 
 	 * @return driver's right joystick y value
 	 */
 	public double getRightJoystickY() {

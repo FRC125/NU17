@@ -7,23 +7,23 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ShootShooterCmd extends Command {
 
 	public ShootShooterCmd() {
-		requires(Robot.shooter);
+		requires(Robot.SHOOTER);
 	}
 
 	/**
 	 * Resets encoder and starts running motor at a consistent speed.
 	 */
 	protected void initialize() {
-		Robot.shooter.resetEncoder();
-		Robot.shooter.runShooter(1.0);
+		Robot.SHOOTER.resetEncoder();
+		Robot.SHOOTER.runShooter(1.0);
 	}
 	
 	/**
 	 * Keeps running motor to a consistent speed.
 	 */
 	protected void execute() {
-		Robot.shooter.runShooter(Robot.shooter.ShootSpeedControl.get());
-		Robot.shooter.runShooter(Shooter.holdShoot);
+		Robot.SHOOTER.runShooter(Robot.SHOOTER.ShootSpeedControl.get());
+		Robot.SHOOTER.runShooter(Shooter.holdShoot);
 	}
 
 	protected boolean isFinished() {
@@ -31,7 +31,7 @@ public class ShootShooterCmd extends Command {
 	}
 
 	protected void end() {
-		Robot.shooter.stopShooter();
+		Robot.SHOOTER.stopShooter();
 	}
 
 	protected void interrupted() {

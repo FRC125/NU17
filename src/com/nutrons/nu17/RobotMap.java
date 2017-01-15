@@ -24,6 +24,10 @@ public class RobotMap {
 	
 	// Port of climber
 	public static final int CLIMBER = 0;
+	
+	// Port of joysticks
+	public static final int JOYSTICK1 = 0;
+	public static final int JOYSTICK2 = 1;
 
 	// Max position for Gear Placer
 	public static final double PLACER_MAX_POSITION = 1;
@@ -48,4 +52,10 @@ public class RobotMap {
 	// Analogs
 	public static final int ULTRASONIC_RX = 0;
 	public static final int ULTRASONIC_TX = 1;
+	
+	// Buttons
+	public static final int JOYSTICK_A = 0;
+	public static final int JOYSTICK_B = 1;
+	public static final int JOYSTICK_X = 2;
+	public static final int JOYSTICK_Y = 3;
 }

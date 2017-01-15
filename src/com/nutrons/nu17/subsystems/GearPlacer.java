@@ -32,4 +32,8 @@ public class GearPlacer extends Subsystem {
 	public double getPosition() {
 		return gearPlacer.getPosition();
 	}
+
+	public void stop() {
+		gearPlacer.disable();
+	}
 }

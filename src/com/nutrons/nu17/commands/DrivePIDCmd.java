@@ -8,7 +8,7 @@ public class DrivePIDCmd extends Command {
 	private double target;
 
 	public DrivePIDCmd(double target) {
-		requires(Robot.dt);
+		requires(Robot.DT);
 		this.target = target;
 	}
 
@@ -16,10 +16,10 @@ public class DrivePIDCmd extends Command {
 	 * Sets a target to drive to. Sets how far the robot can be displaced from the target.
 	 */
 	protected void initialize() {
-		Robot.dt.resetEncoder();
-		Robot.dt.driveDistanceControl.setSetpoint(this.target);
-		Robot.dt.driveDistanceControl.setAbsoluteTolerance(0.2);
-		Robot.dt.driveDistanceControl.enable();
+		Robot.DT.resetEncoder();
+		Robot.DT.driveDistanceControl.setSetpoint(this.target);
+		Robot.DT.driveDistanceControl.setAbsoluteTolerance(0.2);
+		Robot.DT.driveDistanceControl.enable();
 	}
 
 	protected void execute() {
@@ -27,12 +27,12 @@ public class DrivePIDCmd extends Command {
 	}
 
 	protected boolean isFinished() {
-		return Math.abs(Robot.dt.driveDistanceControl.getError()) < 0.2;
+		return Math.abs(Robot.DT.driveDistanceControl.getError()) < 0.2;
 	}
 
 	protected void end() {
-		Robot.dt.driveDistanceControl.disable();
-		Robot.dt.stop();
+		Robot.DT.driveDistanceControl.disable();
+		Robot.DT.stop();
 	}
 
 	protected void interrupted() {
