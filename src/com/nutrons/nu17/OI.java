@@ -21,7 +21,7 @@ public class OI {
 	public Joystick operatorPad = new Joystick(RobotMap.JOYSTICK2);
 
 	public OI() {
-		this.changePlacerPosition.whenPressed(new ChangePlacerPositionCmd());
+		this.changePlacerPosition.whenPressed(new RaiseGearPlacerCmd());
 		this.shootShooterCmd.whenPressed(new ShootShooterCmd());
 		this.GroundIntake.whenPressed(new GroundIntakeCmd());
 		this.GroundIntakeSpit.whenPressed(new GroundIntakeSpitCmd());
