@@ -94,7 +94,8 @@ public class Drivetrain extends Subsystem {
 	}
 
 	private class DriveOutputPID implements PIDOutput {
-
+		
+		// Gets the speed at which to run the wheels at and uses it to drive the robot
 		@Override
 		public void pidWrite(double output) {
 			drive(output, -output, output, -output);

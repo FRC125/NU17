@@ -1,7 +1,6 @@
 package com.nutrons.nu17.commands;
 
 import com.nutrons.nu17.Robot;
-import com.nutrons.nu17.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
