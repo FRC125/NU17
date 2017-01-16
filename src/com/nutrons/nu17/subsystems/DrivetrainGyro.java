@@ -107,11 +107,11 @@ public class DrivetrainGyro extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return ENCODER_1.getDistance();
+			return GYRO.getOffset();
 		}
 
 		@Override
-		public void setPIDSourceType(PIDSourceType arg0) {
+		public void setPIDSourceType(PIDSourceType pidSource) {
 			//empty
 		}
 	}
