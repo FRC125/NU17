@@ -25,7 +25,7 @@ public class ShootShooterCmd extends Command {
 		Robot.SHOOTER.runShooter(Robot.SHOOTER.ShootSpeedControl.get());
 		Robot.SHOOTER.runShooter(Shooter.holdShoot);
 	}
-
+	// Don't want the shooter to stop
 	protected boolean isFinished() {
 		return false;
 	}

@@ -24,7 +24,7 @@ public class RaiseGearPlacerCmd extends Command {
     protected void execute() {
     	//empty
     }
-
+    // Finishes when the placer is at the highest position
     protected boolean isFinished() {
         return Robot.GP.getPosition() == RobotMap.PLACER_MAX_POSITION;
     }

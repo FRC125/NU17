@@ -1,15 +1,18 @@
 package com.nutrons.nu17.subsystems;
 
 import com.nutrons.nu17.RobotMap;
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
-	public DigitalInput MicroSwitch = new DigitalInput(0);
+	public DigitalInput MICRO_SWITCH = new DigitalInput(0);
 
 	private Talon climb = new Talon(RobotMap.CLIMBER);
+	
+	public Climber (){
+		//empty
+	}
 
 	public void initDefaultCommand() {
 		//empty
@@ -28,7 +31,7 @@ public class Climber extends Subsystem {
 	 * Stops the motor pulling the robot up.
 	 */
 	public void stopClimb() {
-		if (MicroSwitch.get()) {
+		if (MICRO_SWITCH.get()) {
 			this.climb.set(0);
 		}
 	}
@@ -37,10 +40,17 @@ public class Climber extends Subsystem {
 	 * Runs the motor until touching pad.
 	 */
 	public void padCheck() {
-		if (MicroSwitch.get()) {
+		if (MICRO_SWITCH.get()) {
 			stopClimb();
 		} else {
 			runClimb(1);
 		}
+	}
+	/**
+	 * Checks if the Micro Switch is true
+	 * @return value of the Micro Switch
+	 */
+	public boolean checkSwitch(){
+		return MICRO_SWITCH.get();
 	}
 }

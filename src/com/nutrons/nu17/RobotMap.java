@@ -24,6 +24,7 @@ public class RobotMap {
 	
 	// Port of climber
 	public static final int CLIMBER = 0;
+	public static final int SWITCH = 1;
 	
 	// Port of joysticks
 	public static final int JOYSTICK1 = 0;

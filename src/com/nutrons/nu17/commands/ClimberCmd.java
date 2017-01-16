@@ -20,9 +20,9 @@ public class ClimberCmd extends Command {
 		Robot.CLIMBER.runClimb(1.0);
 		Robot.CLIMBER.padCheck();
 	}
-
+	// Finishes when the MicroSwitch is true
 	protected boolean isFinished() {
-		return false;
+		return Robot.CLIMBER.checkSwitch();
 	}
 
 	protected void end() {

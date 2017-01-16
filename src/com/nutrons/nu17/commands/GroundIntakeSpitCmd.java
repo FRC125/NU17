@@ -24,9 +24,9 @@ public class GroundIntakeSpitCmd extends Command {
 		Robot.GROUND_INTAKE.driveRollerA(-1.0);
 		Robot.GROUND_INTAKE.driveRollerB(-1.0);
 	}
-
+	// Finished when there is no ball in the intake
 	protected boolean isFinished() {
-		return false;
+		return Robot.GROUND_INTAKE.noBallCheck();
 	}
 
 	protected void end() {
