@@ -72,4 +72,14 @@ public class GroundIntake extends Subsystem {
 	public boolean isBallCentered() {
 		return (BALL_CENTER.getRangeInches() < BALL_CENTER_MARGIN);
 	}
+	/**
+	 * Checks for a ball in the intake
+	 * @return Whether there is a ball in the center or not 
+	 */
+	public boolean noBallCheck() {
+		if(isBallCentered()){
+			return false;
+		}
+		return true;
+	}
 }

@@ -25,7 +25,7 @@ public class ShootTwinShooterCmd extends Command {
 		Robot.TWIN_SHOOTER.runTwinA(Robot.TWIN_SHOOTER.SPEED_PID_A.get());
 		Robot.TWIN_SHOOTER.runTwinB(Robot.TWIN_SHOOTER.SPEED_PID_B.get());
 	}
-
+	// Don't want the shooter to stop
 	protected boolean isFinished() {
 		return false;
 	}

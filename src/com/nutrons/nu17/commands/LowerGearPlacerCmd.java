@@ -23,7 +23,7 @@ public class LowerGearPlacerCmd extends Command {
     protected void execute() {
     	//empty
     }
-
+    // Finished when the placer is at the lowest position
     protected boolean isFinished() {
         return Robot.GP.getPosition() == 0;
     }

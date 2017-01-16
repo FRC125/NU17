@@ -25,7 +25,7 @@ public class DrivePIDCmd extends Command {
 	protected void execute() {
 		//empty
 	}
-
+	// Finishes when targeted destination is reached
 	protected boolean isFinished() {
 		return Math.abs(Robot.DT.DISTANCE_PID.getError()) < 0.2;
 	}

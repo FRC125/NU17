@@ -29,6 +29,7 @@ public class RobotMap {
 	
 	// Port of climber
 	public static final int CLIMBER = 0;
+	public static final int SWITCH = 1;
 	
 	// Port of micro switch
 	public static final int MICRO_SWITCH = 0;

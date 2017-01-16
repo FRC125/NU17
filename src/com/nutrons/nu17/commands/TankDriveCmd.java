@@ -21,7 +21,7 @@ public class TankDriveCmd extends Command {
 	protected void execute() {
 		Robot.DT.driveLR(Robot.OI.getLeftJoystickY(), Robot.OI.getRightJoystickY());
 	}
-
+	//Don't want the robot to stop
 	protected boolean isFinished() {
 		return false;
 	}

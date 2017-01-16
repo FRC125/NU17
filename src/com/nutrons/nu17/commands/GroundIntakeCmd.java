@@ -25,9 +25,9 @@ public class GroundIntakeCmd extends Command {
 			Robot.GROUND_INTAKE.driveRoller2(1.0);
 		}
 	}
-
+	// Finishes when the ball is centered
 	protected boolean isFinished() {
-		return false;
+		return Robot.GROUND_INTAKE.isBallCentered();
 	}
 
 	protected void end() {
