@@ -26,32 +26,32 @@ public class DrivetrainGyro extends Subsystem {
 			RobotMap.DT_ENCODER_4);
 
 	private final AnalogGyro GYRO = new AnalogGyro(RobotMap.GYRO);
+	
+	// TODO tune these constants
+	private static final double P_DRIVE = 0;
+	private static final double I_DRIVE = 0;
+	private static final double D_DRIVE = 0;
+	
+	// TODO tune these constants
+	private static final double P_HEADING = 0;
+	private static final double I_HEADING = 0;
+	private static final double D_HEADING = 0;
 
 	public final PIDController DISTANCE_PID = new PIDController(
-			this.P_DRIVE, 
-			this.I_DRIVE, 
-			this.D_DRIVE,
+			P_DRIVE, 
+			I_DRIVE, 
+			D_DRIVE,
 			new EncoderWrapper(), 
 			new DriveOutput());
 	public final PIDController HEADING_PID = new PIDController(
-			this.P_HEADING, 
-			this.I_HEADING, 
-			this.D_HEADING,
+			P_HEADING, 
+			I_HEADING, 
+			D_HEADING,
 			new GyroWrapper(), 
 			new GyroOutput());
 
 	private double headingGyro;
 	
-	// TODO tune these constants
-	private final double P_DRIVE = 0;
-	private final double I_DRIVE = 0;
-	private final double D_DRIVE = 0;
-	
-	// TODO tune these constants
-	private final double P_HEADING = 0;
-	private final double I_HEADING = 0;
-	private final double D_HEADING = 0;
-
 	public DrivetrainGyro() {
 		ENCODER_1.setDistancePerPulse(1);
 		ENCODER_2.setDistancePerPulse(1);

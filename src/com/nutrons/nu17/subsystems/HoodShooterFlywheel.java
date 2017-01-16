@@ -22,16 +22,16 @@ public class HoodShooterFlywheel extends Subsystem {
 			RobotMap.FLY_ENCODER_L2);
 
 	public final PIDController ANGLE_SHOT_PID = new PIDController(
-			this.P_TURN, 
-			this.I_TURN, 
-			this.D_TURN, 
+			P_TURN, 
+			I_TURN, 
+			D_TURN, 
 			new TurnSourcePID(), 
 			new TurnOutput());
 
 	// TODO tune these constants
-	private final double P_TURN = 0.001;
-	private final double I_TURN = 0;
-	private final double D_TURN = 0;
+	private static final double P_TURN = 0.001;
+	private static final double I_TURN = 0;
+	private static final double D_TURN = 0;
 
 	public void initDefaultCommand() {
 		//empty

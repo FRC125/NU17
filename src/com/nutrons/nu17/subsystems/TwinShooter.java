@@ -21,20 +21,20 @@ public class TwinShooter extends Subsystem {
 	}
 
 	// TODO tune these constants
-	private final double P_SHOOT = 0.025;
-	private final double I_SHOOT = 0.0;
-	private final double D_SHOOT = 0.01;
+	private static final double P_SHOOT = 0.025;
+	private static final double I_SHOOT = 0.0;
+	private static final double D_SHOOT = 0.01;
 
 	public final PIDController SPEED_PID_A = new PIDController(
-			this.P_SHOOT, 
-			this.I_SHOOT, 
-			this.D_SHOOT,
+			P_SHOOT, 
+			I_SHOOT, 
+			D_SHOOT,
 			new EncoderWrapperA(), 
 			new HoldShooterOutputA());
 	public PIDController SPEED_PID_B = new PIDController(
-			this.P_SHOOT, 
-			this.I_SHOOT, 
-			this.D_SHOOT,
+			P_SHOOT, 
+			I_SHOOT, 
+			D_SHOOT,
 			new EncoderWrapperB(), 
 			new HoldShooterOutputB());
 	

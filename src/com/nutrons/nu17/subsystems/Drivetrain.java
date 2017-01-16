@@ -24,14 +24,14 @@ public class Drivetrain extends Subsystem {
 			RobotMap.DT_ENCODER_4);
 
 	// TODO tune these constants
-	private final double P_DISTANCE = 0.025;
-	private final double I_DISTANCE = 0.0;
-	private final double D_DISTANCE = 0.01;
+	private static final double P_DISTANCE = 0.025;
+	private static final double I_DISTANCE = 0.0;
+	private static final double D_DISTANCE = 0.01;
 
 	private final PIDController DISTANCE_PID = new PIDController(
-			this.P_DISTANCE, 
-			this.I_DISTANCE, 
-			this.D_DISTANCE,
+			P_DISTANCE, 
+			I_DISTANCE, 
+			D_DISTANCE,
 			new DriveSourcePID(), 
 			new DriveOutputPID());
 

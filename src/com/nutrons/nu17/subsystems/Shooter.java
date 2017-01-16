@@ -21,14 +21,14 @@ public class Shooter extends Subsystem {
 	public static double holdShoot;
 	
 	// TODO: tune these constants
-	private final double P_SHOOT = 0.025;
-	private final double I_SHOOT = 0.0;
-	private final double D_SHOOT = 0.01;
+	private static final double P_SHOOT = 0.025;
+	private static final double I_SHOOT = 0.0;
+	private static final double D_SHOOT = 0.01;
 
 	public final PIDController SPEED_PID = new PIDController(
-			this.P_SHOOT, 
-			this.I_SHOOT, 
-			this.D_SHOOT,
+			P_SHOOT, 
+			I_SHOOT, 
+			D_SHOOT,
 			new EncoderWrapper(), 
 			new HoldShooterOutput());
 	
