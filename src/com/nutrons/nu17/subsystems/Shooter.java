@@ -27,7 +27,6 @@ public class Shooter extends Subsystem {
 		//empty
 	}
 	
-
 	// TODO: tune these constants
 	private static final double P_SHOOT = 0.025;
 	private static final double I_SHOOT = 0.0;

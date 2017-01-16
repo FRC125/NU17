@@ -13,8 +13,10 @@ public class TwinShooter extends Subsystem {
 	
 	private final Shooter TWIN_A = new Shooter();
 	private final Shooter TWIN_B = new Shooter();
-	private final Encoder ENCODER_1 = new Encoder(RobotMap.TWIN_ENCODER_1, RobotMap.TWIN_ENCODER_2);
-	private final Encoder ENCODER_2 = new Encoder(RobotMap.TWIN_ENCODER_3, RobotMap.TWIN_ENCODER_4);
+	private final Encoder ENCODER_1 = new Encoder(RobotMap.TWIN_ENCODER_1,
+			RobotMap.TWIN_ENCODER_2);
+	private final Encoder ENCODER_2 = new Encoder(RobotMap.TWIN_ENCODER_3,
+			RobotMap.TWIN_ENCODER_4);
 	
 	// PID Wrappers and Holder Objects
 	private EncoderWrapper encWrap1 = new EncoderWrapper(PIDSourceType.kDisplacement,
@@ -34,7 +36,7 @@ public class TwinShooter extends Subsystem {
 		//empty
 	}
 
-	// TODO tune these constants
+	// TODO: tune these constants
 	private static final double P_SHOOT = 0.025;
 	private static final double I_SHOOT = 0.0;
 	private static final double D_SHOOT = 0.01;

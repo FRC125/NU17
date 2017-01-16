@@ -27,8 +27,8 @@ public class HoodShooterFlywheel extends Subsystem {
 			D_TURN, 
 			new TurnSourcePID(), 
 			new TurnOutput());
-
-	// TODO tune these constants
+	
+	// TODO: tune these constants
 	private static final double P_TURN = 0.001;
 	private static final double I_TURN = 0;
 	private static final double D_TURN = 0;

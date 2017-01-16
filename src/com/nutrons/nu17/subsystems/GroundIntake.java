@@ -18,7 +18,7 @@ public class GroundIntake extends Subsystem {
 			this.ULTRASONIC_RX, 
 			this.ULTRASONIC_TX);
 
-	// TODO: untuned constant
+	// TODO: tune these constants
 	private final double BALL_CENTER_MARGIN = 5.0;
 	
 	public GroundIntake() {

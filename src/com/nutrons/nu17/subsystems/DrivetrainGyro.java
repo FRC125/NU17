@@ -26,13 +26,12 @@ public class DrivetrainGyro extends Subsystem {
 			RobotMap.DT_ENCODER_4);
 
 	private final AnalogGyro GYRO = new AnalogGyro(RobotMap.GYRO);
-	
-	// TODO tune these constants
+	// TODO: tune these constants
 	private static final double P_DRIVE = 0;
 	private static final double I_DRIVE = 0;
 	private static final double D_DRIVE = 0;
 	
-	// TODO tune these constants
+	// TODO: tune these constants
 	private static final double P_HEADING = 0;
 	private static final double I_HEADING = 0;
 	private static final double D_HEADING = 0;
@@ -107,11 +106,11 @@ public class DrivetrainGyro extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return GYRO.getOffset();
+			return ENCODER_1.getDistance();
 		}
 
 		@Override
-		public void setPIDSourceType(PIDSourceType pidSource) {
+		public void setPIDSourceType(PIDSourceType arg0) {
 			//empty
 		}
 	}
