@@ -44,6 +44,8 @@ public class RobotMap {
 	public static final int TWIN_ENCODER_2 = 10;
 	public static final int TWIN_ENCODER_3 = 11;
 	public static final int TWIN_ENCODER_4 = 12;
+	public static final int SHOOT_ENCODER_1 = 0;
+	public static final int SHOOT_ENCODER_2 = 1;
 		
 	// Port of joysticks
 	public static final int JOYSTICK1 = 0;
