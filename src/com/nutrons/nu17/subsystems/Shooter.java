@@ -10,16 +10,23 @@ import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import lib.EncoderWrapper;
+import lib.HoldPID;
 
 public class Shooter extends Subsystem {
 
 	private final Talon SHOOTER = new Talon(RobotMap.SHOOTER);
 	private final Encoder SHOOTER_ENCODER = new Encoder(
-			RobotMap.TWIN_ENCODER_1, 
-			RobotMap.TWIN_ENCODER_2);
-
-	public static double holdShoot;
+			RobotMap.SHOOT_ENCODER_1, 
+			RobotMap.SHOOT_ENCODER_2);
+	private EncoderWrapper encWrap = new EncoderWrapper(PIDSourceType.kDisplacement, SHOOTER_ENCODER, RobotMap.SHOOT_ENCODER_1, RobotMap.SHOOT_ENCODER_2);
+	private HoldPID shootHold = new HoldPID();
 	
+	public Shooter() {
+		//empty
+	}
+	
+
 	// TODO: tune these constants
 	private static final double P_SHOOT = 0.025;
 	private static final double I_SHOOT = 0.0;
@@ -29,12 +36,10 @@ public class Shooter extends Subsystem {
 			P_SHOOT, 
 			I_SHOOT, 
 			D_SHOOT,
-			new EncoderWrapper(), 
-			new HoldShooterOutput());
+			encWrap, 
+			shootHold);
 	
-	public Shooter() {
-		//empty
-	}
+	
 
 	public void initDefaultCommand() {
 	}
@@ -62,26 +67,5 @@ public class Shooter extends Subsystem {
 		SHOOTER_ENCODER.reset();
 	}
 
-	public class EncoderWrapper implements PIDSource {
-		@Override
-		public void setPIDSourceType(PIDSourceType pidSource) {
-		}
-
-		@Override
-		public PIDSourceType getPIDSourceType() {
-			return PIDSourceType.kDisplacement;
-		}
-
-		@Override
-		public double pidGet() {
-			return Robot.SHOOTER.SHOOTER_ENCODER.getRate();
-		}
-	}
-
-	public class HoldShooterOutput implements PIDOutput {
-		@Override
-		public void pidWrite(double output) {
-			holdShoot = output;
-		}
-	}
+	
 }

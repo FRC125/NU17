@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import lib.EncoderWrapper;
+import lib.HoldPID;
 
 public class TwinShooter extends Subsystem {
 	
@@ -15,7 +17,11 @@ public class TwinShooter extends Subsystem {
 	private final Shooter TWIN_B = new Shooter();
 	private final Encoder ENCODER_1 = new Encoder(RobotMap.TWIN_ENCODER_1, RobotMap.TWIN_ENCODER_2);
 	private final Encoder ENCODER_2 = new Encoder(RobotMap.TWIN_ENCODER_3, RobotMap.TWIN_ENCODER_4);
-
+	
+			private EncoderWrapper encWrap1 = new EncoderWrapper(PIDSourceType.kDisplacement, ENCODER_1, RobotMap.TWIN_ENCODER_1, RobotMap.TWIN_ENCODER_2);
+			private HoldPID twinHold1 = new HoldPID();
+			private EncoderWrapper encWrap2 = new EncoderWrapper(PIDSourceType.kDisplacement, ENCODER_2, RobotMap.TWIN_ENCODER_3, RobotMap.TWIN_ENCODER_4);
+			private HoldPID twinHold2 = new HoldPID();
 	public TwinShooter() {
 		//empty
 	}
@@ -29,14 +35,14 @@ public class TwinShooter extends Subsystem {
 			P_SHOOT, 
 			I_SHOOT, 
 			D_SHOOT,
-			new EncoderWrapperA(), 
-			new HoldShooterOutputA());
+			encWrap1, 
+			twinHold1);
 	public PIDController SPEED_PID_B = new PIDController(
 			P_SHOOT, 
 			I_SHOOT, 
 			D_SHOOT,
-			new EncoderWrapperB(), 
-			new HoldShooterOutputB());
+			encWrap2, 
+			twinHold2);
 	
 	private static double holdShootA;
 	private static double holdShootB;
@@ -108,52 +114,5 @@ public class TwinShooter extends Subsystem {
 		resetEncoderB();
 	}
 
-	private class EncoderWrapperA implements PIDSource {
-		@Override
-		public void setPIDSourceType(PIDSourceType pidSource) {
-			//empty
-		}
-
-		@Override
-		public PIDSourceType getPIDSourceType() {
-			return PIDSourceType.kDisplacement;
-		}
-
-		@Override
-		public double pidGet() {
-			return ENCODER_1.getRate();
-		}
-	}
-
-	private class HoldShooterOutputA implements PIDOutput {
-
-		@Override
-		public void pidWrite(double output) {
-			holdShootA = output;
-		}
-	}
-
-	private class EncoderWrapperB implements PIDSource {
-		@Override
-		public void setPIDSourceType(PIDSourceType pidSource) {
-			//empty
-		}
-
-		@Override
-		public PIDSourceType getPIDSourceType() {
-			return PIDSourceType.kDisplacement;
-		}
-
-		@Override
-		public double pidGet() {
-			return ENCODER_2.getRate();
-		}
-	}
-
-	private class HoldShooterOutputB implements PIDOutput {
-		@Override
-		public void pidWrite(double output) {
-			holdShootB = output;
-		}
-	}
+	
 }
