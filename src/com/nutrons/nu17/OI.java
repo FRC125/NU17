@@ -1,5 +1,6 @@
 package com.nutrons.nu17;
 
+import com.nutrons.nu17.RobotMap;
 import com.nutrons.nu17.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -12,11 +13,21 @@ import lib.Utils;
  */
 public class OI {
 
-	private final Button SHOOT = new JoystickButton(this.OPERATOR_PAD, RobotMap.JOYSTICK_LEFT_BUMPER);
-	private final Button INTAKE = new JoystickButton(this.OPERATOR_PAD, RobotMap.JOYSTICK_A);
-	private final Button INTAKE_SPIT = new JoystickButton(this.OPERATOR_PAD, RobotMap.JOYSTICK_B);
-	private final Button RAISE_PLACER = new JoystickButton(this.OPERATOR_PAD, RobotMap.JOYSTICK_Y);
-	private final Button LOWER_PLACER = new JoystickButton(this.OPERATOR_PAD, RobotMap.JOYSTICK_X);
+	private final Button SHOOT = new JoystickButton(
+			this.OPERATOR_PAD, 
+			RobotMap.JOYSTICK_LEFT_BUMPER);
+	private final Button INTAKE = new JoystickButton(
+			this.OPERATOR_PAD, 
+			RobotMap.JOYSTICK_A);
+	private final Button INTAKE_SPIT = new JoystickButton(
+			this.OPERATOR_PAD, 
+			RobotMap.JOYSTICK_B);
+	private final Button RAISE_PLACER = new JoystickButton(
+			this.OPERATOR_PAD, 
+			RobotMap.JOYSTICK_Y);
+	private final Button LOWER_PLACER = new JoystickButton(
+			this.OPERATOR_PAD, 
+			RobotMap.JOYSTICK_X);
 	
 	public final Joystick DRIVER_PAD = new Joystick(RobotMap.JOYSTICK1);
 	public final Joystick OPERATOR_PAD = new Joystick(RobotMap.JOYSTICK2);
