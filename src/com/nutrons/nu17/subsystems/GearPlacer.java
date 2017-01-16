@@ -2,8 +2,7 @@ package com.nutrons.nu17.subsystems;
 
 import com.nutrons.nu17.RobotMap;
 
-//import edu.wpi.first.wpilibj.PIDSource;
-//import edu.wpi.first.wpilibj.PIDSourceType;
+
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
