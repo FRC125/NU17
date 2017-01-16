@@ -17,7 +17,8 @@ public class GroundIntakeCmd extends Command {
 	}
 
 	/**
-	 * Keeps running motor until the ball is ready to be centered, then runs other motor to intake.
+	 * Keeps running motor until the ball is ready to be centered, then runs other motor to 
+	 * intake.
 	 */
 	protected void execute() {
 		Robot.GROUND_INTAKE.driveRoller1(1.0);
