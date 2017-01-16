@@ -8,15 +8,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GroundIntake extends Subsystem {
 	
-	private final int ULTRASONIC_RX = 0;
-	private final int ULTRASONIC_TX = 1;
-	
 	private final Talon ROLLER_1 = new Talon(RobotMap.ROLLER_A);
 	private final Talon ROLLER_2 = new Talon(RobotMap.ROLLER_B);
 
 	private final Ultrasonic BALL_CENTER = new Ultrasonic(
-			this.ULTRASONIC_RX, 
-			this.ULTRASONIC_TX);
+			RobotMap.ULTRASONIC_RX, 
+			RobotMap.ULTRASONIC_TX);
 
 	// TODO: tune these constants
 	private final double BALL_CENTER_MARGIN = 5.0;

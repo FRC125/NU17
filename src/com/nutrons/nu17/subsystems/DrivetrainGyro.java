@@ -26,6 +26,7 @@ public class DrivetrainGyro extends Subsystem {
 			RobotMap.DT_ENCODER_4);
 
 	private final AnalogGyro GYRO = new AnalogGyro(RobotMap.GYRO);
+	
 	// TODO: tune these constants
 	private static final double P_DRIVE = 0;
 	private static final double I_DRIVE = 0;

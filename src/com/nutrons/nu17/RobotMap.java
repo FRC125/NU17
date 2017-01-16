@@ -15,6 +15,10 @@ public class RobotMap {
 	// Ports of fly wheels
 	public static final int FLY_WHEEL_R = 0;
 	public static final int FLY_WHEEL_L = 0;
+	
+	// Ports of Ultrasonics
+	public static final int ULTRASONIC_RX = 0;
+	public static final int ULTRASONIC_TX = 1;
 
 	// Port of gyro
 	public static final int GYRO = 0;

@@ -43,11 +43,9 @@ public class HoodShooterFlywheel extends Subsystem {
 	 * @param left Speed that the left fly wheel is set to.
 	 * @param right Speed that the right fly wheel is set to.
 	 */
-
 	public void turnShot(double left, double right) {
 		this.FLY_WHEEL_LEFT.set(left);
 		this.FLY_WHEEL_RIGHT.set(right);
-
 	}
 
 	/**

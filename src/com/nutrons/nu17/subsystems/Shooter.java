@@ -17,10 +17,12 @@ public class Shooter extends Subsystem {
 	private final Encoder SHOOTER_ENCODER = new Encoder(
 			RobotMap.SHOOT_ENCODER_1, 
 			RobotMap.SHOOT_ENCODER_2);
-	private EncoderWrapper encWrap = new EncoderWrapper(PIDSourceType.kDisplacement,
+	private EncoderWrapper encWrap = new EncoderWrapper(
+			PIDSourceType.kDisplacement,
 			SHOOTER_ENCODER,
 			RobotMap.SHOOT_ENCODER_1,
 			RobotMap.SHOOT_ENCODER_2);
+	
 	private HoldPID shootHold = new HoldPID();
 	
 	public Shooter() {
@@ -39,8 +41,6 @@ public class Shooter extends Subsystem {
 			encWrap, 
 			shootHold);
 	
-	
-
 	public void initDefaultCommand() {
 	}
 
@@ -66,6 +66,4 @@ public class Shooter extends Subsystem {
 	public void resetEncoder() {
 		SHOOTER_ENCODER.reset();
 	}
-
-	
 }
