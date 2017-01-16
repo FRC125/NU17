@@ -24,8 +24,9 @@ public class RobotMap {
 	public static final int GYRO = 0;
 
 	// Port of gear placer
-	public static final int PLACER = 0;
-	
+	public static final int GEAR_PLACER = 0;
+	public static final int GEAR_PLACER_SERVO = 0;
+
 	// Port of shooter
 	public static final int SHOOTER = 0;
 	
