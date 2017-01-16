@@ -13,16 +13,16 @@ public class GroundIntakeSpitCmd extends Command {
 	 * Stops intaking.
 	 */
 	protected void initialize() {
-		Robot.GROUND_INTAKE.stopRollerA();
-		Robot.GROUND_INTAKE.stopRollerB();
+		Robot.GROUND_INTAKE.stopRoller1();
+		Robot.GROUND_INTAKE.stopRoller2();
 	}
 
 	/**
 	 * Reverses the motors in order for the ball to be spit out.
 	 */
 	protected void execute() {
-		Robot.GROUND_INTAKE.driveRollerA(-1.0);
-		Robot.GROUND_INTAKE.driveRollerB(-1.0);
+		Robot.GROUND_INTAKE.driveRoller1(-1.0);
+		Robot.GROUND_INTAKE.driveRoller2(-1.0);
 	}
 
 	protected boolean isFinished() {
@@ -30,8 +30,8 @@ public class GroundIntakeSpitCmd extends Command {
 	}
 
 	protected void end() {
-		Robot.GROUND_INTAKE.stopRollerA();
-		Robot.GROUND_INTAKE.stopRollerB();
+		Robot.GROUND_INTAKE.stopRoller1();
+		Robot.GROUND_INTAKE.stopRoller2();
 	}
 
 	protected void interrupted() {

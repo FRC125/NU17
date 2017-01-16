@@ -11,20 +11,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drivetrain extends Subsystem {
 	
-	private Talon driveLeftA = new Talon(RobotMap.DRIVE_LEFT_A);
-	private Talon driveLeftB = new Talon(RobotMap.DRIVE_LEFT_B);
-	private Talon driveRightA = new Talon(RobotMap.DRIVE_RIGHT_A);
-	private Talon driveRightB = new Talon(RobotMap.DRIVE_RIGHT_B);
+	private final Talon FRONT_LEFT_WHEEL = new Talon(RobotMap.FRONT_LEFT);
+	private final Talon BACK_LEFT_WHEEL = new Talon(RobotMap.FRONT_RIGHT);
+	private final Talon FRONT_RIGHT_WHEEL = new Talon(RobotMap.BACK_LEFT);
+	private final Talon BACK_RIGHT_WHEEL = new Talon(RobotMap.BACK_RIGHT);
 	
-	private Encoder driveEncoder1 = new Encoder(1, 2);
-	private Encoder driveEncoder2 = new Encoder(3, 4);
+	private final Encoder ENCODER_1 = new Encoder(
+			RobotMap.DT_ENCODER_1, 
+			RobotMap.DT_ENCODER_2);
+	private final Encoder ENCODER_2 = new Encoder(
+			RobotMap.DT_ENCODER_3, 
+			RobotMap.DT_ENCODER_4);
 
 	// TODO tune these constants
-	public double P_DISTANCE = 0.025;
-	public double I_DISTANCE = 0.0;
-	public double D_DISTANCE = 0.01;
+	private final double P_DISTANCE = 0.025;
+	private final double I_DISTANCE = 0.0;
+	private final double D_DISTANCE = 0.01;
 
-	public PIDController driveDistance = new PIDController(
+	private final PIDController DISTANCE_PID = new PIDController(
 			this.P_DISTANCE, 
 			this.I_DISTANCE, 
 			this.D_DISTANCE,
@@ -32,8 +36,8 @@ public class Drivetrain extends Subsystem {
 			new DriveOutputPID());
 
 	public Drivetrain() {
-		driveEncoder1.setDistancePerPulse(1);
-		driveEncoder2.setDistancePerPulse(1);
+		ENCODER_1.setDistancePerPulse(1);
+		ENCODER_2.setDistancePerPulse(1);
 	}
 
 	public void initDefaultCommand() {
@@ -53,10 +57,10 @@ public class Drivetrain extends Subsystem {
 			double leftB, 
 			double rightA, 
 			double rightB) {
-		this.driveLeftA.set(leftA);
-		this.driveLeftB.set(leftB);
-		this.driveRightA.set(rightA);
-		this.driveRightB.set(rightB);
+		this.FRONT_LEFT_WHEEL.set(leftA);
+		this.BACK_LEFT_WHEEL.set(leftB);
+		this.FRONT_RIGHT_WHEEL.set(rightA);
+		this.BACK_RIGHT_WHEEL.set(rightB);
 	}
 
 	/**
@@ -67,8 +71,8 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public void resetEncoder() {
-		this.driveEncoder1.reset();
-		this.driveEncoder2.reset();
+		this.ENCODER_1.reset();
+		this.ENCODER_2.reset();
 	}
 
 	private class DriveSourcePID implements PIDSource {
@@ -80,7 +84,7 @@ public class Drivetrain extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return driveEncoder1.getDistance();
+			return ENCODER_1.getDistance();
 		}
 
 		@Override

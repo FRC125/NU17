@@ -1,65 +1,66 @@
 package com.nutrons.nu17.subsystems;
 
 import com.nutrons.nu17.RobotMap;
+
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GroundIntake extends Subsystem {
 	
-	private Talon rollerA = new Talon(RobotMap.ROLLER_A);
-	private Talon rollerB = new Talon(RobotMap.ROLLER_B);
+	private final int ULTRASONIC_RX = 0;
+	private final int ULTRASONIC_TX = 1;
+	
+	private final Talon ROLLER_1 = new Talon(RobotMap.ROLLER_A);
+	private final Talon ROLLER_2 = new Talon(RobotMap.ROLLER_B);
 
-	public GroundIntake() {
-		//empty
-	}
-
-	public GroundIntake(int PORT_A, int PORT_B) {
-		rollerA = new Talon(PORT_A);
-		rollerB = new Talon(PORT_B);
-	}
-
-	private Ultrasonic isBallCenter = new Ultrasonic(
-			RobotMap.ULTRASONIC_RX, 
-			RobotMap.ULTRASONIC_TX);
+	private final Ultrasonic BALL_CENTER = new Ultrasonic(
+			this.ULTRASONIC_RX, 
+			this.ULTRASONIC_TX);
 
 	// TODO: untuned constant
 	private final double BALL_CENTER_MARGIN = 5.0;
+	
+	public GroundIntake() {
+		//empty
+	}
 
 	public void initDefaultCommand() {
 		//empty
 	}
 
 	/**
-	 * Drive's rollerA given param power.
+	 * Drive's ROLLER_1 given param power.
 	 * 
 	 * @param power Speed that the first roller is set to.
 	 */
-	public void driveRollerA(double power) {
-		this.rollerA.set(power);
+	public void driveRoller1(double power) {
+		this.ROLLER_1.set(power);
 	}
 
 	/**
-	 * Drive's RollerB given param power.
+	 * Drive's ROLLER_2 given param power.
 	 * 
 	 * @param power Speed that the second roller is set to.
 	 */
-	public void driveRollerB(double power) {
-		this.rollerB.set(power);
+	public void driveRoller2(double power) {
+		this.ROLLER_2.set(power);
 	}
 
 	/**
-	 * Stops rollerA.
+	 * Stops ROLLER_1.
 	 */
-	public void stopRollerA() {
-		driveRollerA(0.0);
+	public void stopRoller1() {
+		driveRoller1(0.0);
 	}
 
 	/**
-	 * Stops rollerB.
+	 * Stops ROLLER_2.
 	 */
-	public void stopRollerB() {
-		driveRollerB(0.0);
+	public void stopRoller2() {
+		driveRoller2(0.0);
 	}
 
 	/**
@@ -69,6 +70,6 @@ public class GroundIntake extends Subsystem {
 	 * @return Tells us whether the ball is directly in front of the robot and centered.
 	 */
 	public boolean isBallCentered() {
-		return (isBallCenter.getRangeInches() < BALL_CENTER_MARGIN);
+		return (BALL_CENTER.getRangeInches() < BALL_CENTER_MARGIN);
 	}
 }

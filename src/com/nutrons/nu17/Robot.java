@@ -8,13 +8,7 @@ import com.nutrons.nu17.subsystems.*;
 
 public class Robot extends IterativeRobot {
 	
-	public final static TwinShooter TWIN_SHOOTER = new TwinShooter(
-			RobotMap.TWIN_A, 
-			RobotMap.TWIN_B, 
-			RobotMap.ENCODER_A,
-			RobotMap.ENCODER_B, 
-			RobotMap.ENCODER_A, 
-			RobotMap.ENCODER_B);
+	public final static TwinShooter TWIN_SHOOTER = new TwinShooter();
 	public final static Shooter SHOOTER = new Shooter();
 	public final static GroundIntake GROUND_INTAKE = new GroundIntake();
 	public final static DrivetrainGyro DT = new DrivetrainGyro();

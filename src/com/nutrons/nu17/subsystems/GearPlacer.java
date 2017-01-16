@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GearPlacer extends Subsystem {
 
-	public Talon gearPlacer = new Talon(RobotMap.PLACER);
+	private final Talon PLACER = new Talon(RobotMap.PLACER);
 
 	public void initDefaultCommand() {
 		//empty
@@ -21,7 +21,7 @@ public class GearPlacer extends Subsystem {
 	 * @param position Where the gear placer will be set to.
 	 */
 	public void set(double position) {
-		gearPlacer.setPosition(position);
+		PLACER.setPosition(position);
 	}
 
 	/**
@@ -30,10 +30,10 @@ public class GearPlacer extends Subsystem {
 	 * @return Gives us where the gear placer is at this moment.
 	 */
 	public double getPosition() {
-		return gearPlacer.getPosition();
+		return PLACER.getPosition();
 	}
 
 	public void stop() {
-		gearPlacer.disable();
+		PLACER.disable();
 	}
 }

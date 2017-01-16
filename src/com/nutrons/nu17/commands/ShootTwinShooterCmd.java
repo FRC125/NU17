@@ -14,16 +14,16 @@ public class ShootTwinShooterCmd extends Command {
 	 */
 	protected void initialize() {
 		Robot.TWIN_SHOOTER.twinReset();
-		Robot.TWIN_SHOOTER.ShootSpeedControlA.enable();
-		Robot.TWIN_SHOOTER.ShootSpeedControlB.enable();
+		Robot.TWIN_SHOOTER.SPEED_PID_A.enable();
+		Robot.TWIN_SHOOTER.SPEED_PID_B.enable();
 	}
 
 	/**
 	 * Spins motors using PID controllers.
 	 */
 	protected void execute() {
-		Robot.TWIN_SHOOTER.runTwinA(Robot.TWIN_SHOOTER.ShootSpeedControlA.get());
-		Robot.TWIN_SHOOTER.runTwinB(Robot.TWIN_SHOOTER.ShootSpeedControlB.get());
+		Robot.TWIN_SHOOTER.runTwinA(Robot.TWIN_SHOOTER.SPEED_PID_A.get());
+		Robot.TWIN_SHOOTER.runTwinB(Robot.TWIN_SHOOTER.SPEED_PID_B.get());
 	}
 
 	protected boolean isFinished() {

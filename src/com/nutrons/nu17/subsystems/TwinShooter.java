@@ -1,5 +1,7 @@
 package com.nutrons.nu17.subsystems;
 
+import com.nutrons.nu17.RobotMap;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -9,44 +11,39 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class TwinShooter extends Subsystem {
 	
-	public Shooter twinA;
-	public Shooter twinB;
-	public Encoder EncoderA;
-	public Encoder EncoderB;
+	private final Shooter TWIN_A = new Shooter();
+	private final Shooter TWIN_B = new Shooter();
+	private final Encoder ENCODER_1 = new Encoder(RobotMap.TWIN_ENCODER_1, RobotMap.TWIN_ENCODER_2);
+	private final Encoder ENCODER_2 = new Encoder(RobotMap.TWIN_ENCODER_3, RobotMap.TWIN_ENCODER_4);
 
 	public TwinShooter() {
 		//empty
 	}
 
-	public TwinShooter(
-			int PORT_A, 
-			int PORT_B, 
-			int E_A1, 
-			int E_B1, 
-			int E_A2, 
-			int E_B2) {
-		twinA = new Shooter(
-				PORT_A, 
-				E_A1, 
-				E_B1);
-		twinB = new Shooter(
-				PORT_B, 
-				E_A2, 
-				E_B2);
-	}
-
 	// TODO tune these constants
-	public double P_SHOOT = 0.025;
-	public double I_SHOOT = 0.0;
-	public double D_SHOOT = 0.01;
+	private final double P_SHOOT = 0.025;
+	private final double I_SHOOT = 0.0;
+	private final double D_SHOOT = 0.01;
 
-	public PIDController ShootSpeedControlA = new PIDController(this.P_SHOOT, this.I_SHOOT, this.D_SHOOT,
-			new EncoderWrapperA(), new HoldShooterOutputA());
-	public PIDController ShootSpeedControlB = new PIDController(this.P_SHOOT, this.I_SHOOT, this.D_SHOOT,
-			new EncoderWrapperB(), new HoldShooterOutputB());
+	public final PIDController SPEED_PID_A = new PIDController(
+			this.P_SHOOT, 
+			this.I_SHOOT, 
+			this.D_SHOOT,
+			new EncoderWrapperA(), 
+			new HoldShooterOutputA());
+	public PIDController SPEED_PID_B = new PIDController(
+			this.P_SHOOT, 
+			this.I_SHOOT, 
+			this.D_SHOOT,
+			new EncoderWrapperB(), 
+			new HoldShooterOutputB());
 	
-	public static double holdShootA;
-	public static double holdShootB;
+	private static double holdShootA;
+	private static double holdShootB;
+	
+	public void initDefaultCommand() {
+		//empty
+	}
 
 	/**
 	 * Runs the first shooting motor to a speed.
@@ -54,7 +51,7 @@ public class TwinShooter extends Subsystem {
 	 * @param power Speed to run the first shooting motor at.
 	 */
 	public void runTwinA(double power) {
-		twinA.runShooter(power);
+		TWIN_A.runShooter(power);
 	}
 
 	/**
@@ -63,7 +60,7 @@ public class TwinShooter extends Subsystem {
 	 * @param power Speed to run the second shooting motor at.
 	 */
 	public void runTwinB(double power) {
-		twinB.runShooter(power);
+		TWIN_B.runShooter(power);
 	}
 
 	/**
@@ -80,14 +77,14 @@ public class TwinShooter extends Subsystem {
 	 * Stops the first shooting motor.
 	 */
 	public void stopTwinA() {
-		twinA.runShooter(0.0);
+		TWIN_A.runShooter(0.0);
 	}
 
 	/**
 	 * Stops the second shooting motor.
 	 */
 	public void stopTwinB() {
-		twinB.runShooter(0.0);
+		TWIN_B.runShooter(0.0);
 	}
 
 	/**
@@ -99,11 +96,11 @@ public class TwinShooter extends Subsystem {
 	}
 
 	public void resetEncoderA() {
-		twinA.resetEncoder();
+		TWIN_A.resetEncoder();
 	}
 
 	public void resetEncoderB() {
-		twinB.resetEncoder();
+		TWIN_B.resetEncoder();
 	}
 
 	public void twinReset() {
@@ -124,7 +121,7 @@ public class TwinShooter extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return EncoderA.getRate();
+			return ENCODER_1.getRate();
 		}
 	}
 
@@ -149,7 +146,7 @@ public class TwinShooter extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return EncoderB.getRate();
+			return ENCODER_2.getRate();
 		}
 	}
 
@@ -158,9 +155,5 @@ public class TwinShooter extends Subsystem {
 		public void pidWrite(double output) {
 			holdShootB = output;
 		}
-	}
-
-	public void initDefaultCommand() {
-		//empty
 	}
 }

@@ -13,16 +13,16 @@ public class GroundIntakeCmd extends Command {
 	 * Runs first motor.
 	 */
 	protected void initialize() {
-		Robot.GROUND_INTAKE.driveRollerA(1.0);
+		Robot.GROUND_INTAKE.driveRoller1(1.0);
 	}
 
 	/**
 	 * Keeps running motor until the ball is ready to be centered, then runs other motor to intake.
 	 */
 	protected void execute() {
-		Robot.GROUND_INTAKE.driveRollerA(1.0);
+		Robot.GROUND_INTAKE.driveRoller1(1.0);
 		if (Robot.GROUND_INTAKE.isBallCentered()) {
-			Robot.GROUND_INTAKE.driveRollerB(1.0);
+			Robot.GROUND_INTAKE.driveRoller2(1.0);
 		}
 	}
 
@@ -31,8 +31,8 @@ public class GroundIntakeCmd extends Command {
 	}
 
 	protected void end() {
-		Robot.GROUND_INTAKE.stopRollerA();
-		Robot.GROUND_INTAKE.stopRollerB();
+		Robot.GROUND_INTAKE.stopRoller1();
+		Robot.GROUND_INTAKE.stopRoller2();
 	}
 
 	protected void interrupted() {

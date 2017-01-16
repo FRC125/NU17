@@ -13,27 +13,27 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DrivetrainGyro extends Subsystem {
 
-	private Talon frontRight = new Talon(RobotMap.FRONT_RIGHT);
-	private Talon frontLeft = new Talon(RobotMap.FRONT_LEFT);
-	private Talon backRight = new Talon(RobotMap.BACK_RIGHT);
-	private Talon backLeft = new Talon(RobotMap.BACK_LEFT);
+	private final Talon FRONT_RIGHT = new Talon(RobotMap.FRONT_RIGHT);
+	private final Talon FRONT_LEFT = new Talon(RobotMap.FRONT_LEFT);
+	private final Talon BACK_RIGHT = new Talon(RobotMap.BACK_RIGHT);
+	private final Talon BACK_LEFT = new Talon(RobotMap.BACK_LEFT);
 	
-	private Encoder driveEncoderA = new Encoder(
-			RobotMap.ENCODERA1, 
-			RobotMap.ENCODERA2);
-	private Encoder driveEncoderB = new Encoder(
-			RobotMap.ENCODERB1, 
-			RobotMap.ENCODERB2);
+	private final Encoder ENCODER_1 = new Encoder(
+			RobotMap.DT_ENCODER_1, 
+			RobotMap.DT_ENCODER_2);
+	private final Encoder ENCODER_2 = new Encoder(
+			RobotMap.DT_ENCODER_3, 
+			RobotMap.DT_ENCODER_4);
 
-	private AnalogGyro driveGyro = new AnalogGyro(RobotMap.GYRO);
+	private final AnalogGyro GYRO = new AnalogGyro(RobotMap.GYRO);
 
-	public PIDController driveDistanceControl = new PIDController(
+	public final PIDController DISTANCE_PID = new PIDController(
 			this.P_DRIVE, 
 			this.I_DRIVE, 
 			this.D_DRIVE,
 			new EncoderWrapper(), 
 			new DriveOutput());
-	public PIDController holdHeading = new PIDController(
+	public final PIDController HEADING_PID = new PIDController(
 			this.P_HEADING, 
 			this.I_HEADING, 
 			this.D_HEADING,
@@ -53,8 +53,8 @@ public class DrivetrainGyro extends Subsystem {
 	private final double D_HEADING = 0;
 
 	public DrivetrainGyro() {
-		driveEncoderA.setDistancePerPulse(1);
-		driveEncoderB.setDistancePerPulse(1);
+		ENCODER_1.setDistancePerPulse(1);
+		ENCODER_2.setDistancePerPulse(1);
 	}
 
 	public void initDefaultCommand() {
@@ -72,8 +72,8 @@ public class DrivetrainGyro extends Subsystem {
 	 * Resets the encoders.
 	 */
 	public void resetEncoder() {
-		this.driveEncoderA.reset();
-		this.driveEncoderB.reset();
+		this.ENCODER_1.reset();
+		this.ENCODER_2.reset();
 	}
 
 	/**
@@ -83,10 +83,10 @@ public class DrivetrainGyro extends Subsystem {
 	 * @param rightPower Speed that right motors are set to.
 	 */
 	public void driveLR(double leftPower, double rightPower) {
-		this.frontLeft.set(leftPower);
-		this.frontRight.set(-rightPower);
-		this.backLeft.set(leftPower);
-		this.backRight.set(-rightPower);
+		this.FRONT_LEFT.set(leftPower);
+		this.FRONT_RIGHT.set(-rightPower);
+		this.BACK_LEFT.set(leftPower);
+		this.BACK_RIGHT.set(-rightPower);
 	}
 	
 	/**
@@ -95,7 +95,7 @@ public class DrivetrainGyro extends Subsystem {
 	 * @return angle Angular displacement from the initial gyro position.
 	 */
 	public double getAngleInDegrees() {
-		return this.driveGyro.getAngle();
+		return this.GYRO.getAngle();
 	}
 
 	private class GyroWrapper implements PIDSource {
@@ -107,7 +107,7 @@ public class DrivetrainGyro extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return driveEncoderA.getDistance();
+			return ENCODER_1.getDistance();
 		}
 
 		@Override
@@ -138,7 +138,7 @@ public class DrivetrainGyro extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return Robot.DT.backRight.getPosition();
+			return Robot.DT.BACK_RIGHT.getPosition();
 		}
 	}
 

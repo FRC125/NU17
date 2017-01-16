@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class RaiseGearPlacerCmd extends Command {
 
+	private final double PLACER_MAX_POSITION = 1;
+
     public RaiseGearPlacerCmd() {
     	requires(Robot.GP);
     }
@@ -18,7 +20,7 @@ public class RaiseGearPlacerCmd extends Command {
      * Lowers the gear placer.
      */
     protected void initialize() {
-    	Robot.GP.set(RobotMap.PLACER_MAX_POSITION);
+    	Robot.GP.set(this.PLACER_MAX_POSITION);
     }
 
     protected void execute() {
@@ -26,7 +28,7 @@ public class RaiseGearPlacerCmd extends Command {
     }
 
     protected boolean isFinished() {
-        return Robot.GP.getPosition() == RobotMap.PLACER_MAX_POSITION;
+        return Robot.GP.getPosition() == this.PLACER_MAX_POSITION;
     }
 
     protected void end() {

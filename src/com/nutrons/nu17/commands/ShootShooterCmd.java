@@ -22,8 +22,8 @@ public class ShootShooterCmd extends Command {
 	 * Keeps running motor to a consistent speed.
 	 */
 	protected void execute() {
-		Robot.SHOOTER.runShooter(Robot.SHOOTER.ShootSpeedControl.get());
-		Robot.SHOOTER.runShooter(Shooter.holdShoot);
+		Robot.SHOOTER.runShooter(Robot.SHOOTER.SPEED_PID.get());
+		Robot.SHOOTER.runShooter(Robot.SHOOTER.holdShoot);
 	}
 
 	protected boolean isFinished() {

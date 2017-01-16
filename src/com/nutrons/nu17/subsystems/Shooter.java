@@ -1,6 +1,8 @@
 package com.nutrons.nu17.subsystems;
 
 import com.nutrons.nu17.Robot;
+import com.nutrons.nu17.RobotMap;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -11,26 +13,28 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Shooter extends Subsystem {
 
-	private Talon shooter;
-	private Encoder shooterEncoder;
+	private final Talon SHOOTER = new Talon(RobotMap.SHOOTER);
+	private final Encoder SHOOTER_ENCODER = new Encoder(
+			RobotMap.TWIN_ENCODER_1, 
+			RobotMap.TWIN_ENCODER_2);
 
+	public static double holdShoot;
+	
+	// TODO: tune these constants
+	private final double P_SHOOT = 0.025;
+	private final double I_SHOOT = 0.0;
+	private final double D_SHOOT = 0.01;
+
+	public final PIDController SPEED_PID = new PIDController(
+			this.P_SHOOT, 
+			this.I_SHOOT, 
+			this.D_SHOOT,
+			new EncoderWrapper(), 
+			new HoldShooterOutput());
+	
 	public Shooter() {
 		//empty
 	}
-
-	public Shooter(int PORT, int E_A, int E_B) {
-		shooter = new Talon(PORT);
-		shooterEncoder = new Encoder(E_A, E_B);
-	}
-
-	// TODO: tune these constants
-	public double P_SHOOT = 0.025;
-	public double I_SHOOT = 0.0;
-	public double D_SHOOT = 0.01;
-
-	public PIDController ShootSpeedControl = new PIDController(this.P_SHOOT, this.I_SHOOT, this.D_SHOOT,
-			new EncoderWrapper(), new HoldShooterOutput());
-	public static double holdShoot;
 
 	public void initDefaultCommand() {
 	}
@@ -41,7 +45,7 @@ public class Shooter extends Subsystem {
 	 * @param power Speed to run the shooting motor.
 	 */
 	public void runShooter(double power) {
-		this.shooter.set(power);
+		this.SHOOTER.set(power);
 	}
 
 	/**
@@ -55,7 +59,7 @@ public class Shooter extends Subsystem {
 	 * Resets Encoder.
 	 */
 	public void resetEncoder() {
-		shooterEncoder.reset();
+		SHOOTER_ENCODER.reset();
 	}
 
 	public class EncoderWrapper implements PIDSource {
@@ -70,7 +74,7 @@ public class Shooter extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return Robot.SHOOTER.shooterEncoder.getRate();
+			return Robot.SHOOTER.SHOOTER_ENCODER.getRate();
 		}
 	}
 

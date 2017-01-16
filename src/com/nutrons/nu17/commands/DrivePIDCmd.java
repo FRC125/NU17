@@ -17,9 +17,9 @@ public class DrivePIDCmd extends Command {
 	 */
 	protected void initialize() {
 		Robot.DT.resetEncoder();
-		Robot.DT.driveDistanceControl.setSetpoint(this.target);
-		Robot.DT.driveDistanceControl.setAbsoluteTolerance(0.2);
-		Robot.DT.driveDistanceControl.enable();
+		Robot.DT.DISTANCE_PID.setSetpoint(this.target);
+		Robot.DT.DISTANCE_PID.setAbsoluteTolerance(0.2);
+		Robot.DT.DISTANCE_PID.enable();
 	}
 
 	protected void execute() {
@@ -27,11 +27,11 @@ public class DrivePIDCmd extends Command {
 	}
 
 	protected boolean isFinished() {
-		return Math.abs(Robot.DT.driveDistanceControl.getError()) < 0.2;
+		return Math.abs(Robot.DT.DISTANCE_PID.getError()) < 0.2;
 	}
 
 	protected void end() {
-		Robot.DT.driveDistanceControl.disable();
+		Robot.DT.DISTANCE_PID.disable();
 		Robot.DT.stop();
 	}
 

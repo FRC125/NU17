@@ -7,9 +7,10 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
-	public DigitalInput MicroSwitch = new DigitalInput(0);
+	
+	private final DigitalInput MICRO_SWITCH = new DigitalInput(RobotMap.MICRO_SWITCH);
 
-	private Talon climb = new Talon(RobotMap.CLIMBER);
+	private final Talon CLIMB = new Talon(RobotMap.CLIMBER);
 
 	public void initDefaultCommand() {
 		//empty
@@ -21,15 +22,15 @@ public class Climber extends Subsystem {
 	 * @param power Speed to run the climbing motor at, between 0.0 to 1.0.
 	 */
 	public void runClimb(double power) {
-		this.climb.set(power);
+		this.CLIMB.set(power);
 	}
 	
 	/**
 	 * Stops the motor pulling the robot up.
 	 */
 	public void stopClimb() {
-		if (MicroSwitch.get()) {
-			this.climb.set(0);
+		if (MICRO_SWITCH.get()) {
+			this.CLIMB.set(0);
 		}
 	}
 
@@ -37,7 +38,7 @@ public class Climber extends Subsystem {
 	 * Runs the motor until touching pad.
 	 */
 	public void padCheck() {
-		if (MicroSwitch.get()) {
+		if (MICRO_SWITCH.get()) {
 			stopClimb();
 		} else {
 			runClimb(1);
