@@ -44,20 +44,20 @@ public class OI {
 	 * @return driver's left joystick y value
 	 */
 	public double getLeftJoystickY() {
-		return Utils.deadband(this.DRIVER_PAD.getRawAxis(1), 0.005, 0.0);
+		return Utils.deadband(this.DRIVER_PAD.getRawAxis(1), RobotMap.JOYSTICK_DEADBAND, 0.0);
 	}
 
 	/**
 	 * @return driver's right joystick x value
 	 */
 	public double getRightJoystickX() {
-		return Utils.deadband(this.DRIVER_PAD.getRawAxis(4), 0.05, 0.0);
+		return Utils.deadband(this.DRIVER_PAD.getRawAxis(4), RobotMap.JOYSTICK_DEADBAND, 0.0);
 	}
 
 	/**
 	 * @return driver's right joystick y value
 	 */
 	public double getRightJoystickY() {
-		return Utils.deadband(this.DRIVER_PAD.getRawAxis(5), 0.05, 0.0);
+		return Utils.deadband(this.DRIVER_PAD.getRawAxis(5), RobotMap.JOYSTICK_DEADBAND, 0.0);
 	}
 }
