@@ -3,10 +3,10 @@ package com.nutrons.nu17;
 public class RobotMap {
 
 	// Ports of wheels
-	public static final int LEFT_DRIVE_MOTOR_A = 0;
-	public static final int	LEFT_DRIVE_MOTOR_B = 1;
-	public static final int RIGHT_DRIVE_MOTOR_A = 2;
-	public static final int RIGHT_DRIVE_MOTOR_B = 3;
+	public static final int FRONT_LEFT = 0;
+	public static final int	BACK_LEFT = 1;
+	public static final int FRONT_RIGHT = 2;
+	public static final int BACK_RIGHT = 3;
 	
 	// Ports of intake
 	public static final int ROLLER_A = 0;
