@@ -2,16 +2,16 @@ package lib;
 
 public class MovingAverage {
 	private double[] readings;
-	private int numSamples;
+	private int size;
 	private int index = 0;
 	
 	/** 
 	 * Creates the average 
-	 * @param numSample used to create the average   
+	 * @param numSample sample used to create the average   
 	 */
-	public MovingAverage(int numSample){
-		readings = new double[numSample];
-		this.numSamples = numSample;
+	public MovingAverage(int size){
+		readings = new double[size];
+		this.size = size;
 	}
 	
 	/**
@@ -19,7 +19,7 @@ public class MovingAverage {
 	 * @param reading information received from input
 	 */
 	private void update(final double reading){
-		readings[index % numSamples] = reading;
+		readings[index % size] = reading;
 		index++;
 	}
 	
@@ -31,6 +31,6 @@ public class MovingAverage {
 		for ( double value : readings){
 			sum += value;
 		}
-		return sum / numSamples;
+		return sum / size;
 	}
 }
