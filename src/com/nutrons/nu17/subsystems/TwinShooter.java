@@ -59,8 +59,7 @@ public class TwinShooter extends Subsystem {
 			encWrap2, 
 			twinHold2);
 	
-	private static double holdShootA;
-	private static double holdShootB;
+	
 	
 	public void initDefaultCommand() {
 		//empty
