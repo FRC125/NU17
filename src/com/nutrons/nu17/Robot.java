@@ -11,10 +11,9 @@ public class Robot extends IterativeRobot {
 	public final static TwinShooter TWIN_SHOOTER = new TwinShooter();
 	public final static Shooter SHOOTER = new Shooter();
 	public final static GroundIntake GROUND_INTAKE = new GroundIntake();
-	public final static DrivetrainGyro DT = new DrivetrainGyro();
 	public final static GearPlacer GP = new GearPlacer();
-	public final static Drivetrain DRIVE_TRAIN = new Drivetrain();
 	public final static Climber CLIMBER = new Climber();
+	public final static Drivetrain DRIVETRAIN = new Drivetrain();
 	
 	public final static OI OI = new OI();
 
