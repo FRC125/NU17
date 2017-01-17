@@ -1,36 +1,29 @@
 package lib;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class MovingAverage {
-	private double[] readings;
+	private Queue<Integer> queue;
 	private int size;
-	private int index = 0;
+	private double average;
 	
 	/** 
 	 * Creates the average 
-	 * @param numSample sample used to create the average   
+	 * @param size  used to create the average   
 	 */
 	public MovingAverage(int size){
-		readings = new double[size];
+		queue = new LinkedList<>();
 		this.size = size;
 	}
 	
 	/**
-	 * Adds to the average
-	 * @param reading information received from input
+	 * @return Gets the current average.
 	 */
-	private void update(final double reading){
-		readings[index % size] = reading;
-		index++;
-	}
-	
-	/**
-	 * @return Gives the current average.
-	 */
-	public double getAverage(){
-		double sum = 0.0;
-		for ( double value : readings){
-			sum += value;
-		}
-		return sum / size;
+	public double getAverage(int value){
+		int prevSize = queue.size();
+		int out = queue.size() == size ? queue.poll() : 0;
+		queue.offer(value);
+		return average = (average * prevSize - out + value) / queue.size();
 	}
 }
