@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
 	
-	private final DigitalInput MICRO_SWITCH = new DigitalInput(RobotMap.MICRO_SWITCH);
+	private final DigitalInput MICRO_SWITCH = new DigitalInput(RobotMap.CLIMBER_MICRO_SWITCH);
 
 	private final Talon CLIMB = new Talon(RobotMap.CLIMBER);
 	

@@ -29,15 +29,17 @@ public class RobotMap {
 	// Port of shooter
 	public static final int SHOOTER = 0;
 	
-	// Port of climber
+	// Port of climber	
 	public static final int CLIMBER = 0;
 	
 	// Port of micro switch
-	public static final int MICRO_SWITCH = 0;
+	public static final int CLIMBER_MICRO_SWITCH = 0;
 
 	// Ports of encoders
-	public static final int DRIVE_DISTANCE_ENCODER_1 = 1;
-	public static final int DRIVE_DISTANCE_ENCODER_2 = 2;
+	public static final int LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1 = 1;
+	public static final int LEFT_WHEELDRIVE_DISTANCE_ENCODER_2 = 2;
+	public static final int RIGHT_WHEEL_DRIVE_DISTANCE_ENCODER_1 = 1;
+	public static final int RIGHT_WHEEL_DRIVE_DISTANCE_ENCODER_2 = 2;
 	public static final int FLY_ENCODER_FRONT_RIGHT = 5;
 	public static final int FLY_ENCODER_BACK_RIGHT = 6;
 	public static final int FLY_ENCODER_FRONT_LEFT = 7;
