@@ -21,7 +21,7 @@ public class RobotMap {
 	public static final int ULTRASONIC_TX = 1;
 
 	// Port of gyro
-	public static final int GYRO = 0;
+	public static final int HEADING_GYRO = 0;
 
 	// Port of gear placer
 	public static final int PLACER = 0;
@@ -36,8 +36,8 @@ public class RobotMap {
 	public static final int MICRO_SWITCH = 0;
 
 	// Ports of encoders
-	public static final int DT_ENCODER_1 = 1;
-	public static final int DT_ENCODER_2 = 2;
+	public static final int DRIVE_DISTANCE_ENCODER_P1 = 1;
+	public static final int DRIVE_DISTANCE_ENCODER_P2 = 2;
 	public static final int DT_ENCODER_3 = 3;
 	public static final int DT_ENCODER_4 = 4;
 	public static final int FLY_ENCODER_R1 = 5;

@@ -21,33 +21,33 @@ public class Drivetrain extends Subsystem {
 	}
 
 	// Motors
-	public Talon leftDriveA = new Talon(RobotMap.FRONT_LEFT);
-	public Talon leftDriveB = new Talon(RobotMap.BACK_LEFT);
-	public Talon rightDriveA = new Talon(RobotMap.FRONT_RIGHT);
-	public Talon rightDriveB = new Talon(RobotMap.BACK_RIGHT);
+	public Talon frontLeft = new Talon(RobotMap.FRONT_LEFT);
+	public Talon backLeft = new Talon(RobotMap.BACK_LEFT);
+	public Talon frontRight = new Talon(RobotMap.FRONT_RIGHT);
+	public Talon backRight = new Talon(RobotMap.BACK_RIGHT);
 
 	// Sensors
-	private final AnalogGyro GYRO = new AnalogGyro(RobotMap.GYRO);
+	private final AnalogGyro HEADING_GRYO = new AnalogGyro(RobotMap.HEADING_GYRO);
 
 	// TODO: Tune Ports
-	private final Encoder ENC_A = new Encoder(RobotMap.DT_ENCODER_1, RobotMap.DT_ENCODER_2);
+	private final Encoder DRIVE_DISTANCE_ENCODER = new Encoder(RobotMap.DRIVE_DISTANCE_ENCODER_P1, RobotMap.DRIVE_DISTANCE_ENCODER_P2);
 
 	// Drive
-	public RobotDrive drive = new RobotDrive(leftDriveA, leftDriveB, rightDriveA, rightDriveB);
+	public RobotDrive drive = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 
 	// PID
 	// Wrappers
 	private EncoderWrapper encWrap = new EncoderWrapper(PIDSourceType.kDisplacement,
-			ENC_A,
-			RobotMap.DT_ENCODER_1,
-			RobotMap.DT_ENCODER_2);
+			DRIVE_DISTANCE_ENCODER,
+			RobotMap.DRIVE_DISTANCE_ENCODER_P1,
+			RobotMap.DRIVE_DISTANCE_ENCODER_P2);
 	private GyroWrapper gyroWrap = new GyroWrapper(PIDSourceType.kDisplacement,
-			GYRO,
-			RobotMap.GYRO);
+			HEADING_GRYO,
+			RobotMap.HEADING_GYRO);
 
 	// Holders
-	private HoldPID driveHoldA = new HoldPID();
-	private HoldPID driveHoldB = new HoldPID();
+	private HoldPID distancePIDHolder = new HoldPID();
+	private HoldPID headingPIDHolder = new HoldPID();
 
 	// TODO: tune these constants
 	private static final double P_DRIVE = 0;
@@ -63,12 +63,12 @@ public class Drivetrain extends Subsystem {
 			I_DRIVE,
 			D_DRIVE,
 			encWrap,
-			driveHoldA);
+			distancePIDHolder);
 	public final PIDController HEADING_PID = new PIDController(P_HEADING,
 			I_HEADING,
 			D_HEADING,
 			gyroWrap,
-			driveHoldB);
+			headingPIDHolder);
 
 	/**
 	 * Returns the angle, in degrees, away from the initial gyro position.
@@ -76,7 +76,7 @@ public class Drivetrain extends Subsystem {
 	 * @return angle Angular displacement from the initial gyro position.
 	 */
 	public double getAngleInDegrees() {
-		return this.GYRO.getAngle();
+		return this.HEADING_GRYO.getAngle();
 	}
 
 	/**
@@ -85,14 +85,14 @@ public class Drivetrain extends Subsystem {
 	 * @return Encoder Rate using the .getRate method
 	 */
 	public double getEncoderRate() {
-		return this.ENC_A.getRate();
+		return this.DRIVE_DISTANCE_ENCODER.getRate();
 	}
 
 	/**
 	 * Resets the encoder.
 	 */
 	public void resetEncoder() {
-		this.ENC_A.reset();
+		this.DRIVE_DISTANCE_ENCODER.reset();
 
 	}
 
@@ -100,7 +100,7 @@ public class Drivetrain extends Subsystem {
 	 * Resets the gyro.
 	 */
 	public void resetGyro() {
-		this.GYRO.reset();
+		this.HEADING_GRYO.reset();
 
 	}
 
