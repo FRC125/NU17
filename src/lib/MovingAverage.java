@@ -23,9 +23,9 @@ public class MovingAverage {
 	/**
 	 * @return Gets the current average.
 	 */
-	public double getAverage(int value){
-		int prevSize = queue.size();
-		int out = queue.size() == size ? queue.poll() : 0;
+	public double getAverage(double value){
+		double prevSize = queue.size();
+		double out = queue.size() == size ? queue.poll() : 0;
 		queue.offer(value);
 		return average = (average * prevSize - out + value) / queue.size();
 	}
