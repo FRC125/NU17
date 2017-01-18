@@ -30,7 +30,7 @@ public class Drivetrain extends Subsystem {
 	private final AnalogGyro HEADING_GRYO = new AnalogGyro(RobotMap.HEADING_GYRO);
 
 	// TODO: Tune Ports
-	private final Encoder DRIVE_DISTANCE_ENCODER = new Encoder(RobotMap.DRIVE_DISTANCE_ENCODER_P1, RobotMap.DRIVE_DISTANCE_ENCODER_P2);
+	private final Encoder DRIVE_DISTANCE_ENCODER = new Encoder(RobotMap.DRIVE_DISTANCE_ENCODER_PORT_1, RobotMap.DRIVE_DISTANCE_ENCODER_PORT_2);
 
 	// Drive
 	public RobotDrive drive = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
@@ -39,8 +39,8 @@ public class Drivetrain extends Subsystem {
 	// Wrappers
 	private EncoderWrapper encWrap = new EncoderWrapper(PIDSourceType.kDisplacement,
 			DRIVE_DISTANCE_ENCODER,
-			RobotMap.DRIVE_DISTANCE_ENCODER_P1,
-			RobotMap.DRIVE_DISTANCE_ENCODER_P2);
+			RobotMap.DRIVE_DISTANCE_ENCODER_PORT_1,
+			RobotMap.DRIVE_DISTANCE_ENCODER_PORT_2);
 	private GyroWrapper gyroWrap = new GyroWrapper(PIDSourceType.kDisplacement,
 			HEADING_GRYO,
 			RobotMap.HEADING_GYRO);
