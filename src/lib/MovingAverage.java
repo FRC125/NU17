@@ -17,6 +17,11 @@ public class MovingAverage {
 		this.sampleSize = sampleSize;
 		double num;
 	}
+	
+	/**
+	 * updates the queue by removing the first value and added a new one to the end of the queue
+	 * @param num value being added to the linkedList
+	 */
 	public static void update(double num){
 		if(queue.size() == sampleSize){
 			queue.remove();
