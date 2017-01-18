@@ -1,5 +1,7 @@
 package com.nutrons.nu17.subsystems;
 
+import com.ctre.CANTalon;
+import com.ctre.CANTalon.TalonControlMode;
 import com.nutrons.nu17.Robot;
 import com.nutrons.nu17.RobotMap;
 
@@ -13,7 +15,7 @@ import lib.HoldPID;
 
 public class Shooter extends Subsystem {
 
-	private final Talon SHOOTER = new Talon(RobotMap.SHOOTER);
+	private final CANTalon SHOOTER = new CANTalon(RobotMap.SHOOTER);
 	private final Encoder SHOOTER_ENCODER = new Encoder(
 			RobotMap.SHOOT_ENCODER_1, 
 			RobotMap.SHOOT_ENCODER_2);
@@ -65,5 +67,19 @@ public class Shooter extends Subsystem {
 	 */
 	public void resetEncoder() {
 		SHOOTER_ENCODER.reset();
+	}
+	
+	/**
+	 * Sets Speed Mode of CAN Talon.
+	 */
+	public void setSpeedMode() {
+		this.SHOOTER.changeControlMode(TalonControlMode.Speed);
+	}
+	
+	/**
+	 * sets the Power Mode of the CAN Talon.
+	 */
+	public void setPowerMode() {
+		this.SHOOTER.changeControlMode(TalonControlMode.PercentVbus);
 	}
 }
