@@ -9,12 +9,12 @@ public class RobotMap {
 	public static final int BACK_RIGHT = 3;
 	
 	// Ports of intake
-	public static final int ROLLER_A = 0;
-	public static final int ROLLER_B = 0;
+	public static final int ROLLER_FIRST = 0;
+	public static final int ROLLER_SECOND = 0;
 	
 	// Ports of fly wheels
-	public static final int FLY_WHEEL_R = 0;
-	public static final int FLY_WHEEL_L = 0;
+	public static final int FLY_WHEEL_RIGHT = 0;
+	public static final int FLY_WHEEL_LEFT = 0;
 	
 	// Ports of Ultrasonics
 	public static final int ULTRASONIC_RX = 0;
@@ -36,18 +36,18 @@ public class RobotMap {
 	public static final int MICRO_SWITCH = 0;
 
 	// Ports of encoders
-	public static final int DRIVE_DISTANCE_ENCODER_PORT_1 = 1;
-	public static final int DRIVE_DISTANCE_ENCODER_PORT_2 = 2;
+	public static final int DRIVE_DISTANCE_ENCODER_1 = 1;
+	public static final int DRIVE_DISTANCE_ENCODER_2 = 2;
 	public static final int FLY_ENCODER_FRONT_RIGHT = 5;
 	public static final int FLY_ENCODER_BACK_RIGHT = 6;
 	public static final int FLY_ENCODER_FRONT_LEFT = 7;
 	public static final int FLY_ENCODER_BACK_LEFT = 8;
-	public static final int TWIN_A_ENCODER_PORT_1 = 9;
-	public static final int TWIN_A_ENCODER_PORT_2 = 10;
-	public static final int TWIN_B_ENCODER_PORT_1 = 11;
-	public static final int TWIN_B_ENCODER_PORT_2 = 12;
-	public static final int SHOOT_ENCODER_PORT_1 = 0;
-	public static final int SHOOT_ENCODER_PORT_2 = 1;
+	public static final int TWIN_LEFT_ENCODER_1 = 9;
+	public static final int TWIN_LEFT_ENCODER_2 = 10;
+	public static final int TWIN_RIGHT_ENCODER_1 = 11;
+	public static final int TWIN_RIGHT_ENCODER_2 = 12;
+	public static final int SHOOT_ENCODER_1 = 0;
+	public static final int SHOOT_ENCODER_2 = 1;
 	
 		
 	// Port of joysticks

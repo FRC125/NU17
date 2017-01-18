@@ -14,26 +14,26 @@ public class TwinShooter extends Subsystem {
 	private final Shooter TWIN_A = new Shooter();
 	private final Shooter TWIN_B = new Shooter();
 	private final Encoder ENCODER_1 = new Encoder(
-			RobotMap.TWIN_A_ENCODER_PORT_1,
-			RobotMap.TWIN_A_ENCODER_PORT_2);
+			RobotMap.TWIN_LEFT_ENCODER_1,
+			RobotMap.TWIN_LEFT_ENCODER_2);
 	private final Encoder ENCODER_2 = new Encoder(
-			RobotMap.TWIN_B_ENCODER_PORT_1,
-			RobotMap.TWIN_B_ENCODER_PORT_2);
+			RobotMap.TWIN_RIGHT_ENCODER_1,
+			RobotMap.TWIN_RIGHT_ENCODER_2);
 	
 	// PID Wrappers and Holder Objects
 	private EncoderWrapper encWrap1 = new EncoderWrapper(
 			PIDSourceType.kDisplacement,
 			ENCODER_1,
-			RobotMap.TWIN_A_ENCODER_PORT_1,
-			RobotMap.TWIN_A_ENCODER_PORT_2);
+			RobotMap.TWIN_LEFT_ENCODER_1,
+			RobotMap.TWIN_LEFT_ENCODER_2);
 			
 	private HoldPID twinHold1 = new HoldPID();
 			
 	private EncoderWrapper encWrap2 = new EncoderWrapper(
 			PIDSourceType.kDisplacement,
 			ENCODER_2,
-			RobotMap.TWIN_B_ENCODER_PORT_1,
-			RobotMap.TWIN_B_ENCODER_PORT_2);
+			RobotMap.TWIN_RIGHT_ENCODER_1,
+			RobotMap.TWIN_RIGHT_ENCODER_2);
 			
 	private HoldPID twinHold2 = new HoldPID();
 	
