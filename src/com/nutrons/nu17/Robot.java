@@ -15,6 +15,7 @@ public class Robot extends IterativeRobot {
 	public final static GearPlacer GP = new GearPlacer();
 	public final static Drivetrain DRIVE_TRAIN = new Drivetrain();
 	public final static Climber CLIMBER = new Climber();
+	public final static Hood HOOD =  new Hood();
 	
 	public final static OI OI = new OI();
 

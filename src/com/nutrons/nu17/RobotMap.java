@@ -28,6 +28,8 @@ public class RobotMap {
 	
 	// Port of shooter
 	public static final int SHOOTER = 0;
+	// Port of Hood 
+	public static final int HOOD = 0;
 	
 	// Port of climber
 	public static final int CLIMBER = 0;
@@ -50,6 +52,11 @@ public class RobotMap {
 	public static final int TWIN_ENCODER_4 = 12;
 	public static final int SHOOT_ENCODER_1 = 0;
 	public static final int SHOOT_ENCODER_2 = 1;
+	public static final int HOOD_ENCODER_1= 13;
+	public static final int HOOD_ENCODER_2 =  14;
+	    
+	
+	
 		
 	// Port of joysticks
 	public static final int JOYSTICK1 = 0;
