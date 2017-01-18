@@ -1,4 +1,4 @@
-package com.nutrons.nu17.commands;
+package com.nutrons.nu17.commands.Climber;
 
 import com.nutrons.nu17.Robot;
 import edu.wpi.first.wpilibj.command.Command;

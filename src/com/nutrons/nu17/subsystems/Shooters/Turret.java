@@ -1,4 +1,4 @@
-package com.nutrons.nu17.subsystems;
+package com.nutrons.nu17.subsystems.Shooters;
 
 import com.nutrons.nu17.RobotMap;
 
@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class HoodShooterFlywheel extends Subsystem {
+public class Turret extends Subsystem {
 
 	private final Talon FLY_WHEEL_LEFT = new Talon(RobotMap.FLY_WHEEL_L);
 	private final Talon FLY_WHEEL_RIGHT = new Talon(RobotMap.FLY_WHEEL_R);

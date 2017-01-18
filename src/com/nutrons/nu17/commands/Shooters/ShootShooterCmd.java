@@ -1,4 +1,4 @@
-package com.nutrons.nu17.commands;
+package com.nutrons.nu17.commands.Shooters;
 
 import com.nutrons.nu17.Robot;
 

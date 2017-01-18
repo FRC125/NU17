@@ -1,4 +1,4 @@
-package com.nutrons.nu17.subsystems;
+package com.nutrons.nu17.subsystems.GearControl;
 
 import com.nutrons.nu17.RobotMap;
 
