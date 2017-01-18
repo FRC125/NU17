@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class MovingAverage {
-	private Queue<Integer> queue;
+	private Queue<Double> queue;
 	private int size;
 	private double average;
 	
@@ -15,6 +15,9 @@ public class MovingAverage {
 	public MovingAverage(int size){
 		queue = new LinkedList<>();
 		this.size = size;
+	}
+	public double update(){
+		
 	}
 	
 	/**
