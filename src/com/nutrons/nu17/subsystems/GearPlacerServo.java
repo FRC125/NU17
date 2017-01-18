@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * Similar to GearPlacer class but uses a servo instead.
+ * Similar to {@link GearPlacer} class but uses a servo instead.
  */
 public class GearPlacerServo extends Subsystem {
 

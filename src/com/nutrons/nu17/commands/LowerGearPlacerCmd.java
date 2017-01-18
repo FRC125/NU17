@@ -5,7 +5,7 @@ import com.nutrons.nu17.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Command to lower the gear placer to safely drive.
+ * Lowers the gear placer to safely drive.
  */
 public class LowerGearPlacerCmd extends Command {
 
@@ -23,7 +23,10 @@ public class LowerGearPlacerCmd extends Command {
     protected void execute() {
     	//empty
     }
-    // Finished when the placer is at the lowest position
+    
+    /**
+     * Finished once the gear placer is at the lowest position.
+     */
     protected boolean isFinished() {
         return Robot.GP.getPosition() == 0;
     }
