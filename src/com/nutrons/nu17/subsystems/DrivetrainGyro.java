@@ -17,13 +17,6 @@ public class DrivetrainGyro extends Subsystem {
 	private final Talon FRONT_LEFT = new Talon(RobotMap.FRONT_LEFT);
 	private final Talon BACK_RIGHT = new Talon(RobotMap.BACK_RIGHT);
 	private final Talon BACK_LEFT = new Talon(RobotMap.BACK_LEFT);
-	
-	private final Encoder ENCODER_1 = new Encoder(
-			RobotMap.DT_ENCODER_1, 
-			RobotMap.DT_ENCODER_2);
-	private final Encoder ENCODER_2 = new Encoder(
-			RobotMap.DT_ENCODER_3, 
-			RobotMap.DT_ENCODER_4);
 
 	private final AnalogGyro GYRO = new AnalogGyro(RobotMap.GYRO);
 	
@@ -53,8 +46,6 @@ public class DrivetrainGyro extends Subsystem {
 	private double headingGyro;
 	
 	public DrivetrainGyro() {
-		ENCODER_1.setDistancePerPulse(1);
-		ENCODER_2.setDistancePerPulse(1);
 	}
 
 	public void initDefaultCommand() {
@@ -66,14 +57,6 @@ public class DrivetrainGyro extends Subsystem {
 	 */
 	public void stop() {
 		this.driveLR(0.0, 0.0);
-	}
-
-	/**
-	 * Resets the encoders.
-	 */
-	public void resetEncoder() {
-		this.ENCODER_1.reset();
-		this.ENCODER_2.reset();
 	}
 
 	/**
@@ -105,14 +88,19 @@ public class DrivetrainGyro extends Subsystem {
 			return PIDSourceType.kDisplacement;
 		}
 
-		@Override
-		public double pidGet() {
-			return ENCODER_1.getDistance();
-		}
+	
 
 		@Override
-		public void setPIDSourceType(PIDSourceType arg0) {
+		public void setPIDSourceType(PIDSourceType PIDSource) {
 			//empty
+		}
+
+
+
+		@Override
+		public double pidGet() {
+			// TODO Auto-generated method stub
+			return 0;
 		}
 	}
 

@@ -29,8 +29,8 @@ public class RobotMap {
 	public static final int TWIN_ENCODER_4 = 12;
 	public static final int SHOOT_ENCODER_1 = 0;
 	public static final int SHOOT_ENCODER_2 = 1;
-	public static final int JOYSTICKDRIVER = 0;
-	public static final int JOYSTICKOPERATOR = 1;
+	public static final int JOYSTICK_DRIVER = 0;
+	public static final int JOYSTICK_OPERATOR = 1;
 
 	// Buttons
 	public static final int JOYSTICK_A = 0;

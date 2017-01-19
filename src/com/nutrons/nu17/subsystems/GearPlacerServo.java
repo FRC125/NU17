@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Similar to {@link GearPlacer} class but uses a servo instead.
  */
-public class GearPlacerServo extends Subsystem {
+public class GearPlacerServo extends GearPlacer {
 
 	private final Servo PLACER = new Servo(RobotMap.GEAR_PLACER_SERVO);
 

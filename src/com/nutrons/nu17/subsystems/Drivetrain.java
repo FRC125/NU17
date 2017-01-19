@@ -15,13 +15,6 @@ public class Drivetrain extends Subsystem {
 	private final Talon BACK_LEFT_WHEEL = new Talon(RobotMap.FRONT_RIGHT);
 	private final Talon FRONT_RIGHT_WHEEL = new Talon(RobotMap.BACK_LEFT);
 	private final Talon BACK_RIGHT_WHEEL = new Talon(RobotMap.BACK_RIGHT);
-	
-	private final Encoder ENCODER_1 = new Encoder(
-			RobotMap.DT_ENCODER_1, 
-			RobotMap.DT_ENCODER_2);
-	private final Encoder ENCODER_2 = new Encoder(
-			RobotMap.DT_ENCODER_3, 
-			RobotMap.DT_ENCODER_4);
 
 	// TODO: tune these constants
 	private static final double P_DISTANCE = 0.025;
@@ -36,8 +29,7 @@ public class Drivetrain extends Subsystem {
 			new DriveOutputPID());
 
 	public Drivetrain() {
-		ENCODER_1.setDistancePerPulse(1);
-		ENCODER_2.setDistancePerPulse(1);
+		// empty
 	}
 
 	public void initDefaultCommand() {
@@ -70,11 +62,6 @@ public class Drivetrain extends Subsystem {
 		this.drive(0, 0, 0, 0);
 	}
 
-	public void resetEncoder() {
-		this.ENCODER_1.reset();
-		this.ENCODER_2.reset();
-	}
-
 	private class DriveSourcePID implements PIDSource {
 
 		@Override
@@ -82,14 +69,16 @@ public class Drivetrain extends Subsystem {
 			//empty
 		}
 
-		@Override
-		public double pidGet() {
-			return ENCODER_1.getDistance();
-		}
 
 		@Override
 		public PIDSourceType getPIDSourceType() {
 			return null;
+		}
+
+
+		@Override
+		public double pidGet() {
+			return 0;
 		}
 	}
 

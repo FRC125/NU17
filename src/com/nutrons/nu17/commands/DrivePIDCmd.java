@@ -16,7 +16,6 @@ public class DrivePIDCmd extends Command {
 	 * Sets a target to drive to. Sets how far the robot can be displaced from the target.
 	 */
 	protected void initialize() {
-		Robot.DT.resetEncoder();
 		Robot.DT.DISTANCE_PID.setSetpoint(this.target);
 		Robot.DT.DISTANCE_PID.setAbsoluteTolerance(0.2);
 		Robot.DT.DISTANCE_PID.enable();
