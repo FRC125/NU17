@@ -37,7 +37,7 @@ public class RobotMap {
 
 	// Ports of encoders
 	public static final int LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1 = 1;
-	public static final int LEFT_WHEELDRIVE_DISTANCE_ENCODER_2 = 2;
+	public static final int LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_2 = 2;
 	public static final int RIGHT_WHEEL_DRIVE_DISTANCE_ENCODER_1 = 1;
 	public static final int RIGHT_WHEEL_DRIVE_DISTANCE_ENCODER_2 = 2;
 	public static final int FLY_ENCODER_FRONT_RIGHT = 5;
