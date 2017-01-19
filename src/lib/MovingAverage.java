@@ -34,14 +34,4 @@ public class MovingAverage {
 	public double getAverage(){
 		return curTotal / queue.size();
 	}
-		
-	/**
-	 * Displays queue and average
-	 */
-	public void display(){
-		queue.toString();
-		System.out.println(queue);
-		System.out.println("average:"+ getAverage());
-	}
 }
-
