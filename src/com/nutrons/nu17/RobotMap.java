@@ -7,10 +7,10 @@ public class RobotMap {
 	public static final int	BACK_LEFT = 1;
 	public static final int FRONT_RIGHT = 2;
 	public static final int BACK_RIGHT = 3;
-	
+	// Paramter naming convention : Subsystem SIDE_PLACEMENT
 	// Ports of intake
-	public static final int ROLLER_FIRST = 0;
-	public static final int ROLLER_SECOND = 0;
+	public static final int ROLLER_FRONT = 0;
+	public static final int ROLLER_BACK = 0;
 	
 	// Ports of fly wheels
 	public static final int FLY_WHEEL_RIGHT = 0;
@@ -21,16 +21,16 @@ public class RobotMap {
 	public static final int ULTRASONIC_TX = 1;
 
 	// Port of gyro
-	public static final int HEADING_GYRO = 0;
+	public static final int DRIVETRAIN_HEADING_GYRO = 0;
 
 	// Port of gear placer
-	public static final int PLACER = 0;
+	public static final int GEAR_PLACER_SERVO = 0;
 	
 	// Port of shooter
-	public static final int SHOOTER = 0;
+	public static final int SHOOTER_MOTOR = 0;
 	
 	// Port of climber	
-	public static final int CLIMBER = 0;
+	public static final int CLIMBER_MOTOR = 0;
 	
 	// Port of micro switch
 	public static final int CLIMBER_MICRO_SWITCH = 0;

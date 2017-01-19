@@ -9,7 +9,7 @@ public class Climber extends Subsystem {
 	
 	private final DigitalInput MICRO_SWITCH = new DigitalInput(RobotMap.CLIMBER_MICRO_SWITCH);
 
-	private final Talon CLIMB = new Talon(RobotMap.CLIMBER);
+	private final Talon CLIMB = new Talon(RobotMap.CLIMBER_MOTOR);
 	
 	public Climber (){
 		//empty
