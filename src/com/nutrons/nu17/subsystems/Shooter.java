@@ -15,18 +15,9 @@ import lib.EncoderWrapper;
 import lib.HoldPID;
 
 public class Shooter extends Subsystem {
+	public final double SHOOTER_SPEED = 10.0;
 	
-	private final CANTalon SHOOTER = new CANTalon(RobotMap.SHOOTER);
-	private final Encoder SHOOTER_ENCODER = new Encoder(
-			RobotMap.SHOOT_ENCODER_1, 
-			RobotMap.SHOOT_ENCODER_2);
-	private EncoderWrapper encWrap = new EncoderWrapper(
-			PIDSourceType.kDisplacement,
-			SHOOTER_ENCODER,
-			RobotMap.SHOOT_ENCODER_1,
-			RobotMap.SHOOT_ENCODER_2);
-	
-	private HoldPID shootHold = new HoldPID();
+	public final CANTalon SHOOTER = new CANTalon(RobotMap.SHOOTER);
 	
 	// TODO: tune these constants
 	public static double P_SHOOT = 0.025;
@@ -37,6 +28,8 @@ public class Shooter extends Subsystem {
 	public Shooter() {
 		this.SHOOTER.configNominalOutputVoltage(+0.0f, -0.0f);
 		this.SHOOTER.configPeakOutputVoltage(+12.0f, 0.0f);
+		this.SHOOTER.configEncoderCodesPerRev((int)(256 / 0.14));
+		this.SHOOTER.configEncoderCodesPerRev((int)(256 / 0.14));
 		this.SHOOTER.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		this.SHOOTER.setP(P_SHOOT);
 		this.SHOOTER.setI(I_SHOOT);
@@ -44,14 +37,6 @@ public class Shooter extends Subsystem {
 		this.SHOOTER.setF(F_SHOOT);
 		
 	}
-	
-	
-	public final PIDController SPEED_PID = new PIDController(
-			P_SHOOT, 
-			I_SHOOT, 
-			D_SHOOT,
-			encWrap, 
-			shootHold);
 	
 	public void initDefaultCommand() {
 	}
@@ -76,26 +61,6 @@ public class Shooter extends Subsystem {
 	 * Resets Encoder.
 	 */
 	public void resetEncoder() {
-		SHOOTER_ENCODER.reset();
-	}
-	
-	/**
-	 * Sets Speed Mode of CAN Talon.
-	 */
-	public void setSpeedMode() {
-		this.SHOOTER.changeControlMode(TalonControlMode.Speed);
-	}
-	
-	/**
-	 * sets the Power Mode of the CAN Talon.
-	 */
-	public void setPowerMode() {
-		this.SHOOTER.changeControlMode(TalonControlMode.PercentVbus);
-	}
-	
-	
-	public void shootAtSpeed(double Speed) {
-		this.SHOOTER.setSetpoint(Speed);
-		this.SHOOTER.enable();
+		this.SHOOTER.setEncPosition(0);
 	}
 }

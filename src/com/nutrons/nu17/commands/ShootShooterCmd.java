@@ -1,11 +1,12 @@
 package com.nutrons.nu17.commands;
 
+import com.ctre.CANTalon.TalonControlMode;
 import com.nutrons.nu17.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ShootShooterCmd extends Command {
-
+	
 	public ShootShooterCmd() {
 		requires(Robot.SHOOTER);
 	}
@@ -14,26 +15,24 @@ public class ShootShooterCmd extends Command {
 	 * Resets encoder and starts running motor at a consistent speed.
 	 */
 	protected void initialize() {
-		Robot.SHOOTER.resetEncoder();
-		Robot.SHOOTER.runShooter(1.0);
+		Robot.SHOOTER.SHOOTER.changeControlMode(TalonControlMode.Speed);
+		Robot.SHOOTER.SHOOTER.setSetpoint(Robot.SHOOTER.SHOOTER_SPEED);
+		Robot.SHOOTER.SHOOTER.enable();
 	}
 	
-	/**
-	 * Keeps running motor to a consistent speed.
-	 */
 	protected void execute() {
-		Robot.SHOOTER.runShooter(Robot.SHOOTER.SPEED_PID.get());
+		
 	}
 	// Don't want the shooter to stop
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	protected void end() {
-		Robot.SHOOTER.stopShooter();
+		
 	}
-
+	
 	protected void interrupted() {
-		end();
+		
 	}
 }
