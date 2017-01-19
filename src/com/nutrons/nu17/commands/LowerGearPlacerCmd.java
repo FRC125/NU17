@@ -14,7 +14,7 @@ public class LowerGearPlacerCmd extends Command {
     }
 
     /**
-     * Lowers the gear placer.
+     * Lower the gear placer.
      */
     protected void initialize() {
     	Robot.GP.set(0);

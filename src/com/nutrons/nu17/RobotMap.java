@@ -2,12 +2,13 @@ package com.nutrons.nu17;
 
 public class RobotMap {
 
+	// Wheel motors
 	public static final int FRONT_LEFT = 0;
 	public static final int FRONT_RIGHT = 1;
 	public static final int BACK_LEFT = 2;
 	public static final int BACK_RIGHT = 3;
-	public static final int ROLLER_A = 0;
-	public static final int ROLLER_B = 0;
+	public static final int ROLLER_GROUND = 0;
+	public static final int ROLLER_ROBOT = 0;
 	public static final int FLY_WHEEL_R = 0;
 	public static final int FLY_WHEEL_L = 0;
 	public static final int ULTRASONIC_RX = 0;
@@ -18,10 +19,6 @@ public class RobotMap {
 	public static final int SHOOTER = 0;
 	public static final int CLIMBER = 0;
 	public static final int MICRO_SWITCH = 0;
-	public static final int DT_ENCODER_1 = 1;
-	public static final int DT_ENCODER_2 = 2;
-	public static final int DT_ENCODER_3 = 3;
-	public static final int DT_ENCODER_4 = 4;
 	public static final int FLY_ENCODER_R1 = 5;
 	public static final int FLY_ENCODER_R2 = 6;
 	public static final int FLY_ENCODER_L1 = 7;
@@ -32,8 +29,8 @@ public class RobotMap {
 	public static final int TWIN_ENCODER_4 = 12;
 	public static final int SHOOT_ENCODER_1 = 0;
 	public static final int SHOOT_ENCODER_2 = 1;
-	public static final int JOYSTICK1 = 0;
-	public static final int JOYSTICK2 = 1;
+	public static final int JOYSTICKDRIVER = 0;
+	public static final int JOYSTICKOPERATOR = 1;
 
 	// Buttons
 	public static final int JOYSTICK_A = 0;
