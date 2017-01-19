@@ -1,41 +1,47 @@
 package lib;
 
 import java.util.LinkedList;
-import java.util.Queue;
-
 public class MovingAverage {
-	private static Queue<Double> queue;
-	private static double sampleSize;
-	private double average;
+	private static LinkedList<Double> queue;
+	private static int windowSize;
+	private double curTotal;
 	
 	/** 
 	 * Creates the average 
 	 * @param size  used to create the average   
 	 */
-	public MovingAverage(int size){
-		queue = new LinkedList<>();
-		this.sampleSize = sampleSize;
-		double num;
+	public MovingAverage(int windowSize){
+		queue = new LinkedList<Double>();
+		this.windowSize = windowSize;
+		curTotal = 0;
 	}
 	
 	/**
 	 * updates the queue by removing the first value and added a new one to the end of the queue
-	 * @param num value being added to the linkedList
+	 * @param num value being added 
 	 */
-	public static void update(double num){
-		if(queue.size() == sampleSize){
-			queue.remove();
+	public void update(double val){
+		if(queue.size() == windowSize){
+			curTotal -= queue.removeFirst();	
 		}
-		queue.add(num);
+		curTotal += val;  
+		queue.addLast(val);
 	}
 	
 	/**
 	 * @return Gets the current average.
 	 */
-	public double getAverage(double value){
-		double prevSize = queue.size();
-		double out = queue.size() == sampleSize ? queue.poll() : 0;
-		queue.offer(value);
-		return average = (average * prevSize - out + value) / queue.size();
+	public double getAverage(){
+		return curTotal / queue.size();
+	}
+		
+	/**
+	 * Displays queue and average
+	 */
+	public void display(){
+		queue.toString();
+		System.out.println(queue);
+		System.out.println("average:"+ getAverage());
 	}
 }
+
