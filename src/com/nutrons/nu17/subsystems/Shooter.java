@@ -1,6 +1,7 @@
 package com.nutrons.nu17.subsystems;
 
 import com.ctre.CANTalon;
+import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 import com.nutrons.nu17.Robot;
 import com.nutrons.nu17.RobotMap;
@@ -14,7 +15,7 @@ import lib.EncoderWrapper;
 import lib.HoldPID;
 
 public class Shooter extends Subsystem {
-
+	
 	private final CANTalon SHOOTER = new CANTalon(RobotMap.SHOOTER);
 	private final Encoder SHOOTER_ENCODER = new Encoder(
 			RobotMap.SHOOT_ENCODER_1, 
@@ -27,15 +28,24 @@ public class Shooter extends Subsystem {
 	
 	private HoldPID shootHold = new HoldPID();
 	
+	// TODO: tune these constants
+	public static double P_SHOOT = 0.025;
+	public static double I_SHOOT = 0.0;
+	public static double D_SHOOT = 0.01;
+	public static double F_SHOOT = 0.025;
+
 	public Shooter() {
-		//empty
+		this.SHOOTER.configNominalOutputVoltage(+0.0f, -0.0f);
+		this.SHOOTER.configPeakOutputVoltage(+12.0f, 0.0f);
+		this.SHOOTER.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		this.SHOOTER.setP(P_SHOOT);
+		this.SHOOTER.setI(I_SHOOT);
+		this.SHOOTER.setD(D_SHOOT);
+		this.SHOOTER.setF(F_SHOOT);
+		
 	}
 	
-	// TODO: tune these constants
-	private static final double P_SHOOT = 0.025;
-	private static final double I_SHOOT = 0.0;
-	private static final double D_SHOOT = 0.01;
-
+	
 	public final PIDController SPEED_PID = new PIDController(
 			P_SHOOT, 
 			I_SHOOT, 
@@ -81,5 +91,11 @@ public class Shooter extends Subsystem {
 	 */
 	public void setPowerMode() {
 		this.SHOOTER.changeControlMode(TalonControlMode.PercentVbus);
+	}
+	
+	
+	public void shootAtSpeed(double Speed) {
+		this.SHOOTER.setSetpoint(Speed);
+		this.SHOOTER.enable();
 	}
 }
