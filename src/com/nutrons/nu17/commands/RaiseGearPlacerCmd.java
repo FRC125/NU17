@@ -27,7 +27,7 @@ public class RaiseGearPlacerCmd extends Command {
     }
     
     /**
-     * Raises the gear placer to the highest position.
+     * Raise the gear placer to the highest position.
      */
     protected boolean isFinished() {
         return Robot.GP.getPosition() == this.PLACER_MAX_POSITION;
