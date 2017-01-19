@@ -23,6 +23,7 @@ public class ShootShooterCmd extends Command {
 	protected void execute() {
 		
 	}
+	
 	// Don't want the shooter to stop
 	protected boolean isFinished() {
 		return true;
