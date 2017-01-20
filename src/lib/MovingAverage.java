@@ -10,9 +10,9 @@ public class MovingAverage {
 	 * Creates the average 
 	 * @param size  used to create the average   
 	 */
-	public MovingAverage(int windowSize) throws IllegalArgumentException{
-		if (windowSize == 0){
-			throw new IllegalArgumentException();
+	public MovingAverage(int windowSize){
+		if (windowSize <= 0){
+			throw new IllegalArgumentException("Zero is not a valid");
 		}
 		queue = new LinkedList<Double>();
 		this.windowSize = windowSize;
