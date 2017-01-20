@@ -5,6 +5,7 @@ import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 import com.nutrons.nu17.Robot;
 import com.nutrons.nu17.RobotMap;
+import com.nutrons.nu17.commands.ShootShooterCmd;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
@@ -40,6 +41,7 @@ public class Shooter extends Subsystem {
 	}
 	
 	public void initDefaultCommand() {
+		setDefaultCommand(new ShootShooterCmd());
 	}
 
 	/**
