@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
 
-  private final DigitalInput MICRO_SWITCH = new DigitalInput(RobotMap.CLIMBER_MICRO_SWITCH);
+  private final DigitalInput microSwitch = new DigitalInput(RobotMap.CLIMBER_MICRO_SWITCH);
 
-  private final Talon CLIMB = new Talon(RobotMap.CLIMBER_MOTOR);
+  private final Talon climb = new Talon(RobotMap.CLIMBER_MOTOR);
 
   public Climber() {
     // empty
@@ -25,15 +25,15 @@ public class Climber extends Subsystem {
    * @param power Speed to run the climbing motor at, between 0.0 to 1.0.
    */
   public void runClimb(double power) {
-    this.CLIMB.set(power);
+    this.climb.set(power);
   }
 
   /**
    * Stops the motor pulling the robot up.
    */
   public void stopClimb() {
-    if (MICRO_SWITCH.get()) {
-      this.CLIMB.set(0);
+    if (microSwitch.get()) {
+      this.climb.set(0);
     }
   }
 
@@ -41,7 +41,7 @@ public class Climber extends Subsystem {
    * Runs the motor until touching pad.
    */
   public void padCheck() {
-    if (MICRO_SWITCH.get()) {
+    if (microSwitch.get()) {
       stopClimb();
     } else {
       runClimb(1);
@@ -54,6 +54,6 @@ public class Climber extends Subsystem {
    * @return value of the Micro Switch
    */
   public boolean checkSwitch() {
-    return MICRO_SWITCH.get();
+    return microSwitch.get();
   }
 }

@@ -8,14 +8,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GroundIntake extends Subsystem {
 
-  private final Talon ROLLER_1 = new Talon(RobotMap.ROLLER_FRONT);
-  private final Talon ROLLER_2 = new Talon(RobotMap.ROLLER_BACK);
+  private final Talon roller1 = new Talon(RobotMap.ROLLER_FRONT);
+  private final Talon roller2 = new Talon(RobotMap.ROLLER_BACK);
 
-  private final Ultrasonic BALL_CENTER =
+  private final Ultrasonic ballCenter =
       new Ultrasonic(RobotMap.ULTRASONIC_RX, RobotMap.ULTRASONIC_TX);
 
   // TODO: tune these constants
-  private final double BALL_CENTER_MARGIN = 5.0;
+  private final double ballCenterMargin = 5.0;
 
   public GroundIntake() {
     // empty
@@ -26,32 +26,32 @@ public class GroundIntake extends Subsystem {
   }
 
   /**
-   * Drive's ROLLER_1 given param power.
+   * Drive's roller1 given param power.
    * 
    * @param power Speed that the first roller is set to.
    */
   public void driveRoller1(double power) {
-    this.ROLLER_1.set(power);
+    this.roller1.set(power);
   }
 
   /**
-   * Drive's ROLLER_2 given param power.
+   * Drive's roller2 given param power.
    * 
    * @param power Speed that the second roller is set to.
    */
   public void driveRoller2(double power) {
-    this.ROLLER_2.set(power);
+    this.roller2.set(power);
   }
 
   /**
-   * Stops ROLLER_1.
+   * Stops roller1.
    */
   public void stopRoller1() {
     driveRoller1(0.0);
   }
 
   /**
-   * Stops ROLLER_2.
+   * Stops roller2.
    */
   public void stopRoller2() {
     driveRoller2(0.0);
@@ -63,7 +63,7 @@ public class GroundIntake extends Subsystem {
    * @return Tells us whether the ball is directly in front of the robot and centered.
    */
   public boolean isBallCentered() {
-    return (BALL_CENTER.getRangeInches() < BALL_CENTER_MARGIN);
+    return (ballCenter.getRangeInches() < ballCenterMargin);
   }
 
   /**

@@ -17,11 +17,11 @@ import lib.Utils;
  */
 public class OI {
 
-  private final Button SHOOT = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_LEFT_BUMPER);
-  private final Button INTAKE = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_A);
-  private final Button INTAKE_SPIT = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_B);
-  private final Button RAISE_PLACER = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_Y);
-  private final Button LOWER_PLACER = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_X);
+  private final Button shoot = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_LEFT_BUMPER);
+  private final Button intake = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_A);
+  private final Button intakeSpit = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_B);
+  private final Button raisePlacer = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_Y);
+  private final Button lowerPlacer = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_X);
 
   public static final Joystick DRIVER_PAD = new Joystick(RobotMap.JOYSTICK1);
   public static final Joystick OPERATOR_PAD = new Joystick(RobotMap.JOYSTICK2);
@@ -30,11 +30,11 @@ public class OI {
    * Creates Joysticks and assigns buttons.
    */
   public OI() {
-    this.RAISE_PLACER.whenPressed(new RaiseGearPlacerCmd());
-    this.LOWER_PLACER.whenPressed(new LowerGearPlacerCmd());
-    this.SHOOT.whenPressed(new ShootShooterCmd());
-    this.INTAKE.whenPressed(new GroundIntakeCmd());
-    this.INTAKE_SPIT.whenPressed(new GroundIntakeSpitCmd());
+    this.raisePlacer.whenPressed(new RaiseGearPlacerCmd());
+    this.lowerPlacer.whenPressed(new LowerGearPlacerCmd());
+    this.shoot.whenPressed(new ShootShooterCmd());
+    this.intake.whenPressed(new GroundIntakeCmd());
+    this.intakeSpit.whenPressed(new GroundIntakeSpitCmd());
   }
 
   /**

@@ -30,7 +30,7 @@ public class Shooter extends Subsystem {
   private static final double I_SHOOT = 0.0;
   private static final double D_SHOOT = 0.01;
 
-  public final PIDController SPEED_PID =
+  public final PIDController speedPid =
       new PIDController(P_SHOOT, I_SHOOT, D_SHOOT, encWrap, shootHold);
 
   public void initDefaultCommand() {}

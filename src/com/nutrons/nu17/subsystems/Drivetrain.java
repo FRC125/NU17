@@ -28,10 +28,10 @@ public class Drivetrain extends Subsystem {
   public CANTalon backRight = new CANTalon(RobotMap.BACK_RIGHT);
 
   // Sensors
-  private final AnalogGyro HEADING_GRYO = new AnalogGyro(RobotMap.DRIVETRAIN_HEADING_GYRO);
+  private final AnalogGyro headingGyro = new AnalogGyro(RobotMap.DRIVETRAIN_HEADING_GYRO);
 
   // TODO: Tune Ports
-  private final Encoder DRIVE_DISTANCE_ENCODER = new Encoder(
+  private final Encoder driveDistanceEncoder = new Encoder(
       RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1, RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_2);
 
   // Drive
@@ -40,13 +40,13 @@ public class Drivetrain extends Subsystem {
   // PID
   // Wrappers
   private EncoderWrapper encWrap = new EncoderWrapper(PIDSourceType.kDisplacement,
-      DRIVE_DISTANCE_ENCODER, RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1,
+      driveDistanceEncoder, RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1,
       RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_2);
   private GyroWrapper gyroWrap =
-      new GyroWrapper(PIDSourceType.kDisplacement, HEADING_GRYO, RobotMap.DRIVETRAIN_HEADING_GYRO);
+      new GyroWrapper(PIDSourceType.kDisplacement, headingGyro, RobotMap.DRIVETRAIN_HEADING_GYRO);
 
   // Holders
-  private HoldPID distancePIDHolder = new HoldPID();
+  private HoldPID distanceHolder = new HoldPID();
   private HoldPID headingPIDHolder = new HoldPID();
 
   // TODO: tune these constants
@@ -59,9 +59,9 @@ public class Drivetrain extends Subsystem {
   private static final double I_HEADING = 0;
   private static final double D_HEADING = 0;
 
-  public final PIDController DISTANCE_PID =
-      new PIDController(P_DRIVE, I_DRIVE, D_DRIVE, encWrap, distancePIDHolder);
-  public final PIDController HEADING_PID =
+  public final PIDController distancePid =
+      new PIDController(P_DRIVE, I_DRIVE, D_DRIVE, encWrap, distanceHolder);
+  public final PIDController headingPid =
       new PIDController(P_HEADING, I_HEADING, D_HEADING, gyroWrap, headingPIDHolder);
 
   /**
@@ -70,7 +70,7 @@ public class Drivetrain extends Subsystem {
    * @return angle Angular displacement from the initial gyro position.
    */
   public double getAngleInDegrees() {
-    return this.HEADING_GRYO.getAngle();
+    return this.headingGyro.getAngle();
   }
 
   /**
@@ -79,14 +79,14 @@ public class Drivetrain extends Subsystem {
    * @return Encoder Rate using the .getRate method
    */
   public double getEncoderRate() {
-    return this.DRIVE_DISTANCE_ENCODER.getRate();
+    return this.driveDistanceEncoder.getRate();
   }
 
   /**
    * Resets the encoder.
    */
   public void resetEncoder() {
-    this.DRIVE_DISTANCE_ENCODER.reset();
+    this.driveDistanceEncoder.reset();
 
   }
 
@@ -94,7 +94,7 @@ public class Drivetrain extends Subsystem {
    * Resets the gyro.
    */
   public void resetGyro() {
-    this.HEADING_GRYO.reset();
+    this.headingGyro.reset();
 
   }
 

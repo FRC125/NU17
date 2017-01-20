@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class HoodShooterFlywheel extends Subsystem {
 
-  private final Talon FLY_WHEEL_LEFT = new Talon(RobotMap.FLY_WHEEL_LEFT);
-  private final Talon FLY_WHEEL_RIGHT = new Talon(RobotMap.FLY_WHEEL_RIGHT);
-  private final Encoder TURN_LEFT =
+  private final Talon flyWheelLeft = new Talon(RobotMap.FLY_WHEEL_LEFT);
+  private final Talon flyWheelRight = new Talon(RobotMap.FLY_WHEEL_RIGHT);
+  private final Encoder turnLeft =
       new Encoder(RobotMap.FLY_ENCODER_FRONT_RIGHT, RobotMap.FLY_ENCODER_BACK_RIGHT);
-  private final Encoder TURN_RIGHT =
+  private final Encoder turnRight =
       new Encoder(RobotMap.FLY_ENCODER_FRONT_LEFT, RobotMap.FLY_ENCODER_BACK_LEFT);
 
   public final PIDController ANGLE_SHOT_PID =
@@ -38,8 +38,8 @@ public class HoodShooterFlywheel extends Subsystem {
    * @param right Speed that the right fly wheel is set to.
    */
   public void turnShot(double left, double right) {
-    this.FLY_WHEEL_LEFT.set(left);
-    this.FLY_WHEEL_RIGHT.set(right);
+    this.flyWheelLeft.set(left);
+    this.flyWheelRight.set(right);
   }
 
   /**
@@ -53,8 +53,8 @@ public class HoodShooterFlywheel extends Subsystem {
    * Resets encoders.
    */
   public void resetEncoder() {
-    this.TURN_LEFT.reset();
-    this.TURN_RIGHT.reset();
+    this.turnLeft.reset();
+    this.turnRight.reset();
   }
 
   private class TurnSourcePID implements PIDSource {

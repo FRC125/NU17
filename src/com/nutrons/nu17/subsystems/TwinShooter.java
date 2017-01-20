@@ -11,20 +11,20 @@ import lib.HoldPID;
 
 public class TwinShooter extends Subsystem {
 
-  private final Shooter TWIN_A = new Shooter();
-  private final Shooter TWIN_B = new Shooter();
-  private final Encoder ENCODER_1 =
+  private final Shooter twinA = new Shooter();
+  private final Shooter twinB = new Shooter();
+  private final Encoder encoderOne =
       new Encoder(RobotMap.TWIN_LEFT_ENCODER_1, RobotMap.TWIN_LEFT_ENCODER_2);
-  private final Encoder ENCODER_2 =
+  private final Encoder encoderTwo =
       new Encoder(RobotMap.TWIN_RIGHT_ENCODER_1, RobotMap.TWIN_RIGHT_ENCODER_2);
 
   // PID Wrappers and Holder Objects
-  private EncoderWrapper encWrap1 = new EncoderWrapper(PIDSourceType.kDisplacement, ENCODER_1,
+  private EncoderWrapper encWrap1 = new EncoderWrapper(PIDSourceType.kDisplacement, encoderOne,
       RobotMap.TWIN_LEFT_ENCODER_1, RobotMap.TWIN_LEFT_ENCODER_2);
 
   private HoldPID twinHold1 = new HoldPID();
 
-  private EncoderWrapper encWrap2 = new EncoderWrapper(PIDSourceType.kDisplacement, ENCODER_2,
+  private EncoderWrapper encWrap2 = new EncoderWrapper(PIDSourceType.kDisplacement, encoderTwo,
       RobotMap.TWIN_RIGHT_ENCODER_1, RobotMap.TWIN_RIGHT_ENCODER_2);
 
   private HoldPID twinHold2 = new HoldPID();
@@ -38,9 +38,9 @@ public class TwinShooter extends Subsystem {
   private static final double I_SHOOT = 0.0;
   private static final double D_SHOOT = 0.01;
 
-  public final PIDController SPEED_PID_A =
+  public final PIDController speedPidA =
       new PIDController(P_SHOOT, I_SHOOT, D_SHOOT, encWrap1, twinHold1);
-  public PIDController SPEED_PID_B =
+  public PIDController speedPidB =
       new PIDController(P_SHOOT, I_SHOOT, D_SHOOT, encWrap2, twinHold2);
 
 
@@ -55,7 +55,7 @@ public class TwinShooter extends Subsystem {
    * @param power Speed to run the first shooting motor at.
    */
   public void runTwinA(double power) {
-    TWIN_A.runShooter(power);
+    twinA.runShooter(power);
   }
 
   /**
@@ -64,7 +64,7 @@ public class TwinShooter extends Subsystem {
    * @param power Speed to run the second shooting motor at.
    */
   public void runTwinB(double power) {
-    TWIN_B.runShooter(power);
+    twinB.runShooter(power);
   }
 
   /**
@@ -81,14 +81,14 @@ public class TwinShooter extends Subsystem {
    * Stops the first shooting motor.
    */
   public void stopTwinA() {
-    TWIN_A.runShooter(0.0);
+    twinA.runShooter(0.0);
   }
 
   /**
    * Stops the second shooting motor.
    */
   public void stopTwinB() {
-    TWIN_B.runShooter(0.0);
+    twinB.runShooter(0.0);
   }
 
   /**
@@ -100,11 +100,11 @@ public class TwinShooter extends Subsystem {
   }
 
   public void resetEncoderA() {
-    TWIN_A.resetEncoder();
+    twinA.resetEncoder();
   }
 
   public void resetEncoderB() {
-    TWIN_B.resetEncoder();
+    twinB.resetEncoder();
   }
 
   public void twinReset() {
