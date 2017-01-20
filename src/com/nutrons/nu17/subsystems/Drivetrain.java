@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import lib.EncoderWrapper;
 import lib.GyroWrapper;
-import lib.HoldPID;
+import lib.HoldPid;
 
 public class Drivetrain extends Subsystem {
 
@@ -46,8 +46,8 @@ public class Drivetrain extends Subsystem {
       new GyroWrapper(PIDSourceType.kDisplacement, headingGyro, RobotMap.DRIVETRAIN_HEADING_GYRO);
 
   // Holders
-  private HoldPID distanceHolder = new HoldPID();
-  private HoldPID headingPIDHolder = new HoldPID();
+  private HoldPid distanceHolder = new HoldPid();
+  private HoldPid headingPidHolder = new HoldPid();
 
   // TODO: tune these constants
   private static final double P_DRIVE = 0;
@@ -62,7 +62,7 @@ public class Drivetrain extends Subsystem {
   public final PIDController distancePid =
       new PIDController(P_DRIVE, I_DRIVE, D_DRIVE, encWrap, distanceHolder);
   public final PIDController headingPid =
-      new PIDController(P_HEADING, I_HEADING, D_HEADING, gyroWrap, headingPIDHolder);
+      new PIDController(P_HEADING, I_HEADING, D_HEADING, gyroWrap, headingPidHolder);
 
   /**
    * Returns the angle, in degrees, away from the initial gyro position.

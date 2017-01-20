@@ -9,17 +9,17 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import lib.EncoderWrapper;
-import lib.HoldPID;
+import lib.HoldPid;
 
 public class Shooter extends Subsystem {
 
-  private final Talon SHOOTER = new Talon(RobotMap.SHOOTER_MOTOR);
-  private final Encoder SHOOTER_ENCODER =
+  private final Talon shooter = new Talon(RobotMap.SHOOTER_MOTOR);
+  private final Encoder shooterEncoder =
       new Encoder(RobotMap.SHOOT_ENCODER_1, RobotMap.SHOOT_ENCODER_2);
-  private EncoderWrapper encWrap = new EncoderWrapper(PIDSourceType.kDisplacement, SHOOTER_ENCODER,
+  private EncoderWrapper encWrap = new EncoderWrapper(PIDSourceType.kDisplacement, shooterEncoder,
       RobotMap.SHOOT_ENCODER_1, RobotMap.SHOOT_ENCODER_2);
 
-  private HoldPID shootHold = new HoldPID();
+  private HoldPid shootHold = new HoldPid();
 
   public Shooter() {
     // empty
@@ -41,7 +41,7 @@ public class Shooter extends Subsystem {
    * @param power Speed to run the shooting motor.
    */
   public void runShooter(double power) {
-    this.SHOOTER.set(power);
+    this.shooter.set(power);
   }
 
   /**
@@ -55,6 +55,6 @@ public class Shooter extends Subsystem {
    * Resets Encoder.
    */
   public void resetEncoder() {
-    SHOOTER_ENCODER.reset();
+    shooterEncoder.reset();
   }
 }

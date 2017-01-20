@@ -19,8 +19,8 @@ public class HoodShooterFlywheel extends Subsystem {
   private final Encoder turnRight =
       new Encoder(RobotMap.FLY_ENCODER_FRONT_LEFT, RobotMap.FLY_ENCODER_BACK_LEFT);
 
-  public final PIDController ANGLE_SHOT_PID =
-      new PIDController(P_TURN, I_TURN, D_TURN, new TurnSourcePID(), new TurnOutput());
+  public final PIDController angleShotPid =
+      new PIDController(P_TURN, I_TURN, D_TURN, new TurnSourcePid(), new TurnOutput());
 
   // TODO: tune these constants
   private static final double P_TURN = 0.001;
@@ -57,7 +57,7 @@ public class HoodShooterFlywheel extends Subsystem {
     this.turnRight.reset();
   }
 
-  private class TurnSourcePID implements PIDSource {
+  private class TurnSourcePid implements PIDSource {
 
     @Override
     public void setPIDSourceType(PIDSourceType pidSource) {

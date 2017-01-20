@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import lib.EncoderWrapper;
-import lib.HoldPID;
+import lib.HoldPid;
 
 public class TwinShooter extends Subsystem {
 
@@ -22,12 +22,12 @@ public class TwinShooter extends Subsystem {
   private EncoderWrapper encWrap1 = new EncoderWrapper(PIDSourceType.kDisplacement, encoderOne,
       RobotMap.TWIN_LEFT_ENCODER_1, RobotMap.TWIN_LEFT_ENCODER_2);
 
-  private HoldPID twinHold1 = new HoldPID();
+  private HoldPid twinHold1 = new HoldPid();
 
   private EncoderWrapper encWrap2 = new EncoderWrapper(PIDSourceType.kDisplacement, encoderTwo,
       RobotMap.TWIN_RIGHT_ENCODER_1, RobotMap.TWIN_RIGHT_ENCODER_2);
 
-  private HoldPID twinHold2 = new HoldPID();
+  private HoldPid twinHold2 = new HoldPid();
 
   public TwinShooter() {
     // empty

@@ -2,11 +2,11 @@ package lib;
 
 import edu.wpi.first.wpilibj.PIDOutput;
 
-public class HoldPID implements PIDOutput {
+public class HoldPid implements PIDOutput {
 
   private double holder;
 
-  public HoldPID() {
+  public HoldPid() {
     // empty
   }
 
