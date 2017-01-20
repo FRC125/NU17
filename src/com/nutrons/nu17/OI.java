@@ -36,6 +36,7 @@ public class OI {
 		this.RAISE_PLACER.whenPressed(new RaiseGearPlacerCmd());
 		this.LOWER_PLACER.whenPressed(new LowerGearPlacerCmd());
 		this.SHOOT.whenPressed(new ShootShooterCmd());
+		this.SHOOT.whenReleased(new StopShooterCmd());
 		this.INTAKE.whenPressed(new GroundIntakeCmd());
 		this.INTAKE_SPIT.whenPressed(new GroundIntakeSpitCmd());
 	}

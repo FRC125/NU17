@@ -2,6 +2,7 @@ package com.nutrons.nu17.commands;
 
 import com.ctre.CANTalon.TalonControlMode;
 import com.nutrons.nu17.Robot;
+import com.nutrons.nu17.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -16,7 +17,7 @@ public class ShootShooterCmd extends Command {
 	 */
 	protected void initialize() {
 		Robot.SHOOTER.SHOOTER.changeControlMode(TalonControlMode.Speed);
-		Robot.SHOOTER.SHOOTER.setSetpoint(Robot.SHOOTER.SHOOTER_SPEED);
+		Robot.SHOOTER.SHOOTER.setSetpoint(Shooter.SHOOTER_SPEED);
 		Robot.SHOOTER.SHOOTER.enable();
 	}
 	

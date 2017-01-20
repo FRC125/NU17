@@ -11,13 +11,14 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import lib.EncoderWrapper;
 import lib.HoldPID;
 
 public class Shooter extends Subsystem {
-	public final double SHOOTER_SPEED = 10.0;
+	public static double SHOOTER_SPEED = 10.0;
 	
-	public final CANTalon SHOOTER = new CANTalon(RobotMap.SHOOTER);
+	public CANTalon SHOOTER = new CANTalon(RobotMap.SHOOTER);
 	
 	// TODO: tune these constants
 	public static double P_SHOOT = 0.025;
@@ -55,6 +56,10 @@ public class Shooter extends Subsystem {
 	 */
 	public void stopShooter() {
 		runShooter(0.0);
+	}
+	
+	public double getPower(){
+		return this.SHOOTER.getSpeed();
 	}
 
 	/**
