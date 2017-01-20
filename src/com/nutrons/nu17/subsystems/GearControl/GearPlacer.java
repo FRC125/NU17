@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GearPlacer extends Subsystem {
 
-	private final Talon PLACER = new Talon(RobotMap.PLACER);
+	private final Talon PLACER = new Talon(RobotMap.GEAR_PLACER_SERVO);
 
 	public void initDefaultCommand() {
 		//empty

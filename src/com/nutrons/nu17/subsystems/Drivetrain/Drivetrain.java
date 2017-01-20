@@ -1,5 +1,6 @@
 package com.nutrons.nu17.subsystems.Drivetrain;
 
+import com.ctre.CANTalon;
 import com.nutrons.nu17.OI;
 import com.nutrons.nu17.RobotMap;
 
@@ -21,16 +22,16 @@ public class Drivetrain extends Subsystem {
 	}
 
 	// Motors
-	public Talon frontLeft = new Talon(RobotMap.FRONT_LEFT);
-	public Talon backLeft = new Talon(RobotMap.BACK_LEFT);
-	public Talon frontRight = new Talon(RobotMap.FRONT_RIGHT);
-	public Talon backRight = new Talon(RobotMap.BACK_RIGHT);
+	public CANTalon frontLeft = new CANTalon(RobotMap.FRONT_LEFT);
+	public CANTalon backLeft = new CANTalon(RobotMap.BACK_LEFT);
+	public CANTalon frontRight = new CANTalon(RobotMap.FRONT_RIGHT);
+	public CANTalon backRight = new CANTalon(RobotMap.BACK_RIGHT);
 
 	// Sensors
-	private final AnalogGyro HEADING_GRYO = new AnalogGyro(RobotMap.HEADING_GYRO);
+	private final AnalogGyro HEADING_GRYO = new AnalogGyro(RobotMap.DRIVETRAIN_HEADING_GYRO);
 
 	// TODO: Tune Ports
-	private final Encoder DRIVE_DISTANCE_ENCODER = new Encoder(RobotMap.DRIVE_DISTANCE_ENCODER_P1, RobotMap.DRIVE_DISTANCE_ENCODER_P2);
+	private final Encoder DRIVE_DISTANCE_ENCODER = new Encoder(RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1, RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_2);
 
 	// Drive
 	public RobotDrive drive = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
@@ -39,11 +40,11 @@ public class Drivetrain extends Subsystem {
 	// Wrappers
 	private EncoderWrapper encWrap = new EncoderWrapper(PIDSourceType.kDisplacement,
 			DRIVE_DISTANCE_ENCODER,
-			RobotMap.DRIVE_DISTANCE_ENCODER_P1,
-			RobotMap.DRIVE_DISTANCE_ENCODER_P2);
+			RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1,
+			RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_2);
 	private GyroWrapper gyroWrap = new GyroWrapper(PIDSourceType.kDisplacement,
 			HEADING_GRYO,
-			RobotMap.HEADING_GYRO);
+			RobotMap.DRIVETRAIN_HEADING_GYRO);
 
 	// Holders
 	private HoldPID distancePIDHolder = new HoldPID();
