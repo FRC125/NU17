@@ -2,16 +2,15 @@ package com.nutrons.nu17.subsystems;
 
 import com.nutrons.nu17.RobotMap;
 
-
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * Class of a single arm that will interact with the gears.
+ * Similar to {@link GearPlacer} class but uses a servo instead.
  */
-public class GearPlacer extends Subsystem {
+public class GearPlacerServo extends GearPlacer {
 
-	private final Talon PLACER = new Talon(RobotMap.GEAR_PLACER);
+	private final Servo PLACER = new Servo(RobotMap.GEAR_PLACER_SERVO);
 
 	public void initDefaultCommand() {
 		//empty
@@ -22,8 +21,8 @@ public class GearPlacer extends Subsystem {
 	 * 
 	 * @param position Where the gear placer will be set to.
 	 */
-	public void set(double position) {
-		PLACER.setPosition(position);
+	public void setPosition(double position) {
+		PLACER.set(position);
 	}
 
 	/**
@@ -32,10 +31,11 @@ public class GearPlacer extends Subsystem {
 	 * @return Gives us where the gear placer is at this moment.
 	 */
 	public double getPosition() {
-		return PLACER.getPosition();
+		return PLACER.get();
 	}
 
 	public void stop() {
-		PLACER.disable();
+		this.setPosition(this.getPosition());
 	}
 }
+

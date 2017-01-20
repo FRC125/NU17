@@ -94,7 +94,6 @@ public class Drivetrain extends Subsystem {
 	 */
 	public void resetEncoder() {
 		this.DRIVE_DISTANCE_ENCODER.reset();
-
 	}
 
 	/**
@@ -102,7 +101,6 @@ public class Drivetrain extends Subsystem {
 	 */
 	public void resetGyro() {
 		this.HEADING_GRYO.reset();
-
 	}
 
 	public void initDefaultCommand() {

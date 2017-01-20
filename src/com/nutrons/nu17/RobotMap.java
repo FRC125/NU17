@@ -2,11 +2,12 @@ package com.nutrons.nu17;
 
 public class RobotMap {
 
-	// Ports of wheels
+	// Wheel motors
 	public static final int FRONT_LEFT = 0;
 	public static final int	BACK_LEFT = 1;
 	public static final int FRONT_RIGHT = 2;
 	public static final int BACK_RIGHT = 3;
+
 	// Paramter naming convention : Subsystem SIDE_PLACEMENT
 	// Ports of intake
 	public static final int ROLLER_FRONT = 0;
@@ -24,6 +25,7 @@ public class RobotMap {
 	public static final int DRIVETRAIN_HEADING_GYRO = 0;
 
 	// Port of gear placer
+	public static final int GEAR_PLACER = 0;
 	public static final int GEAR_PLACER_SERVO = 0;
 	
 	// Port of shooter
@@ -50,7 +52,6 @@ public class RobotMap {
 	public static final int TWIN_RIGHT_ENCODER_2 = 12;
 	public static final int SHOOT_ENCODER_1 = 0;
 	public static final int SHOOT_ENCODER_2 = 1;
-	
 		
 	// Port of joysticks
 	public static final int JOYSTICK1 = 0;
