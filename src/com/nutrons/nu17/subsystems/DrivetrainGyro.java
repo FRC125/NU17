@@ -18,7 +18,7 @@ public class DrivetrainGyro extends Subsystem {
 	private final Talon BACK_RIGHT = new Talon(RobotMap.BACK_RIGHT);
 	private final Talon BACK_LEFT = new Talon(RobotMap.BACK_LEFT);
 
-	private final AnalogGyro GYRO = new AnalogGyro(RobotMap.GYRO);
+	private final AnalogGyro GYRO = new AnalogGyro(RobotMap.DRIVETRAIN_HEADING_GYRO);
 	
 	// TODO: tune these constants
 	private static final double P_DRIVE = 0;
@@ -126,7 +126,7 @@ public class DrivetrainGyro extends Subsystem {
 
 		@Override
 		public double pidGet() {
-			return Robot.DT.BACK_RIGHT.getPosition();
+			return Robot.DRIVETRAIN.backRight.getPosition();
 		}
 	}
 

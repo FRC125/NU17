@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GroundIntake extends Subsystem {
 	
-	private final Talon ROLLER_1 = new Talon(RobotMap.ROLLER_GROUND);
-	private final Talon ROLLER_2 = new Talon(RobotMap.ROLLER_ROBOT);
+	private final Talon ROLLER_1 = new Talon(RobotMap.ROLLER_FRONT);
+	private final Talon ROLLER_2 = new Talon(RobotMap.ROLLER_BACK);
 
 	private final Ultrasonic BALL_CENTER = new Ultrasonic(
 			RobotMap.ULTRASONIC_RX, 

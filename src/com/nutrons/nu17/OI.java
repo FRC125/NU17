@@ -28,10 +28,10 @@ public class OI {
 	private final Button LOWER_PLACER = new JoystickButton(
 			this.OPERATOR_PAD, 
 			RobotMap.JOYSTICK_X);
-	
-	public final Joystick DRIVER_PAD = new Joystick(RobotMap.JOYSTICK_DRIVER);
-	public final Joystick OPERATOR_PAD = new Joystick(RobotMap.JOYSTICK_OPERATOR);
 
+	public static final Joystick DRIVER_PAD = new Joystick(RobotMap.JOYSTICK1);
+	public static final Joystick OPERATOR_PAD = new Joystick(RobotMap.JOYSTICK2);
+	
 	public OI() {
 		this.RAISE_PLACER.whenPressed(new RaiseGearPlacerCmd());
 		this.LOWER_PLACER.whenPressed(new LowerGearPlacerCmd());
