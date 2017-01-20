@@ -1,4 +1,4 @@
-package com.nutrons.nu17.commands;
+package com.nutrons.nu17.commands.GearControl;
 
 import com.nutrons.nu17.Robot;
 
@@ -7,9 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  * 
  */
-public class LowerGearPlacerCmd extends Command {
+public class RaiseGearPlacerCmd extends Command {
 
-    public LowerGearPlacerCmd() {
+	private final double PLACER_MAX_POSITION = 1;
+
+    public RaiseGearPlacerCmd() {
     	requires(Robot.GP);
     }
 
@@ -17,15 +19,15 @@ public class LowerGearPlacerCmd extends Command {
      * Lowers the gear placer.
      */
     protected void initialize() {
-    	Robot.GP.set(0);
+    	Robot.GP.set(this.PLACER_MAX_POSITION);
     }
 
     protected void execute() {
     	//empty
     }
-    // Finished when the placer is at the lowest position
+    // Finishes when the placer is at the highest position
     protected boolean isFinished() {
-        return Robot.GP.getPosition() == 0;
+        return Robot.GP.getPosition() == this.PLACER_MAX_POSITION;
     }
 
     protected void end() {

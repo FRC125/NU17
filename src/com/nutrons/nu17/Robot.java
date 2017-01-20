@@ -5,6 +5,12 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import com.nutrons.nu17.OI;
 import com.nutrons.nu17.subsystems.*;
+import com.nutrons.nu17.subsystems.Climber.Climber;
+import com.nutrons.nu17.subsystems.Drivetrain.Drivetrain;
+import com.nutrons.nu17.subsystems.GearControl.GearPlacer;
+import com.nutrons.nu17.subsystems.Intake.GroundIntake;
+import com.nutrons.nu17.subsystems.Shooters.Shooter;
+import com.nutrons.nu17.subsystems.Shooters.TwinShooter;
 
 public class Robot extends IterativeRobot {
 	

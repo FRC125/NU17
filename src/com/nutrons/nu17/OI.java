@@ -2,6 +2,11 @@ package com.nutrons.nu17;
 
 import com.nutrons.nu17.RobotMap;
 import com.nutrons.nu17.commands.*;
+import com.nutrons.nu17.commands.GearControl.LowerGearPlacerCmd;
+import com.nutrons.nu17.commands.GearControl.RaiseGearPlacerCmd;
+import com.nutrons.nu17.commands.Intake.GroundIntakeCmd;
+import com.nutrons.nu17.commands.Intake.GroundIntakeSpitCmd;
+import com.nutrons.nu17.commands.Shooters.ShootShooterCmd;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
