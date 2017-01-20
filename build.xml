@@ -55,7 +55,6 @@
                 failOnViolation="false">
       <formatter type="plain"/>
       <fileset dir="src" includes="**/*.java"/>
-      <fileset dir="test" includes="**/*.java"/>
     </checkstyle>
     <fail message="Style failure detected, check." if="checkstyle.failure" />
   </target>
