@@ -26,6 +26,9 @@ public class OI {
   public static final Joystick DRIVER_PAD = new Joystick(RobotMap.JOYSTICK1);
   public static final Joystick OPERATOR_PAD = new Joystick(RobotMap.JOYSTICK2);
 
+  /**
+   * Creates Joysticks and assigns buttons.
+   */
   public OI() {
     this.RAISE_PLACER.whenPressed(new RaiseGearPlacerCmd());
     this.LOWER_PLACER.whenPressed(new LowerGearPlacerCmd());
@@ -35,21 +38,21 @@ public class OI {
   }
 
   /**
-   * @return driver's left joystick y value
+   * @return driver's left joystick y value.
    */
   public double getLeftJoystickY() {
     return Utils.deadband(DRIVER_PAD.getRawAxis(1), RobotMap.JOYSTICK_DEADBAND, 0.0);
   }
 
   /**
-   * @return driver's right joystick x value
+   * @return driver's right joystick x value.
    */
   public double getRightJoystickX() {
     return Utils.deadband(DRIVER_PAD.getRawAxis(4), RobotMap.JOYSTICK_DEADBAND, 0.0);
   }
 
   /**
-   * @return driver's right joystick y value
+   * @return driver's right joystick y value.
    */
   public double getRightJoystickY() {
     return Utils.deadband(DRIVER_PAD.getRawAxis(5), RobotMap.JOYSTICK_DEADBAND, 0.0);

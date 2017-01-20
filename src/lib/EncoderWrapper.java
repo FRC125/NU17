@@ -13,7 +13,7 @@ public class EncoderWrapper implements PIDSource {
   }
 
   /**
-   * Creates a EncoderWrapper PIDSource
+   * Creates a EncoderWrapper PIDSource.
    * 
    * @param pidSource The pidSource type
    * @param enc The encoder used for the PIDSource data
@@ -27,7 +27,7 @@ public class EncoderWrapper implements PIDSource {
 
   @Override
   /**
-   * Sets the PIDSource type given the param
+   * Sets the PIDSource type given the param.
    */
   public void setPIDSourceType(PIDSourceType pidSourceType) {
     pidSource = pidSourceType;
@@ -35,14 +35,14 @@ public class EncoderWrapper implements PIDSource {
 
   @Override
   /**
-   * Returns the PIDSourceType
+   * Returns the PIDSourceType.
    */
   public PIDSourceType getPIDSourceType() {
     return pidSource;
   }
 
   /**
-   * Gets the rate of the encoder
+   * Gets the rate of the encoder.
    */
   @Override
   public double pidGet() {

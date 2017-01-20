@@ -7,12 +7,12 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 public class GyroWrapper implements PIDSource {
   private PIDSourceType pidSource;
   private AnalogGyro gyro;
-
+  
   /**
-   * Creates a EncoderWrapper PIDSource
+   * Creates an EncoderWrapper PIDSource.
    * 
-   * @param pidSource The pidSource type
-   * @param enc The gyro used for the PIDSource data
+   * @param pidSource The gyro used for the PIDSource data
+   * @param gyro The gyro used for the PIDSource data
    * @param gyroSource the port where the gyro is
    */
   public GyroWrapper(PIDSourceType pidSource, AnalogGyro gyro, int gyroSource) {
@@ -21,7 +21,7 @@ public class GyroWrapper implements PIDSource {
   }
 
   /**
-   * Sets the PIDSource type given the param
+   * Sets the PIDSource type given the param.
    */
   @Override
   public void setPIDSourceType(PIDSourceType pidSourceType) {
@@ -29,7 +29,7 @@ public class GyroWrapper implements PIDSource {
   }
 
   /**
-   * Returns the PIDSourceType
+   * Returns the PIDSourceType.
    */
   @Override
   public PIDSourceType getPIDSourceType() {
@@ -37,7 +37,7 @@ public class GyroWrapper implements PIDSource {
   }
 
   /**
-   * Gets the position of gyro
+   * Gets the position of gyro.
    */
   @Override
   public double pidGet() {

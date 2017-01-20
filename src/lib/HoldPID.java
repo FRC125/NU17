@@ -11,7 +11,7 @@ public class HoldPID implements PIDOutput {
   }
 
   /**
-   * given a param called output it will write the last PID value to a variable called output
+   * given a param called output it will write the last PID value to a variable called output.
    */
   @Override
   public void pidWrite(double output) {

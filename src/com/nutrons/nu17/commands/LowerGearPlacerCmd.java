@@ -5,7 +5,7 @@ import com.nutrons.nu17.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * 
+ * Lower the gear placer.
  */
 public class LowerGearPlacerCmd extends Command {
 

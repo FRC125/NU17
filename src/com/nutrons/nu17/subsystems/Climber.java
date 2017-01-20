@@ -49,7 +49,7 @@ public class Climber extends Subsystem {
   }
 
   /**
-   * Checks if the Micro Switch is true
+   * Checks if the Micro Switch is true.
    * 
    * @return value of the Micro Switch
    */

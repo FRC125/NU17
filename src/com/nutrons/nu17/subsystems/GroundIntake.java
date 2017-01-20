@@ -67,7 +67,7 @@ public class GroundIntake extends Subsystem {
   }
 
   /**
-   * Checks for a ball in the intake
+   * Checks for a ball in the intake.
    * 
    * @return Whether there is a ball in the center or not
    */
