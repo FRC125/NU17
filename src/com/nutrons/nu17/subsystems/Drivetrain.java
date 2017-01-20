@@ -1,104 +1,86 @@
 package com.nutrons.nu17.subsystems;
 
+import com.ctre.CANTalon;
+import com.ctre.CANTalon.FeedbackDevice;
+import com.ctre.CANTalon.TalonControlMode;
+import com.nutrons.nu17.Robot;
 import com.nutrons.nu17.RobotMap;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.PIDOutput;
-import edu.wpi.first.wpilibj.PIDSource;
-import edu.wpi.first.wpilibj.PIDSourceType;
-import edu.wpi.first.wpilibj.Talon;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+/**
+ * @author sytect
+ */
 public class Drivetrain extends Subsystem {
-	
-	private final Talon FRONT_LEFT_WHEEL = new Talon(RobotMap.FRONT_LEFT);
-	private final Talon BACK_LEFT_WHEEL = new Talon(RobotMap.FRONT_RIGHT);
-	private final Talon FRONT_RIGHT_WHEEL = new Talon(RobotMap.BACK_LEFT);
-	private final Talon BACK_RIGHT_WHEEL = new Talon(RobotMap.BACK_RIGHT);
-	
-	private final Encoder ENCODER_1 = new Encoder(
-			RobotMap.DT_ENCODER_1, 
-			RobotMap.DT_ENCODER_2);
-	private final Encoder ENCODER_2 = new Encoder(
-			RobotMap.DT_ENCODER_3, 
-			RobotMap.DT_ENCODER_4);
 
-	// TODO: tune these constants
-	private static final double P_DISTANCE = 0.025;
-	private static final double I_DISTANCE = 0.0;
-	private static final double D_DISTANCE = 0.01;
+    public final CANTalon FRONT_LEFT = new CANTalon(RobotMap.FRONT_LEFT);
+    public final CANTalon FRONT_RIGHT = new CANTalon(RobotMap.FRONT_RIGHT);
+    public final CANTalon BACK_LEFT = new CANTalon(RobotMap.BACK_LEFT);
+    public final CANTalon BACK_RIGHT = new CANTalon(RobotMap.BACK_RIGHT);
+    
+    public double P_DRIVE = 0.025;
+    public double I_DRIVE = 0.001;
+    public double D_DRIVE = 0.001;
+    public double F_DRIVE = 0.001;
+    	
+    public Drivetrain() {
+    	this.setPercentDrive();
 
-	private final PIDController DISTANCE_PID = new PIDController(
-			P_DISTANCE, 
-			I_DISTANCE, 
-			D_DISTANCE,
-			new DriveSourcePID(), 
-			new DriveOutputPID());
-
-	public Drivetrain() {
-		ENCODER_1.setDistancePerPulse(1);
-		ENCODER_2.setDistancePerPulse(1);
+    	this.FRONT_LEFT.configNominalOutputVoltage(+0.0f, -0.0f);
+    	this.FRONT_LEFT.configPeakOutputVoltage(12.0f, -12.0f);
+    	
+    	this.FRONT_RIGHT.configNominalOutputVoltage(+0.0f, -0.0f);
+    	this.FRONT_RIGHT.configPeakOutputVoltage(12.0f, -12.0f);
+    	
+    	this.BACK_LEFT.configNominalOutputVoltage(+0.0f, -0.0f);
+    	this.BACK_LEFT.configPeakOutputVoltage(12.0f, -12.0f);
+    	
+    	this.BACK_RIGHT.configNominalOutputVoltage(+0.0f, -0.0f);
+    	this.BACK_RIGHT.configPeakOutputVoltage(12.0f, -12.0f);
+    	
+    	this.FRONT_LEFT.reverseOutput(true);
+    	this.FRONT_LEFT.reverseSensor(true);
+    	
+    	this.FRONT_LEFT.setPID(P_DRIVE, I_DRIVE, D_DRIVE);
+    	this.FRONT_RIGHT.setPID(P_DRIVE, I_DRIVE, D_DRIVE);
+    	
+    	this.disableBrakeMode();
+    }
+    
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        //setDefaultCommand(new MySpecialCommand());
+    }
+    
+    public void disableBrakeMode() {
+    	this.FRONT_LEFT.enableBrakeMode(false);
+    	this.FRONT_RIGHT.enableBrakeMode(false);
 	}
 
-	public void initDefaultCommand() {
-		//empty
-	}
+	public void setPercentDrive() {
+    	this.FRONT_LEFT.changeControlMode(TalonControlMode.PercentVbus);
+    	this.FRONT_RIGHT.changeControlMode(TalonControlMode.PercentVbus);
+    	
+    	this.BACK_LEFT.changeControlMode(TalonControlMode.Follower);
+    	this.BACK_LEFT.set(this.FRONT_LEFT.getDeviceID());
+    	
+    	this.BACK_RIGHT.changeControlMode(TalonControlMode.Follower);
+    	this.BACK_RIGHT.set(this.FRONT_RIGHT.getDeviceID());
+    	
+    	this.FRONT_LEFT.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	this.FRONT_RIGHT.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	
+    	this.FRONT_LEFT.configEncoderCodesPerRev((int)(256 / 0.14));
+    	this.FRONT_RIGHT.configEncoderCodesPerRev((int)(256 / 0.14));
+    }
 
-	/**
-	 * Drives the robot depending on speed of each motor.
-	 * 
-	 * @param leftA Speed of the Left A motor.
-	 * @param leftB Speed of the Left B motor.
-	 * @param rightA Speed of the Right A motor.
-	 * @param rightB Speed of the Right B motor.
-	 */
-	public void drive(
-			double leftA, 
-			double leftB, 
-			double rightA, 
-			double rightB) {
-		this.FRONT_LEFT_WHEEL.set(leftA);
-		this.BACK_LEFT_WHEEL.set(leftB);
-		this.FRONT_RIGHT_WHEEL.set(rightA);
-		this.BACK_RIGHT_WHEEL.set(rightB);
-	}
-
-	/**
-	 * Stops the drivetrain.
-	 */
-	public void stop() {
-		this.drive(0, 0, 0, 0);
-	}
-
-	public void resetEncoder() {
-		this.ENCODER_1.reset();
-		this.ENCODER_2.reset();
-	}
-
-	private class DriveSourcePID implements PIDSource {
-
-		@Override
-		public void setPIDSourceType(PIDSourceType pidSource) {
-			//empty
-		}
-
-		@Override
-		public double pidGet() {
-			return ENCODER_1.getDistance();
-		}
-
-		@Override
-		public PIDSourceType getPIDSourceType() {
-			return null;
-		}
-	}
-
-	private class DriveOutputPID implements PIDOutput {
-		
-		// Gets the speed at which to run the wheels at and uses it to drive the robot
-		@Override
-		public void pidWrite(double output) {
-			drive(output, -output, output, -output);
-		}
-	}
+    public void driveLR(double leftPower, double rightPower) {
+    	this.FRONT_LEFT.set(leftPower);
+    	this.FRONT_RIGHT.set(rightPower);
+    }
+    
+    public void stop() {
+    	Robot.DRIVETRAIN.driveLR(0.0, 0.0);
+    }
 }
+
