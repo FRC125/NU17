@@ -13,7 +13,7 @@ import lib.HoldPID;
 
 public class Shooter extends Subsystem {
 
-	private final Talon SHOOTER = new Talon(RobotMap.SHOOTER);
+	private final Talon SHOOTER = new Talon(RobotMap.SHOOTER_MOTOR);
 	private final Encoder SHOOTER_ENCODER = new Encoder(
 			RobotMap.SHOOT_ENCODER_1, 
 			RobotMap.SHOOT_ENCODER_2);

@@ -12,14 +12,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class HoodShooterFlywheel extends Subsystem {
 
-	private final Talon FLY_WHEEL_LEFT = new Talon(RobotMap.FLY_WHEEL_L);
-	private final Talon FLY_WHEEL_RIGHT = new Talon(RobotMap.FLY_WHEEL_R);
+	private final Talon FLY_WHEEL_LEFT = new Talon(RobotMap.FLY_WHEEL_LEFT);
+	private final Talon FLY_WHEEL_RIGHT = new Talon(RobotMap.FLY_WHEEL_RIGHT);
 	private final Encoder TURN_LEFT = new Encoder(
-			RobotMap.FLY_ENCODER_R1, 
-			RobotMap.FLY_ENCODER_R2);
+			RobotMap.FLY_ENCODER_FRONT_RIGHT, 
+			RobotMap.FLY_ENCODER_BACK_RIGHT);
 	private final Encoder TURN_RIGHT = new Encoder(
-			RobotMap.FLY_ENCODER_L1, 
-			RobotMap.FLY_ENCODER_L2);
+			RobotMap.FLY_ENCODER_FRONT_LEFT, 
+			RobotMap.FLY_ENCODER_BACK_LEFT);
 
 	public final PIDController ANGLE_SHOT_PID = new PIDController(
 			P_TURN, 
