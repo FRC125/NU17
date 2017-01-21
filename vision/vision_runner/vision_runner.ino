@@ -4,7 +4,7 @@
 Pixy pixy;
 uint16_t blocks;
 int areaCount = 10;
-double area[10];
+double areas[10];
 double avgArea;
 int i = 0;
 
@@ -31,7 +31,7 @@ void setup() {
   pixy.init();
 
   for(int i = 0; i < areaCount; i++) {
-    area[i] = getArea();
+    areas[i] = getArea();
   }
 }
 
@@ -46,10 +46,10 @@ void loop() {
     i++;
     if (i % 30 == 0) {
       for(int i = 1; i < areaCount; i++) {
-        area[i - 1] = area[i];
+        areas[i - 1] = areas[i];
       }
 
-      area[9] = getArea();
+      areas[9] = getArea();
 
       avgArea = getAvgArea();  
       angleToTarget_x = getHorizontalAngleOffset(pixy.blocks[0].x);
@@ -94,15 +94,19 @@ double getArea() {
 double getAvgArea() {
   double total;
   for(int i = 0; i < areaCount; i++) {
-    total = total + area[i];
+    total = total + areas[i];
   }
 
   return total / areaCount;
 }
 
 double getDistance(){
-  
   return (TARGET_HEIGHT-CAMERA_HEIGHT)/tan(degreesToRadians((angleToTarget_y)));
 }
+
+double getDistanceTest(double area) {
+  return 5.399*sq(area) + -147.62*area + 1038.9;
+}
+
 
 
