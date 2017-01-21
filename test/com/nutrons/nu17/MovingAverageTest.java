@@ -1,4 +1,6 @@
-import static org.junit.Assert.*;
+package com.nutrons.nu17;
+
+import static junit.framework.TestCase.assertEquals;
 
 import org.junit.Test;
 
@@ -7,12 +9,12 @@ import lib.MovingAverage;
 public class MovingAverageTest {
 
 	@Test
-	public void movingAverageValuesTest() {
+	public void saveValuesTest() {
 		MovingAverage avg = new MovingAverage(3);
 		avg.update(3);
 		avg.update(3);
 		avg.update(3);
-		assertEquals(3, avg.getAverage());
+		assertEquals(3.0, avg.getAverage());
 	}
 
 }
