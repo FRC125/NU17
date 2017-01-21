@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/FRC125/NU17.svg?branch=master)](https://travis-ci.org/FRC125/NU17)
 
-[![Coverage Status](https://coveralls.io/repos/github/FRC125/NU17/badge.svg?branch=master)](https://coveralls.io/github/FRC125/NU17?branch=master)
+[![codecov](https://codecov.io/gh/FRC125/NU17/branch/master/graph/badge.svg)](https://codecov.io/gh/FRC125/NU17)
+
 
 Steamworks robot code
 
