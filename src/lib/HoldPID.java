@@ -7,7 +7,7 @@ public class HoldPID implements PIDOutput {
 	public double holder;
 	
 	public HoldPID() {
-		//empty
+		// empty
 	}
 	
 	/**
