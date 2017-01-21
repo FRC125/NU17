@@ -25,6 +25,10 @@ public class Drivetrain extends Subsystem {
     
     private AnalogGyro gyro = new AnalogGyro(RobotMap.GYRO);
     
+    private GyroWrapper gyroWrapper = new GyroWrapper(
+        PIDSourceType.kDisplacement, gyro);
+    private HoldPID gyroPid = new HoldPID();
+    
     // TODO: tune these constants
     public double P_DRIVE = 0.025;
     public double I_DRIVE = 0.001;
@@ -40,8 +44,8 @@ public class Drivetrain extends Subsystem {
         this.P_HEADING, 
         this.I_HEADING, 
         this.D_HEADING, 
-        new GyroWrapper(PIDSourceType.kDisplacement, gyro),
-        new HoldPID());
+        this.gyroWrapper,
+        this.gyroPid);
     
     public Drivetrain() {
     	this.setPercentDrive();
@@ -96,7 +100,20 @@ public class Drivetrain extends Subsystem {
 
     public void driveLR(double leftPower, double rightPower) {
     	this.FRONT_LEFT.set(leftPower);
-    	this.FRONT_RIGHT.set(rightPower);
+    	this.FRONT_RIGHT.set(-rightPower);
+    }
+    
+    public void driveCheesy(double throttle, double direction, boolean holdHeading) {
+      if(holdHeading) {
+        if(!this.holdHeading.isEnable()) {
+          this.holdHeading.enable();
+        }
+        this.holdHeading.setSetpoint(0.0);
+        driveLR((throttle * 0.5) - gyroPid.holder, (throttle * 0.5) + gyroPid.holder);
+      }else {
+        this.holdHeading.disable();
+        driveLR(throttle - gyroPid.holder, throttle + gyroPid.holder);
+      }
     }
     
     public void stop() {
