@@ -5,41 +5,42 @@ import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 
 public class GyroWrapper implements PIDSource {
-    private PIDSourceType pidSource;
-    private AnalogGyro gyro;
-    
-    /**
-     * Creates a EncoderWrapper PIDSource
-     * @param pidSource The pidSource type
-     * @param enc The gyro used for the PIDSource data
-     * @param gyroSource the port where the gyro is
-     */
-    public GyroWrapper(PIDSourceType pidSource, AnalogGyro gyro) {
-      this.pidSource = pidSource;
-      this.gyro = gyro;
-    }
-    
-    /**
-     * Sets the PIDSource type given the param
-     */
-    @Override
-    public void setPIDSourceType(PIDSourceType pidSource) {
-      // empty
-    }
-    
-    /** 
-     * Returns the PIDSourceType
-     */
-    @Override
-    public PIDSourceType getPIDSourceType() {
-        return pidSource;
-    }
-    
-    /**
-     * Gets the position of gyro
-     */
-    @Override
-    public double pidGet() {
-        return gyro.getAngle();
-    }
+  private PIDSourceType pidSource;
+  private AnalogGyro gyro;
+
+  /**
+   * Creates a EncoderWrapper PIDSource
+   * 
+   * @param pidSource The pidSource type
+   * @param enc The gyro used for the PIDSource data
+   * @param gyroSource the port where the gyro is
+   */
+  public GyroWrapper(PIDSourceType pidSource, AnalogGyro gyro) {
+    this.pidSource = pidSource;
+    this.gyro = gyro;
+  }
+
+  /**
+   * Sets the PIDSource type given the param
+   */
+  @Override
+  public void setPIDSourceType(PIDSourceType pidSource) {
+    // empty
+  }
+
+  /**
+   * Returns the PIDSourceType
+   */
+  @Override
+  public PIDSourceType getPIDSourceType() {
+    return pidSource;
+  }
+
+  /**
+   * Gets the position of gyro
+   */
+  @Override
+  public double pidGet() {
+    return gyro.getAngle();
+  }
 }

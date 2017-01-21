@@ -16,7 +16,7 @@ public class CheesyDriveCmd extends Command {
   protected void initialize() {
     Robot.DRIVETRAIN.setPercentDrive();
   }
-  
+
   protected void execute() {
     Robot.DRIVETRAIN.driveCheesy(Robot.OI.getLeftJoystickY(), Robot.OI.getLeftJoystickX(),
         Robot.OI.getHoldHeadingMode());

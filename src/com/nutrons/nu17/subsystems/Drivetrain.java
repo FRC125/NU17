@@ -128,11 +128,11 @@ public class Drivetrain extends Subsystem {
   public void stop() {
     Robot.DRIVETRAIN.driveLR(0.0, 0.0);
   }
-  
+
   public void resetGyro() {
     this.gyro.reset();
   }
-  
+
   public void resetEncoders() {
     this.FRONT_LEFT.setPosition(0.0);
     this.FRONT_RIGHT.setPosition(0.0);
