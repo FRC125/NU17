@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/FRC125/NU17.svg?branch=master)](https://travis-ci.org/FRC125/NU17)
 
+[![Coverage Status](https://coveralls.io/repos/github/FRC125/NU17/badge.svg?branch=master)](https://coveralls.io/github/FRC125/NU17?branch=master)
+
 Steamworks robot code
 
 To Generate a Javadoc for Eclipse:
