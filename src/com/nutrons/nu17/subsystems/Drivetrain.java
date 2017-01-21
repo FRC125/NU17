@@ -105,7 +105,7 @@ public class Drivetrain extends Subsystem {
     
     public void driveCheesy(double throttle, double direction, boolean holdHeading) {
       if(holdHeading) {
-        if(!this.holdHeading.isEnable()) {
+        if(!this.holdHeading.isEnabled()) {
           this.holdHeading.enable();
         }
         this.holdHeading.setSetpoint(0.0);
