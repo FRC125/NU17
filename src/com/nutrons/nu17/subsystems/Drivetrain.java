@@ -6,7 +6,12 @@ import com.ctre.CANTalon.TalonControlMode;
 import com.nutrons.nu17.Robot;
 import com.nutrons.nu17.RobotMap;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import lib.GyroWrapper;
+import lib.HoldPID;
 
 /**
  * @author sytect
@@ -18,11 +23,26 @@ public class Drivetrain extends Subsystem {
     public final CANTalon BACK_LEFT = new CANTalon(RobotMap.BACK_LEFT);
     public final CANTalon BACK_RIGHT = new CANTalon(RobotMap.BACK_RIGHT);
     
+    private AnalogGyro gyro = new AnalogGyro(RobotMap.GYRO);
+    
+    // TODO: tune these constants
     public double P_DRIVE = 0.025;
     public double I_DRIVE = 0.001;
     public double D_DRIVE = 0.001;
     public double F_DRIVE = 0.001;
-    	
+    
+    // TODO: tune these constants
+    public double P_HEADING = 0.025;
+    public double I_HEADING = 0.001;
+    public double D_HEADING = 0.001;
+    
+    private PIDController holdHeading = new PIDController(
+        this.P_HEADING, 
+        this.I_HEADING, 
+        this.D_HEADING, 
+        new GyroWrapper(PIDSourceType.kDisplacement, gyro),
+        new HoldPID());
+    
     public Drivetrain() {
     	this.setPercentDrive();
 
@@ -83,4 +103,3 @@ public class Drivetrain extends Subsystem {
     	Robot.DRIVETRAIN.driveLR(0.0, 0.0);
     }
 }
-
