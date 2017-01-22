@@ -5,11 +5,9 @@ public class DebouncingBoolean {
 	private static int windowSize;
 	private boolean state;
 	
-	public DebouncingBoolean(int windowSize){
+	public DebouncingBoolean(int windowSize, int start){
 		this.windowSize = windowSize;
 		queue = new LinkedList<Boolean>();
-	}
-	public void init(int start ){
 		while(queue.size() < windowSize){
 			if (start > 0){
 				queue.add(true);
@@ -19,6 +17,7 @@ public class DebouncingBoolean {
 			}
 		}
 	}
+	
 	public void feed(int val){
 		if (queue.size() == windowSize){
 			if (val > 0){
@@ -30,5 +29,9 @@ public class DebouncingBoolean {
 				queue.addLast(false);
 			}
 		}
+	}
+	
+	public void getQueue(){
+		queue.listIterator();
 	}
 }
