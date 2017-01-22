@@ -16,12 +16,12 @@ double FOV_Y = 47; //vertical Field of View in degrees
 double RESOLUTION_WIDTH = 320; //in pixels, 320 x 200
 double RESOLUTION_HEIGHT = 200; //in pixels
 double VERTICAL_ZERO_OFFSET = 23.5; //shifts the 0 degree line down by given value, relies on consistent angle of camera
-double CAMERA_ANGLE = 12; //angle of Camera
+double CAMERA_ANGLE = 11.5; //angle of Camera
 
 //******DISTANCE VARIABLES******
 double distanceToTarget; //inches
-double CAMERA_HEIGHT = 2.25; //inches
-double TARGET_HEIGHT = 3; //inches
+double CAMERA_HEIGHT = 33; //inches
+double TARGET_HEIGHT = 44.5; //inches
 double areaOfTarget;
 
 void setup() {
@@ -44,7 +44,7 @@ void loop() {
 
     getAvgArea();
     i++;
-    if (i % 30 == 0) {
+    if (i % 1 == 0) {
       for(int i = 1; i < areaCount; i++) {
         areas[i - 1] = areas[i];
       }
@@ -57,9 +57,9 @@ void loop() {
       distanceToTarget = getDistance(); 
 
       Serial.print("DISTANCE(IN.): ");
-      Serial.print(distanceToTarget);
+      Serial.print(getDistance());
       Serial.print(" ANGLE: " );
-      Serial.print(angleToTarget_y);
+      Serial.print(angleToTarget_x);
       Serial.print(" AREA: ");
       Serial.print(avgArea);
       Serial.print(" Width: ");
@@ -105,8 +105,5 @@ double getDistance(){
 }
 
 double getDistanceTest(double area) {
-  return 5.399*sq(area) + -147.62*area + 1038.9;
+  return 0.0000034971*sq(area) - (.013984*area) + 15.336;
 }
-
-
-
