@@ -3,10 +3,7 @@
 
 Pixy pixy;
 uint16_t blocks;
-int areaCount = 10;
-double areas[10];
-double avgArea;
-int i = 0;
+String toSend;
 
 //******ANGLE VARIABLES******
 double angleToTarget_x; //horizontal angle in degrees
@@ -22,17 +19,10 @@ double CAMERA_ANGLE = 11.5; //angle of Camera
 double distanceToTarget; //inches
 double CAMERA_HEIGHT = 33; //inches
 double TARGET_HEIGHT = 44.5; //inches
-double areaOfTarget;
 
 void setup() {
   Serial.begin(9600);
-  Serial.print("Starting...\n");
-
   pixy.init();
-
-  for(int i = 0; i < areaCount; i++) {
-    areas[i] = getArea();
-  }
 }
 
 void loop() { 
@@ -40,36 +30,13 @@ void loop() {
   blocks = pixy.getBlocks();
 
   if (blocks) {
-    // get/print data every 50 frames
-
-    getAvgArea();
-    i++;
-    if (i % 1 == 0) {
-      for(int i = 1; i < areaCount; i++) {
-        areas[i - 1] = areas[i];
-      }
-
-      areas[9] = getArea();
-
-      avgArea = getAvgArea();  
-      angleToTarget_x = getHorizontalAngleOffset(pixy.blocks[0].x);
-      angleToTarget_y = getVerticalAngleOffset(pixy.blocks[0].y);
-      distanceToTarget = getDistance(); 
-
-      Serial.print("DISTANCE(IN.): ");
-      Serial.print(getDistance());
-      Serial.print(" ANGLE: " );
-      Serial.print(angleToTarget_x);
-      Serial.print(" AREA: ");
-      Serial.print(avgArea);
-      Serial.print(" Width: ");
-      Serial.print(pixy.blocks[0].width);
-      Serial.print(" Height: ");
-      Serial.println(pixy.blocks[0].height);
-      Serial.print(" RAW AREA: ");
-      Serial.println(pixy.blocks[0].height * pixy.blocks[0].width);
-        
-    }
+     angleToTarget_x = getHorizontalAngleOffset(pixy.blocks[0].x);
+     angleToTarget_y = getVerticalAngleOffset(pixy.blocks[0].y);
+     distanceToTarget = getDistance(); 
+     
+     toSend = "d" + String(getDistance(), 3) + "a" + String(angleToTarget_x, 3);
+     Serial.print(toSend + "\n");
+     
   }  
 }
 
@@ -87,23 +54,6 @@ double degreesToRadians(double deg){
   return (deg * 3.1415926)/180;
 }
 
-double getArea() {
-  return pixy.blocks[0].height * pixy.blocks[0].width;
-}
-
-double getAvgArea() {
-  double total;
-  for(int i = 0; i < areaCount; i++) {
-    total = total + areas[i];
-  }
-
-  return total / areaCount;
-}
-
 double getDistance(){
   return (TARGET_HEIGHT-CAMERA_HEIGHT)/tan(degreesToRadians((angleToTarget_y)));
-}
-
-double getDistanceTest(double area) {
-  return 0.0000034971*sq(area) - (.013984*area) + 15.336;
 }
