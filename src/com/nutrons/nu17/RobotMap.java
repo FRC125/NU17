@@ -60,7 +60,7 @@ public class RobotMap {
     public static final int JOYSTICK_B = 1;
     public static final int JOYSTICK_X = 2;
     public static final int JOYSTICK_Y = 3;
-    public static final int JOYSTICK_LEFT_BUMPER = 4;//
+    public static final int JOYSTICK_LEFT_BUMPER = 4;
 
     // TODO tune this constant for deadband
     public static final double JOYSTICK_DEADBAND = 0.05;
