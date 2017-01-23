@@ -6,34 +6,35 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ShootShooterCmd extends Command {
 
-	public ShootShooterCmd() {
-		requires(Robot.SHOOTER);
-	}
+  public ShootShooterCmd() {
+    requires(Robot.SHOOTER);
+  }
 
-	/**
-	 * Resets encoder and starts running motor at a consistent speed.
-	 */
-	protected void initialize() {
-		Robot.SHOOTER.resetEncoder();
-		Robot.SHOOTER.runShooter(1.0);
-	}
-	
-	/**
-	 * Keeps running motor to a consistent speed.
-	 */
-	protected void execute() {
-		Robot.SHOOTER.runShooter(Robot.SHOOTER.SPEED_PID.get());
-	}
-	// Don't want the shooter to stop
-	protected boolean isFinished() {
-		return false;
-	}
+  /**
+   * Resets encoder and starts running motor at a consistent speed.
+   */
+  protected void initialize() {
+    Robot.SHOOTER.resetEncoder();
+    Robot.SHOOTER.runShooter(1.0);
+  }
 
-	protected void end() {
-		Robot.SHOOTER.stopShooter();
-	}
+  /**
+   * Keeps running motor to a consistent speed.
+   */
+  protected void execute() {
+    Robot.SHOOTER.runShooter(Robot.SHOOTER.speedPid.get());
+  }
 
-	protected void interrupted() {
-		end();
-	}
+  // Don't want the shooter to stop
+  protected boolean isFinished() {
+    return false;
+  }
+
+  protected void end() {
+    Robot.SHOOTER.stopShooter();
+  }
+
+  protected void interrupted() {
+    end();
+  }
 }

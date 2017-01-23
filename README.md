@@ -1,4 +1,7 @@
 # NU17
+
+[![Build Status](https://travis-ci.org/FRC125/NU17.svg?branch=master)](https://travis-ci.org/FRC125/NU17)
+
 Steamworks robot code
 
 To Generate a Javadoc for Eclipse:
