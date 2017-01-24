@@ -1,37 +1,50 @@
 package lib;
 import java.util.LinkedList;
-public class DebouncingBoolean {
+public class DebouncingBoolean implements DebouncedBoolean{
 	private static LinkedList<Boolean> queue;
 	private static int windowSize;
-	private boolean state;
+	private boolean count;
 	
-	public DebouncingBoolean(int windowSize, int start){
+	/**
+	 * 
+	 * @param windowSize sets size for the queue
+	 * @param x boolean passed to initialize the queue
+	 */
+	public DebouncingBoolean(int windowSize,  boolean x){
 		this.windowSize = windowSize;
 		queue = new LinkedList<Boolean>();
 		while(queue.size() < windowSize){
-			if (start > 0){
-				queue.add(true);
+			if (x){
+				queue.add(x);
+				count = true;
 			}
 			else{
-			queue.add(false);
+			queue.add(x);
+			count = false;
 			}
 		}
 	}
 	
-	public void feed(int val){
-		if (queue.size() == windowSize){
-			if (val > 0){
-				queue.removeFirst();
-				queue.addLast(true);
-			}
-			else{
-				queue.removeFirst();
-				queue.addLast(false);
-			}
+	/**
+	 * @param b boolean passed to be added into the queue
+	 */
+	public void add(boolean b){
+		if (b){
+			queue.removeFirst();
+			queue.addLast(b);
+			count = true;
+		}
+		else{
+			queue.removeFirst();
+			queue.addLast(b);
+			count = false;
 		}
 	}
-	
-	public void getQueue(){
-		queue.listIterator();
+	/**
+	 * @return count boolean that determines if the queue is true or false
+	 */
+	public boolean get(){
+		return count;
+		
 	}
 }
