@@ -3,41 +3,33 @@ import java.util.LinkedList;
 public class DebouncedBoolean implements DebouncedBooleanInterface{
 	private static LinkedList<Boolean> queue;
 	private static int windowSize;
-	private boolean count;
+	private int count;
 	
 	/**
 	 * 
 	 * @param windowSize sets size for the queue
 	 * @param x boolean passed to initialize the queue
 	 */
-	public DebouncedBoolean(int windowSize,  boolean x){
-		this.windowSize = windowSize;
-		queue = new LinkedList<Boolean>();
-			if (x){
-				queue.add(x);
-				count = true;
-			}
-			else{
-			queue.add(x);
-			count = false;
-			}
+	public DebouncedBoolean(int windowSize, boolean initial){
+		if(initial){
+			this.windowSize = windowSize;
 		}
+		this.windowSize = -windowSize;
+		queue = new LinkedList<Boolean>();
+			
 	}
 	
 	/**
 	 * @param b boolean passed to be added into the queue
 	 */
 	public void add(boolean b){
-		if (b){
 			queue.removeFirst();
 			queue.addLast(b);
-			count = true;
+			count++;
+		if(b){
+			count++;
 		}
-		else{
-			queue.removeFirst();
-			queue.addLast(b);
-			count = false;
-		}
+		count--;
 	}
 	/**
 	 * @return count boolean that determines if the queue is true or false
