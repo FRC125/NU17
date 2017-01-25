@@ -72,7 +72,7 @@ public class Drivetrain extends Subsystem {
   private final AnalogGyro gyro = new AnalogGyro(RobotMap.DRIVETRAIN_HEADING_GYRO);
 
   // TODO: Tune Ports
-  private final Encoder Drive_Distance_Encoder = new Encoder(
+  private final Encoder driveDistanceEncoder = new Encoder(
       RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1, RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_2);
 
   // Drive
