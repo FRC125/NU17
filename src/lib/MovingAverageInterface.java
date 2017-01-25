@@ -9,7 +9,8 @@ package lib;
 public interface MovingAverageInterface {
 
   /**
-   * Removes the first value from the average ands a new one to the average.
+   * Removes the first value from the average and adds a new one to the average. A value is only
+   * removed if values greater than the windowSize are being added.
    * 
    * @param val Value being added to the average.
    */

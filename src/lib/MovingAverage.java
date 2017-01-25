@@ -14,7 +14,7 @@ public class MovingAverage implements MovingAverageInterface {
    */
   public MovingAverage(int windowSize) {
     if (windowSize <= 0) {
-      throw new IllegalArgumentException(windowSize + "is not a valid input");
+      throw new IllegalArgumentException(windowSize + " is not a valid window size.");
     }
     queue = new LinkedList<Double>();
     this.windowSize = windowSize;
