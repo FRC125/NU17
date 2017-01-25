@@ -12,80 +12,74 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class HoodShooterFlywheel extends Subsystem {
 
-	private final Talon FLY_WHEEL_LEFT = new Talon(RobotMap.FLY_WHEEL_LEFT);
-	private final Talon FLY_WHEEL_RIGHT = new Talon(RobotMap.FLY_WHEEL_RIGHT);
-	private final Encoder TURN_LEFT = new Encoder(
-			RobotMap.FLY_ENCODER_FRONT_RIGHT, 
-			RobotMap.FLY_ENCODER_BACK_RIGHT);
-	private final Encoder TURN_RIGHT = new Encoder(
-			RobotMap.FLY_ENCODER_FRONT_LEFT, 
-			RobotMap.FLY_ENCODER_BACK_LEFT);
+  private final Talon flyWheelLeft = new Talon(RobotMap.FLY_WHEEL_LEFT);
+  private final Talon flyWheelRight = new Talon(RobotMap.FLY_WHEEL_RIGHT);
+  private final Encoder turnLeft =
+      new Encoder(RobotMap.FLY_ENCODER_FRONT_RIGHT, RobotMap.FLY_ENCODER_BACK_RIGHT);
+  private final Encoder turnRight =
+      new Encoder(RobotMap.FLY_ENCODER_FRONT_LEFT, RobotMap.FLY_ENCODER_BACK_LEFT);
 
-	public final PIDController ANGLE_SHOT_PID = new PIDController(
-			P_TURN, 
-			I_TURN, 
-			D_TURN, 
-			new TurnSourcePID(), 
-			new TurnOutput());
-	
-	// TODO: tune these constants
-	private static final double P_TURN = 0.001;
-	private static final double I_TURN = 0;
-	private static final double D_TURN = 0;
+  public final PIDController angleShotPid =
+      new PIDController(P_TURN, I_TURN, D_TURN, new TurnSourcePid(), new TurnOutput());
 
-	public void initDefaultCommand() {
-		//empty
-	}
+  // TODO: tune these constants
+  private static final double P_TURN = 0.001;
+  private static final double I_TURN = 0;
+  private static final double D_TURN = 0;
 
-	/**
-	 * Drive the flywheel.
-	 * 
-	 * @param left Speed that the left fly wheel is set to.
-	 * @param right Speed that the right fly wheel is set to.
-	 */
-	public void turnShot(double left, double right) {
-		this.FLY_WHEEL_LEFT.set(left);
-		this.FLY_WHEEL_RIGHT.set(right);
-	}
+  public void initDefaultCommand() {
+    // empty
+  }
 
-	/**
-	 * Stops flywheel.
-	 */
-	public void stop() {
-		this.turnShot(0, 0);
-	}
+  /**
+   * Drive the flywheel.
+   * 
+   * @param left Speed that the left fly wheel is set to.
+   * @param right Speed that the right fly wheel is set to.
+   */
+  public void turnShot(double left, double right) {
+    this.flyWheelLeft.set(left);
+    this.flyWheelRight.set(right);
+  }
 
-	/**
-	 * Resets encoders.
-	 */
-	public void resetEncoder() {
-		this.TURN_LEFT.reset();
-		this.TURN_RIGHT.reset();
-	}
+  /**
+   * Stops flywheel.
+   */
+  public void stop() {
+    this.turnShot(0, 0);
+  }
 
-	private class TurnSourcePID implements PIDSource {
+  /**
+   * Resets encoders.
+   */
+  public void resetEncoder() {
+    this.turnLeft.reset();
+    this.turnRight.reset();
+  }
 
-		@Override
-		public void setPIDSourceType(PIDSourceType pidSource) {
-			//empty
-		}
+  private class TurnSourcePid implements PIDSource {
 
-		@Override
-		public PIDSourceType getPIDSourceType() {
-			return PIDSourceType.kDisplacement;
-		}
+    @Override
+    public void setPIDSourceType(PIDSourceType pidSource) {
+      // empty
+    }
 
-		@Override
-		public double pidGet() {
-			return 0;// waiting for encoder and actual flywheel
-		}
-	}
+    @Override
+    public PIDSourceType getPIDSourceType() {
+      return PIDSourceType.kDisplacement;
+    }
 
-	private class TurnOutput implements PIDOutput {
+    @Override
+    public double pidGet() {
+      return 0;// waiting for encoder and actual flywheel
+    }
+  }
 
-		@Override
-		public void pidWrite(double output) {
-			turnShot(output, -output);
-		}
-	}
+  private class TurnOutput implements PIDOutput {
+
+    @Override
+    public void pidWrite(double output) {
+      turnShot(output, -output);
+    }
+  }
 }

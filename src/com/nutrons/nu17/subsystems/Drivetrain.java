@@ -3,8 +3,9 @@ package com.nutrons.nu17.subsystems;
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
-import com.nutrons.nu17.OI;
+import com.nutrons.nu17.OperatorInterface;
 import com.nutrons.nu17.Robot;
+import com.nutrons.nu17.OperatorInterface;
 import com.nutrons.nu17.RobotMap;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
@@ -14,13 +15,13 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import lib.EncoderWrapper;
 import lib.GyroWrapper;
-import lib.HoldPID;
+import lib.HoldPid;
 
 public class Drivetrain extends Subsystem {
+
 
 	public Drivetrain() {
 		this.setPercentDrive();
@@ -124,7 +125,7 @@ public class Drivetrain extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		drive.tankDrive(OI.DRIVER_PAD.getY(), OI.DRIVER_PAD.getX());
+		drive.tankDrive(OperatorInterface.DRIVER_PAD.getY(), OperatorInterface.DRIVER_PAD.getX());
 	}
 	// PID
 		// TODO: tune these constants
