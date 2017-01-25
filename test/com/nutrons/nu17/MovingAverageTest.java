@@ -13,7 +13,9 @@ public class MovingAverageTest {
   public void sameValuesTest() {
     MovingAverageInterface avg = new MovingAverage(3);
     avg.update(3.0);
+    assertEquals(3.0, avg.getAverage());
     avg.update(3.0);
+    assertEquals(3.0, avg.getAverage());
     avg.update(3.0);
     assertEquals(3.0, avg.getAverage());
   }
@@ -51,8 +53,12 @@ public class MovingAverageTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void exceptionTest() {
+  public void negativeExceptionTest() {
     MovingAverageInterface avg = new MovingAverage(-1);
+  }
+  
+  @Test (expected = IllegalArgumentException.class)
+  public void zeroExceptionTest() {
     MovingAverageInterface zero = new MovingAverage(0);
   }
 
