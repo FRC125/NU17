@@ -56,8 +56,8 @@ public class MovingAverageTest {
   public void negativeExceptionTest() {
     MovingAverageInterface avg = new MovingAverage(-1);
   }
-  
-  @Test (expected = IllegalArgumentException.class)
+
+  @Test(expected = IllegalArgumentException.class)
   public void zeroExceptionTest() {
     MovingAverageInterface zero = new MovingAverage(0);
   }
