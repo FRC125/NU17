@@ -1,6 +1,7 @@
 package lib;
 
 public interface DebouncedBooleanInterface {
-    void add(boolean b);
-    boolean get();
+  void add(boolean b);
+
+  boolean get();
 }
