@@ -9,8 +9,8 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
 
   /**
    * 
-   * @param windowSize sets size for the queue
-   * @param x boolean passed to initialize the queue
+   * @param windowSize Sets size for the queue.
+   * @param initial Boolean passed to initialize the queue.
    */
   public DebouncedBoolean(int windowSize, boolean initial) {
     if (initial) {
@@ -24,16 +24,16 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
   }
 
   /**
-   * @param b boolean passed to be added into the queue
+   * @param value Boolean passed to be added into the queue.
    */
-  public void add(boolean b) {
+  public void add(boolean value) {
     if (queue.size() == windowSize) {
       queue.removeFirst();
-      queue.addLast(b);
+      queue.addLast(value);
     } else {
-      queue.addLast(b);
+      queue.addLast(value);
     }
-    if (b) {
+    if (value) {
       count++;
     } else {
       count--;
@@ -41,7 +41,7 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
   }
 
   /**
-   * @return count boolean that determines if the queue is true or false
+   * @return Boolean that determines if the queue is true or false.
    */
   public boolean get() {
     return count >= 0;
