@@ -5,9 +5,7 @@ import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 import com.nutrons.nu17.OperatorInterface;
 import com.nutrons.nu17.Robot;
-import com.nutrons.nu17.OperatorInterface;
 import com.nutrons.nu17.RobotMap;
-
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
@@ -16,13 +14,13 @@ import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import lib.EncoderWrapper;
-import lib.GyroWrapper;
-import lib.HoldPid;
+
 
 public class Drivetrain extends Subsystem {
 
-
+/**
+ * Drivetrain four wheel drive
+ */
   public Drivetrain() {
     this.setPercentDrive();
 
@@ -61,7 +59,7 @@ public class Drivetrain extends Subsystem {
 
     this.disableBreakMode();
 
-    this.GYRO.calibrate();
+    this.gyro.calibrate();
   }
 
   // Motors
@@ -71,7 +69,7 @@ public class Drivetrain extends Subsystem {
   public CANTalon frontRight = new CANTalon(RobotMap.BACK_RIGHT);
 
   // Sensors
-  private final AnalogGyro GYRO = new AnalogGyro(RobotMap.DRIVETRAIN_HEADING_GYRO);
+  private final AnalogGyro gyro = new AnalogGyro(RobotMap.DRIVETRAIN_HEADING_GYRO);
 
   // TODO: Tune Ports
   private final Encoder DRIVE_DISTANCE_ENCODER = new Encoder(
@@ -86,7 +84,7 @@ public class Drivetrain extends Subsystem {
    * @return angle Angular displacement from the initial gyro position.
    */
   public double getAngleInDegrees() {
-    return this.GYRO.getAngle();
+    return this.gyro.getAngle();
   }
 
   /**
@@ -110,7 +108,7 @@ public class Drivetrain extends Subsystem {
    * Resets the gyro.
    */
   public void resetGyro() {
-    this.GYRO.reset();
+    this.gyro.reset();
 
   }
 
