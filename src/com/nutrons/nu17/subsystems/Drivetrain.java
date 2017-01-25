@@ -93,14 +93,14 @@ public class Drivetrain extends Subsystem {
    * @return Encoder Rate using the .getRate method
    */
   public double getEncoderRate() {
-    return this.drive_distance_encoder.getRate();
+    return this.driveDistanceEncoder.getRate();
   }
 
   /**
    * Resets the encoder.
    */
   public void resetEncoder() {
-    this.drive_distance_encoder.reset();
+    this.driveDistanceEncoder.reset();
 
   }
 
