@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drivetrain extends Subsystem {
 
-/**
- * Drivetrain four wheel drive
- */
+  /**
+  * Drivetrain four wheel drive.
+  */
   public Drivetrain() {
     this.setPercentDrive();
 
@@ -72,7 +72,7 @@ public class Drivetrain extends Subsystem {
   private final AnalogGyro gyro = new AnalogGyro(RobotMap.DRIVETRAIN_HEADING_GYRO);
 
   // TODO: Tune Ports
-  private final Encoder DRIVE_DISTANCE_ENCODER = new Encoder(
+  private final Encoder drive_distance_encoder = new Encoder(
       RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1, RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_2);
 
   // Drive
@@ -93,14 +93,14 @@ public class Drivetrain extends Subsystem {
    * @return Encoder Rate using the .getRate method
    */
   public double getEncoderRate() {
-    return this.DRIVE_DISTANCE_ENCODER.getRate();
+    return this.drive_distance_encoder.getRate();
   }
 
   /**
    * Resets the encoder.
    */
   public void resetEncoder() {
-    this.DRIVE_DISTANCE_ENCODER.reset();
+    this.drive_distance_encoder.reset();
 
   }
 
@@ -150,7 +150,7 @@ public class Drivetrain extends Subsystem {
       new PIDController(P_TURN, I_TURN, D_TURN, new GyroWrapper(), new TurnToAngleOutput());
   private double distance;
   public final PIDController driveDistance = new PIDController(P_DISTANCE, I_DISTANCE, D_DISTANCE,
-      new EncoderWrapper(), new DriveDistancePIDOutput());
+      new EncoderWrapper(), new DriveDistanceOutput());
 
   private class GyroWrapper implements PIDSource {
 
@@ -189,6 +189,7 @@ public class Drivetrain extends Subsystem {
       // TODO Auto-generated method stub
     }
   }
+  
   private class HoldHeadingOutput implements PIDOutput {
 
     @Override
@@ -205,7 +206,7 @@ public class Drivetrain extends Subsystem {
     }
   }
 
-  public class DriveDistancePIDOutput implements PIDOutput {
+  public class DriveDistanceOutput implements PIDOutput {
 
     @Override
     public void pidWrite(double power) {
