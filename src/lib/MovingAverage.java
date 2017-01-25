@@ -10,7 +10,7 @@ public class MovingAverage {
   /**
    * Creates the average.
    * 
-   * @param size Used to create the average.
+   * @param windowSize Used to create the average.
    */
   public MovingAverage(int windowSize) {
     if (windowSize <= 0) {
@@ -24,7 +24,7 @@ public class MovingAverage {
   /**
    * Updates the queue by removing the first value and added a new one to the end of the queue.
    * 
-   * @param num Value being added.
+   * @param val Value being added.
    */
   public void update(double val) {
     if (queue.size() == windowSize) {
