@@ -2,7 +2,7 @@ package lib;
 
 import java.util.LinkedList;
 
-public class MovingAverage {
+public class MovingAverage implements MovingAverageInterface {
   private static LinkedList<Double> queue;
   private static int windowSize;
   private double curTotal;
@@ -21,11 +21,10 @@ public class MovingAverage {
     curTotal = 0;
   }
 
-  /**
-   * Updates the queue by removing the first value and added a new one to the end of the queue.
-   * 
-   * @param val Value being added.
+  /* (non-Javadoc)
+   * @see lib.MovingAverageInterface#update(double)
    */
+  @Override
   public void update(double val) {
     if (queue.size() == windowSize) {
       curTotal -= queue.removeFirst();
@@ -34,9 +33,10 @@ public class MovingAverage {
     queue.addLast(val);
   }
 
-  /**
-   * @return Gets the current average.
+  /* (non-Javadoc)
+   * @see lib.MovingAverageInterface#getAverage()
    */
+  @Override
   public double getAverage() {
     return curTotal / queue.size();
   }

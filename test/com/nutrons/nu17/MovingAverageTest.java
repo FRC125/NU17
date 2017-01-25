@@ -5,12 +5,13 @@ import static junit.framework.TestCase.assertEquals;
 import org.junit.Test;
 
 import lib.MovingAverage;
+import lib.MovingAverageInterface;
 
 public class MovingAverageTest {
 
   @Test
   public void sameValuesTest() {
-    MovingAverage avg = new MovingAverage(3);
+    MovingAverageInterface avg = new MovingAverage(3);
     avg.update(3.0);
     avg.update(3.0);
     avg.update(3.0);
@@ -19,7 +20,7 @@ public class MovingAverageTest {
 
   @Test
   public void negativeValue() {
-    MovingAverage avg = new MovingAverage(6);
+    MovingAverageInterface avg = new MovingAverage(6);
     avg.update(3.0);
     assertEquals(3.0, avg.getAverage());
     avg.update(7.0);
@@ -36,7 +37,7 @@ public class MovingAverageTest {
 
   @Test
   public void allNegative() {
-    MovingAverage avg = new MovingAverage(4);
+    MovingAverageInterface avg = new MovingAverage(4);
     avg.update(-5.0);
     assertEquals(-5.0, avg.getAverage());
     avg.update(-6.0);
@@ -51,13 +52,13 @@ public class MovingAverageTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void exceptionTest() {
-    MovingAverage avg = new MovingAverage(-1);
-    MovingAverage zero = new MovingAverage(0);
+    MovingAverageInterface avg = new MovingAverage(-1);
+    MovingAverageInterface zero = new MovingAverage(0);
   }
 
   @Test
   public void Zerovalue() {
-    MovingAverage avg = new MovingAverage(3);
+    MovingAverageInterface avg = new MovingAverage(3);
     avg.update(8.0);
     assertEquals(8.0, avg.getAverage());
     avg.update(0.0);
