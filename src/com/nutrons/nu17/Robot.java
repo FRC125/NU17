@@ -1,6 +1,5 @@
 package com.nutrons.nu17;
 
-import com.nutrons.nu17.OI;
 import com.nutrons.nu17.subsystems.Climber;
 import com.nutrons.nu17.subsystems.Drivetrain;
 import com.nutrons.nu17.subsystems.GearPlacer;
@@ -21,7 +20,7 @@ public class Robot extends IterativeRobot {
   public static final Climber CLIMBER = new Climber();
   public static final Drivetrain DRIVETRAIN = new Drivetrain();
 
-  public static final OI OI = new OI();
+  public static final OperatorInterface OperatorInterface = new OperatorInterface();
 
   @Override
   public void robotInit() {
