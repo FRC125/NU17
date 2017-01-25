@@ -9,14 +9,14 @@ package lib;
 public interface MovingAverageInterface {
 
   /**
-   * Updates the queue by removing the first value and added a new one to the end of the queue.
+   * Removes the first value from the average ands a new one to the average.
    * 
-   * @param val Value being added.
+   * @param val Value being added to the average.
    */
   void update(double val);
 
   /**
-   * @return Gets the current average.
+   * @return Returns the current average.
    */
   double getAverage();
 
