@@ -28,14 +28,21 @@ void setup() {
 void loop() { 
   char buf[32]; 
   blocks = pixy.getBlocks();
+  double arr[] = {0.0, 0.0};
 
   if (blocks) {
      angleToTarget_x = getHorizontalAngleOffset(pixy.blocks[0].x);
      angleToTarget_y = getVerticalAngleOffset(pixy.blocks[0].y);
-     distanceToTarget = getDistance(); 
+     distanceToTarget = getDistance();
+     arr[0] = distanceToTarget;
+     arr[1] = angleToTarget_x;
+
+     //Serial.write( (byte*) arr, 16);
      
-     toSend = "d" + String(getDistance(), 3) + "a" + String(angleToTarget_x, 3);
+     toSend = String(getDistance(), 3) + ":" + String(angleToTarget_x, 3);
      Serial.print(toSend + "\n");
+
+     delay(10);
      
   }  
 }
