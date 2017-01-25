@@ -1,7 +1,12 @@
 package lib;
 
 
-
+/**
+ * 
+ * @author khenr
+ * A moving average is used to keep track of a windowed average that has values 
+ * constantly being added and removed.
+ */
 public interface MovingAverageInterface {
 
   /**
