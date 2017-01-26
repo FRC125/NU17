@@ -65,5 +65,5 @@ public class RobotMap {
 
   // TODO tune this constant for deadband
   public static final double JOYSTICK_DEADBAND = 0.05;
-public static final int SHOOTER = 0;
+  public static final int SHOOTER = 0;
 }

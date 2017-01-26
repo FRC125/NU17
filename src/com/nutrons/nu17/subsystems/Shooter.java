@@ -18,69 +18,72 @@ import lib.HoldPid;
 
 public class Shooter extends Subsystem {
 
-	public static double SHOOTER_SPEED = 10.0;
-	
-	public CANTalon SHOOTER = new CANTalon(RobotMap.SHOOTER_MOTOR);
-	
-	// TODO: tune these constants
-	public static double P_SHOOT = 0.025;
-	public static double I_SHOOT = 0.0;
-	public static double D_SHOOT = 0.01;
-	public static double F_SHOOT = 0.025;
+  public static double SHOOTER_SPEED = 10.0;
 
-	public Shooter() {
-		this.SHOOTER.configNominalOutputVoltage(+0.0f, -0.0f);
-		this.SHOOTER.configPeakOutputVoltage(+12.0f, 0.0f);
-		this.SHOOTER.configEncoderCodesPerRev((int)(256 / 0.14));
-		this.SHOOTER.configEncoderCodesPerRev((int)(256 / 0.14));
-		this.SHOOTER.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-		this.SHOOTER.setP(P_SHOOT);
-		this.SHOOTER.setI(I_SHOOT);
-		this.SHOOTER.setD(D_SHOOT);
-		this.SHOOTER.setF(F_SHOOT);
-		
-	}
-	
-	public void initDefaultCommand() {
-		setDefaultCommand(new ShootShooterCmd());
-		
-	}
-	/**
-	 * Changes to manual and sets the speed
-	 * @param speed Speed of shooter
-	 */
-	public void setOpenLoop(double speed){
-		this.SHOOTER.changeControlMode(TalonControlMode.PercentVbus);
-		this.SHOOTER.set(speed);
-	}
-	/**
-	 * Changes to closed loop.
-	 * Sets the RPM from the shooter
-	 */
-	public void setRPM(double rpm){
-		this.SHOOTER.changeControlMode(TalonControlMode.Speed);
-		this.SHOOTER.set(rpm);
-	}
+  public CANTalon shooter = new CANTalon(RobotMap.SHOOTER_MOTOR);
 
-	/**
-	 * Cuts the power to the shooter, setting it to 0.0.
-	 */
-	public void stopShooter() {
-		setOpenLoop(0.0);
-	}
-	/**
-	 * 
-	 * Gets RPM from shooter
-	 */
-	public double getRPM(){
-		return this.SHOOTER.getSpeed();
-	}
+  // TODO: tune these constants
+  public static double P_SHOOT = 0.025;
+  public static double I_SHOOT = 0.0;
+  public static double D_SHOOT = 0.01;
+  public static double F_SHOOT = 0.025;
 
-	/**
-	 * Resets Encoder.
-	 */
-	public void resetEncoder() {
-		this.SHOOTER.setEncPosition(0);
-	}
-	
+  public Shooter() {
+    this.shooter.configNominalOutputVoltage(+0.0f, -0.0f);
+    this.shooter.configPeakOutputVoltage(+12.0f, 0.0f);
+    this.shooter.configEncoderCodesPerRev((int) (256 / 0.14));
+    this.shooter.configEncoderCodesPerRev((int) (256 / 0.14));
+    this.shooter.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    this.shooter.setP(P_SHOOT);
+    this.shooter.setI(I_SHOOT);
+    this.shooter.setD(D_SHOOT);
+    this.shooter.setF(F_SHOOT);
+
+  }
+
+  public void initDefaultCommand() {
+    setDefaultCommand(new ShootShooterCmd());
+
+  }
+
+  /**
+   * Changes to manual and sets the speed
+   * 
+   * @param speed Speed of shooter
+   */
+  public void setOpenLoop(double speed) {
+    this.shooter.changeControlMode(TalonControlMode.PercentVbus);
+    this.shooter.set(speed);
+  }
+
+  /**
+   * Changes to closed loop. Sets the RPM from the shooter
+   */
+  public void setRPM(double rpm) {
+    this.shooter.changeControlMode(TalonControlMode.Speed);
+    this.shooter.set(rpm);
+  }
+
+  /**
+   * Cuts the power to the shooter, setting it to 0.0.
+   */
+  public void stopShooter() {
+    setOpenLoop(0.0);
+  }
+
+  /**
+   * 
+   * Gets RPM from shooter
+   */
+  public double getRPM() {
+    return this.shooter.getSpeed();
+  }
+
+  /**
+   * Resets Encoder.
+   */
+  public void resetEncoder() {
+    this.shooter.setEncPosition(0);
+  }
+
 }

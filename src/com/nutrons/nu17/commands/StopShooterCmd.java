@@ -7,28 +7,25 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class StopShooterCmd extends Command {
 
-    public StopShooterCmd() {
-       requires(Robot.SHOOTER);
-    }
+  public StopShooterCmd() {
+    requires(Robot.SHOOTER);
+  }
 
-    protected void initialize() {
-    	Robot.SHOOTER.SHOOTER.disable();
-    }
+  protected void initialize() {
+    Robot.SHOOTER.SHOOTER.disable();
+  }
 
-    
-    protected void execute() {
-    }
 
-    
-    protected boolean isFinished() {
-        return true;
-    }
+  protected void execute() {}
 
-    
-    protected void end() {
-    }
 
-    
-    protected void interrupted() {
-    }
+  protected boolean isFinished() {
+    return true;
+  }
+
+
+  protected void end() {}
+
+
+  protected void interrupted() {}
 }
