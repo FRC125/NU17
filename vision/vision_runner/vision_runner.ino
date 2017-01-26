@@ -4,7 +4,10 @@
 Pixy pixy;
 uint16_t blocks;
 String toSend;
+char buf[32]; 
+double arr[2];
 
+  
 //******ANGLE VARIABLES******
 double angleToTarget_x; //horizontal angle in degrees
 double angleToTarget_y; //vertical angle in degrees
@@ -26,9 +29,7 @@ void setup() {
 }
 
 void loop() { 
-  char buf[32]; 
   blocks = pixy.getBlocks();
-  double arr[] = {0.0, 0.0};
 
   if (blocks) {
      angleToTarget_x = getHorizontalAngleOffset(pixy.blocks[0].x);
@@ -36,14 +37,15 @@ void loop() {
      distanceToTarget = getDistance();
      arr[0] = distanceToTarget;
      arr[1] = angleToTarget_x;
-
-     //Serial.write( (byte*) arr, 16);
      
-     toSend = String(getDistance(), 3) + ":" + String(angleToTarget_x, 3);
-     Serial.print(toSend + "\n");
-
-     delay(10);
-     
+     //toSend = String(getDistance(), 3) + ":" + String(angleToTarget_x, 3);
+     //Serial.print(toSend + "\n");
+ 
+     toSend = String(getDistance(), 3).substring(0,4) + ":" + String(angleToTarget_x, 3).substring(0,4) + "\n";
+     byte sendBytes[toSend.length() + 1];
+     toSend.getBytes(sendBytes, toSend.length() + 1);
+     Serial.write(sendBytes, toSend.length() + 1);
+     Serial.flush();
   }  
 }
 
