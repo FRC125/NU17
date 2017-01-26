@@ -31,15 +31,15 @@ public class Drivetrain extends Subsystem {
   private HoldPID gyroPid = new HoldPID();
 
   // TODO: tune these constants
-  public static double P_DRIVE = 0.025;
-  public static double I_DRIVE = 0.001;
-  public static double D_DRIVE = 0.001;
-  public static double F_DRIVE = 0.001;
+  public double P_DRIVE = 0.025;
+  public double I_DRIVE = 0.001;
+  public double D_DRIVE = 0.001;
+  public double F_DRIVE = 0.001;
 
   // TODO: tune these constants
-  public static double P_HEADING = 0.025;
-  public static double I_HEADING = 0.001;
-  public static double D_HEADING = 0.001;
+  public double P_HEADING = 0.025;
+  public double I_HEADING = 0.001;
+  public double D_HEADING = 0.001;
 
   private PIDController holdHeading = new PIDController(this.P_HEADING, this.I_HEADING,
       this.D_HEADING, this.gyroWrapper, this.gyroPid);
@@ -147,5 +147,8 @@ public class Drivetrain extends Subsystem {
     SmartDashboard.putNumber("P_HEADING", P_HEADING);
     SmartDashboard.putNumber("I_HEADING", I_HEADING);
     SmartDashboard.putNumber("D_HEADING", D_HEADING);
+    
+    this.P_DRIVE = SmartDashboard.getNumber("P_DRIVE", this.P_DRIVE);
+    
   }
 }
