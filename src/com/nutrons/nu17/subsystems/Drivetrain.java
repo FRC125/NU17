@@ -140,15 +140,20 @@ public class Drivetrain extends Subsystem {
   }
 
   public void dumbDashboard() {
-    SmartDashboard.putNumber("P_DRIVE", P_DRIVE);
-    SmartDashboard.putNumber("I_DRIVE", I_DRIVE);
-    SmartDashboard.putNumber("D_DRIVE", D_DRIVE);
-    SmartDashboard.putNumber("F_DRIVE", F_DRIVE);
-    SmartDashboard.putNumber("P_HEADING", P_HEADING);
-    SmartDashboard.putNumber("I_HEADING", I_HEADING);
-    SmartDashboard.putNumber("D_HEADING", D_HEADING);
+    SmartDashboard.putNumber("p_drive", P_DRIVE);
+    SmartDashboard.putNumber("i_drive", I_DRIVE);
+    SmartDashboard.putNumber("d_drive", D_DRIVE);
+    SmartDashboard.putNumber("f_drive", F_DRIVE);
+    SmartDashboard.putNumber("p_heading", P_HEADING);
+    SmartDashboard.putNumber("i_heading", I_HEADING);
+    SmartDashboard.putNumber("d_heading", D_HEADING);
     
-    this.P_DRIVE = SmartDashboard.getNumber("P_DRIVE", this.P_DRIVE);
-    
+    this.P_DRIVE = SmartDashboard.getNumber("p_drive", this.P_DRIVE);
+    this.I_DRIVE = SmartDashboard.getNumber("i_drive", this.I_DRIVE);
+    this.D_DRIVE = SmartDashboard.getNumber("d_drive", this.D_DRIVE);
+    this.F_DRIVE = SmartDashboard.getNumber("f_drive", this.F_DRIVE);
+    this.P_HEADING = SmartDashboard.getNumber("p_heading", this.P_HEADING);
+    this.I_HEADING = SmartDashboard.getNumber("i_heading", this.I_HEADING);
+    this.D_HEADING = SmartDashboard.getNumber("d_heading", this.D_HEADING);
   }
 }
