@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import lib.GyroWrapper;
 
 import lib.HoldPID;
@@ -30,15 +31,15 @@ public class Drivetrain extends Subsystem {
   private HoldPID gyroPid = new HoldPID();
 
   // TODO: tune these constants
-  public double P_DRIVE = 0.025;
-  public double I_DRIVE = 0.001;
-  public double D_DRIVE = 0.001;
-  public double F_DRIVE = 0.001;
+  public static double P_DRIVE = 0.025;
+  public static double I_DRIVE = 0.001;
+  public static double D_DRIVE = 0.001;
+  public static double F_DRIVE = 0.001;
 
   // TODO: tune these constants
-  public double P_HEADING = 0.025;
-  public double I_HEADING = 0.001;
-  public double D_HEADING = 0.001;
+  public static double P_HEADING = 0.025;
+  public static double I_HEADING = 0.001;
+  public static double D_HEADING = 0.001;
 
   private PIDController holdHeading = new PIDController(this.P_HEADING, this.I_HEADING,
       this.D_HEADING, this.gyroWrapper, this.gyroPid);
@@ -136,5 +137,15 @@ public class Drivetrain extends Subsystem {
   public void resetEncoders() {
     this.FRONT_LEFT.setPosition(0.0);
     this.FRONT_RIGHT.setPosition(0.0);
+  }
+
+  public void dumbDashboard() {
+    SmartDashboard.putNumber("P_DRIVE", P_DRIVE);
+    SmartDashboard.putNumber("I_DRIVE", I_DRIVE);
+    SmartDashboard.putNumber("D_DRIVE", D_DRIVE);
+    SmartDashboard.putNumber("F_DRIVE", F_DRIVE);
+    SmartDashboard.putNumber("P_HEADING", P_HEADING);
+    SmartDashboard.putNumber("I_HEADING", I_HEADING);
+    SmartDashboard.putNumber("D_HEADING", D_HEADING);
   }
 }
