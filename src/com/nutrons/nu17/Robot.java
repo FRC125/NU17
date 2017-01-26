@@ -1,5 +1,12 @@
 package com.nutrons.nu17;
 
+import com.nutrons.nu17.subsystems.Climber;
+import com.nutrons.nu17.subsystems.Drivetrain;
+import com.nutrons.nu17.subsystems.GearPlacer;
+import com.nutrons.nu17.subsystems.GroundIntake;
+import com.nutrons.nu17.subsystems.Shooter;
+import com.nutrons.nu17.subsystems.TwinShooter;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;

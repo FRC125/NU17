@@ -14,12 +14,13 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import lib.EncoderWrapper;
-import lib.HoldPID;
+import lib.HoldPid;
 
 public class Shooter extends Subsystem {
+
 	public static double SHOOTER_SPEED = 10.0;
 	
-	public CANTalon SHOOTER = new CANTalon(RobotMap.SHOOTER);
+	public CANTalon SHOOTER = new CANTalon(RobotMap.SHOOTER_MOTOR);
 	
 	// TODO: tune these constants
 	public static double P_SHOOT = 0.025;
@@ -81,4 +82,5 @@ public class Shooter extends Subsystem {
 	public void resetEncoder() {
 		this.SHOOTER.setEncPosition(0);
 	}
+	
 }
