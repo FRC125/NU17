@@ -42,25 +42,36 @@ public class Shooter extends Subsystem {
 	
 	public void initDefaultCommand() {
 		setDefaultCommand(new ShootShooterCmd());
+		
 	}
-
 	/**
-	 * Runs shooter at given param power.
-	 * 
-	 * @param power Speed to run the shooting motor.
+	 * Changes to manual and sets the speed
+	 * @param speed Speed of shooter
 	 */
-	public void runShooter(double power) {
-		this.SHOOTER.set(power);
+	public void setOpenLoop(double speed){
+		this.SHOOTER.changeControlMode(TalonControlMode.PercentVbus);
+		this.SHOOTER.set(speed);
+	}
+	/**
+	 * Changes to closed loop.
+	 * Sets the RPM from the shooter
+	 */
+	public void setRPM(double rpm){
+		this.SHOOTER.changeControlMode(TalonControlMode.Speed);
+		this.SHOOTER.set(rpm);
 	}
 
 	/**
 	 * Cuts the power to the shooter, setting it to 0.0.
 	 */
 	public void stopShooter() {
-		runShooter(0.0);
+		setOpenLoop(0.0);
 	}
-	
-	public double getPower(){
+	/**
+	 * 
+	 * Gets RPM from shooter
+	 */
+	public double getRPM(){
 		return this.SHOOTER.getSpeed();
 	}
 

@@ -65,7 +65,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		
-		SmartDashboard.putNumber("current_shooter_power", Robot.SHOOTER.getPower());
+		SmartDashboard.putNumber("current_shooter_power", Robot.SHOOTER.getRPM());
 	}
 
 	@Override

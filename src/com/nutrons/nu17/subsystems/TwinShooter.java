@@ -72,7 +72,7 @@ public class TwinShooter extends Subsystem {
 	 * @param power Speed to run the first shooting motor at.
 	 */
 	public void runTwinA(double power) {
-		TWIN_A.runShooter(power);
+		TWIN_A.setRPM(power);
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class TwinShooter extends Subsystem {
 	 * @param power Speed to run the second shooting motor at.
 	 */
 	public void runTwinB(double power) {
-		TWIN_B.runShooter(power);
+		TWIN_B.setRPM(power);
 	}
 
 	/**
@@ -98,14 +98,14 @@ public class TwinShooter extends Subsystem {
 	 * Stops the first shooting motor.
 	 */
 	public void stopTwinA() {
-		TWIN_A.runShooter(0.0);
+		TWIN_A.setRPM(0.0);
 	}
 
 	/**
 	 * Stops the second shooting motor.
 	 */
 	public void stopTwinB() {
-		TWIN_B.runShooter(0.0);
+		TWIN_B.setRPM(0.0);
 	}
 
 	/**
