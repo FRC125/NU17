@@ -43,6 +43,7 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
       count--;
     }
   }
+
   /*
    * @see lib.DebouncedBooleanInterface#get()
    */
