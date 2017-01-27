@@ -12,7 +12,7 @@ public class StopShooterCmd extends Command {
   }
 
   protected void initialize() {
-    Robot.SHOOTER.SHOOTER.disable();
+    Robot.SHOOTER.shooter.disable();
   }
 
 

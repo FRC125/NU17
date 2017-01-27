@@ -16,9 +16,9 @@ public class ShootShooterCmd extends Command {
    * Resets encoder and starts running motor at a consistent speed.
    */
   protected void initialize() {
-    Robot.SHOOTER.SHOOTER.changeControlMode(TalonControlMode.Speed);
-    Robot.SHOOTER.SHOOTER.setSetpoint(Shooter.SHOOTER_SPEED);
-    Robot.SHOOTER.SHOOTER.enable();
+    Robot.SHOOTER.shooter.changeControlMode(TalonControlMode.Speed);
+    Robot.SHOOTER.shooter.setSetpoint(Shooter.SHOOTER_SPEED);
+    Robot.SHOOTER.shooter.enable();
   }
 
   public ShootShooterCmd() {
@@ -30,7 +30,7 @@ public class ShootShooterCmd extends Command {
    */
   protected void initialize() {
     Robot.SHOOTER.resetEncoder();
-    Robot.SHOOTER.setRPM(1.0);
+    Robot.SHOOTER.setRpm(1.0);
   }
 
   /**

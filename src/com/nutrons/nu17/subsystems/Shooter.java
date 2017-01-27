@@ -47,9 +47,9 @@ public class Shooter extends Subsystem {
   }
 
   /**
-   * Changes to manual and sets the speed
+   * Changes to manual and sets the speed.
    * 
-   * @param speed Speed of shooter
+   * @param speed Speed of shooter.
    */
   public void setOpenLoop(double speed) {
     this.shooter.changeControlMode(TalonControlMode.PercentVbus);
@@ -57,9 +57,9 @@ public class Shooter extends Subsystem {
   }
 
   /**
-   * Changes to closed loop. Sets the RPM from the shooter
+   * Changes to closed loop. Sets the RPM from the shooter.
    */
-  public void setRPM(double rpm) {
+  public void setRpm(double rpm) {
     this.shooter.changeControlMode(TalonControlMode.Speed);
     this.shooter.set(rpm);
   }
@@ -73,9 +73,9 @@ public class Shooter extends Subsystem {
 
   /**
    * 
-   * Gets RPM from shooter
+   * Gets RPM from shooter.
    */
-  public double getRPM() {
+  public double getRpm() {
     return this.shooter.getSpeed();
   }
 

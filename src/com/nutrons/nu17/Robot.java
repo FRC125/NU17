@@ -20,14 +20,14 @@ import com.nutrons.nu17.subsystems.*;
 
 public class Robot extends IterativeRobot {
 
-  public final static TwinShooter TWIN_SHOOTER = new TwinShooter();
+  public static final TwinShooter TWIN_SHOOTER = new TwinShooter();
   public static Shooter SHOOTER = new Shooter();
-  public final static GroundIntake GROUND_INTAKE = new GroundIntake();
-  public final static DrivetrainGyro DT = new DrivetrainGyro();
-  public final static GearPlacer GP = new GearPlacer();
-  public final static Drivetrain DRIVE_TRAIN = new Drivetrain();
-  public final static Climber CLIMBER = new Climber();
-  public final static OI OI = new OI();
+  public static final GroundIntake GROUND_INTAKE = new GroundIntake();
+  public static final DrivetrainGyro DT = new DrivetrainGyro();
+  public static final GearPlacer GP = new GearPlacer();
+  public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
+  public static final Climber CLIMBER = new Climber();
+  public static final OperatorInterface OI = new OperatorInterface();
   Preferences prefs;
 
   Command autonomousCommand;
@@ -52,8 +52,9 @@ public class Robot extends IterativeRobot {
   public void autonomousInit() {
     autonomousCommand = chooser.getSelected();
 
-    if (autonomousCommand != null)
+    if (autonomousCommand != null){
       autonomousCommand.start();
+    }
   }
 
   @Override
@@ -72,7 +73,7 @@ public class Robot extends IterativeRobot {
     Scheduler.getInstance().run();
 
 
-    SmartDashboard.putNumber("current_shooter_power", Robot.SHOOTER.getRPM());
+    SmartDashboard.putNumber("current_shooter_power", Robot.SHOOTER.getRpm());
   }
 
   @Override
