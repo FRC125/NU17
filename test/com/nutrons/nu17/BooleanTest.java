@@ -63,4 +63,14 @@ public class BooleanTest {
     x.add(true);
     assertEquals(true, x.get());
   }
+  
+  @Test(expected = IllegalArgumentException.class)
+  public void negativeExceptionTest() {
+    DebouncedBooleanInterface avg = new DebouncedBoolean(-1, true);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void zeroExceptionTest() {
+    DebouncedBooleanInterface zero = new DebouncedBoolean(0, true);
+  }
 }

@@ -9,7 +9,7 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
 
   /**
    * 
-   * @param windowSize Sets size for the queue.
+   * @param windowSize Sets window for the queue.
    * @param initial Boolean passed to initialize the queue.
    */
   public DebouncedBoolean(int windowSize, boolean initial) {
@@ -27,7 +27,7 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
   }
 
   /**
-   * @param value Boolean passed to be added into the queue.
+   * @param value Boolean passed to into the queue.
    */
   public void add(boolean value) {
     if (queue.size() == windowSize) {
