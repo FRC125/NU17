@@ -21,23 +21,12 @@ public class ShootShooterCmd extends Command {
     Robot.SHOOTER.shooter.enable();
   }
 
-  public ShootShooterCmd() {
-    requires(Robot.SHOOTER);
-  }
-
-  /**
-   * Resets encoder and starts running motor at a consistent speed.
-   */
-  protected void initialize() {
-    Robot.SHOOTER.resetEncoder();
-    Robot.SHOOTER.setRpm(1.0);
-  }
-
   /**
    * Keeps running motor to a consistent speed.
    */
   protected void execute() {
-    Robot.SHOOTER.runShooter(Robot.SHOOTER.speedPid.get());
+    Robot.SHOOTER.setRpm(2000);
+   
   }
 
   // Don't want the shooter to stop

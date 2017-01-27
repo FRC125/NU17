@@ -69,8 +69,6 @@ public class Robot extends IterativeRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-
-
     SmartDashboard.putNumber("current_shooter_power", Robot.SHOOTER.getRpm());
   }
 
