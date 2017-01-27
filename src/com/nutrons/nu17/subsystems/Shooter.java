@@ -75,7 +75,6 @@ public class Shooter extends Subsystem {
   }
 
   /**
-   * 
    * Gets RPM from shooter.
    */
   public double getRpm() {

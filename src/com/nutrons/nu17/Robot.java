@@ -1,5 +1,6 @@
 package com.nutrons.nu17;
 
+import com.nutrons.nu17.OperatorInterface;
 import com.nutrons.nu17.subsystems.Climber;
 import com.nutrons.nu17.subsystems.Drivetrain;
 import com.nutrons.nu17.subsystems.GearPlacer;
@@ -15,15 +16,12 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.nutrons.nu17.OperatorInterface;
-import com.nutrons.nu17.subsystems.*;
 
 public class Robot extends IterativeRobot {
 
   public static final TwinShooter TWIN_SHOOTER = new TwinShooter();
   public static Shooter SHOOTER = new Shooter();
   public static final GroundIntake GROUND_INTAKE = new GroundIntake();
-  public static final DrivetrainGyro DT = new DrivetrainGyro();
   public static final GearPlacer GP = new GearPlacer();
   public static final Drivetrain DRIVE_TRAIN = new Drivetrain();
   public static final Climber CLIMBER = new Climber();
