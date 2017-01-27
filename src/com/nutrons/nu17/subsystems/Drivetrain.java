@@ -17,45 +17,47 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 public class Drivetrain extends Subsystem {
-
+  //Constants
+  private final double HEADING_TOLERANCE = 5.0;
+  private final double TURN_TO_ANGLE_TOLERANCE = 10.0;
   /**
-  * Drivetrain four wheel drive.
+  * Drivetrain subsystem, configured for 4 wheel drive.
   */
   public Drivetrain() {
     this.setPercentDrive();
 
     this.holdHeading.setInputRange(-180.0, 180.0);
     this.holdHeading.setOutputRange(-1.0, 1.0);
-    this.holdHeading.setAbsoluteTolerance(5.0);
+    this.holdHeading.setAbsoluteTolerance(HEADING_TOLERANCE);
     this.holdHeading.setContinuous();
 
-    this.turnToAngle.setAbsoluteTolerance(10.0);
+    this.turnToAngle.setAbsoluteTolerance(TURN_TO_ANGLE_TOLERANCE);
 
-    this.frontLeft.changeControlMode(TalonControlMode.PercentVbus);
-    this.frontLeft.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-    this.frontLeft.configEncoderCodesPerRev((int) (256 / 0.14));
-    this.frontLeft.reverseOutput(true);
-    this.frontLeft.reverseSensor(true);
-    this.frontLeft.setPID(0.02, 0.0, 0.08);
-    this.frontLeft.configNominalOutputVoltage(+0.0f, -0.0f);
-    this.frontLeft.configPeakOutputVoltage(12.0f, -12.0f);
+    this.leftLeader.changeControlMode(TalonControlMode.PercentVbus);
+    this.leftLeader.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    this.leftLeader.configEncoderCodesPerRev((int) (256 / 0.14));
+    this.leftLeader.reverseOutput(true);
+    this.leftLeader.reverseSensor(true);
+    this.leftLeader.setPID(0.02, 0.0, 0.08);
+    this.leftLeader.configNominalOutputVoltage(+0.0f, -0.0f);
+    this.leftLeader.configPeakOutputVoltage(12.0f, -12.0f);
 
-    this.backLeft.changeControlMode(TalonControlMode.Follower);
-    this.backLeft.set(this.frontLeft.getDeviceID());
-    this.backLeft.configNominalOutputVoltage(+0.0f, -0.0f);
-    this.backLeft.configPeakOutputVoltage(12.0f, -12.0f);
+    this.leftFollower.changeControlMode(TalonControlMode.Follower);
+    this.leftFollower.set(this.leftLeader.getDeviceID());
+    this.leftFollower.configNominalOutputVoltage(+0.0f, -0.0f);
+    this.leftFollower.configPeakOutputVoltage(12.0f, -12.0f);
 
-    this.frontRight.changeControlMode(TalonControlMode.PercentVbus);
-    this.frontRight.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-    this.frontRight.configEncoderCodesPerRev((int) (256 / 0.14));
-    this.frontRight.setPID(0.02, 0.0, 0.08);
-    this.frontRight.configNominalOutputVoltage(+0.0f, -0.0f);
-    this.frontRight.configPeakOutputVoltage(12.0f, -12.0f);
+    this.rightLeader.changeControlMode(TalonControlMode.PercentVbus);
+    this.rightLeader.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    this.rightLeader.configEncoderCodesPerRev((int) (256 / 0.14));
+    this.rightLeader.setPID(0.02, 0.0, 0.08);
+    this.rightLeader.configNominalOutputVoltage(+0.0f, -0.0f);
+    this.rightLeader.configPeakOutputVoltage(12.0f, -12.0f);
 
-    this.backRight.changeControlMode(TalonControlMode.Follower);
-    this.backRight.set(this.frontRight.getDeviceID());
-    this.backRight.configNominalOutputVoltage(+0.0f, -0.0f);
-    this.backRight.configPeakOutputVoltage(12.0f, -12.0f);
+    this.rightFollower.changeControlMode(TalonControlMode.Follower);
+    this.rightFollower.set(this.rightLeader.getDeviceID());
+    this.rightFollower.configNominalOutputVoltage(+0.0f, -0.0f);
+    this.rightFollower.configPeakOutputVoltage(12.0f, -12.0f);
 
     this.disableBreakMode();
 
@@ -63,10 +65,10 @@ public class Drivetrain extends Subsystem {
   }
 
   // Motors
-  public CANTalon frontLeft = new CANTalon(RobotMap.FRONT_LEFT);
-  public CANTalon backLeft = new CANTalon(RobotMap.BACK_LEFT);
-  public CANTalon backRight = new CANTalon(RobotMap.FRONT_RIGHT);
-  public CANTalon frontRight = new CANTalon(RobotMap.BACK_RIGHT);
+  private final CANTalon leftLeader = new CANTalon(RobotMap.FRONT_LEFT);
+  private final CANTalon leftFollower = new CANTalon(RobotMap.BACK_LEFT);
+  private final CANTalon rightFollower = new CANTalon(RobotMap.FRONT_RIGHT);
+  private final CANTalon rightLeader = new CANTalon(RobotMap.BACK_RIGHT);
 
   // Sensors
   private final AnalogGyro gyro = new AnalogGyro(RobotMap.DRIVETRAIN_HEADING_GYRO);
@@ -76,7 +78,7 @@ public class Drivetrain extends Subsystem {
       RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1, RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_2);
 
   // Drive
-  public RobotDrive drive = new RobotDrive(frontLeft, backLeft, backRight, frontRight);
+  private RobotDrive drive = new RobotDrive(leftLeader, leftFollower, rightFollower, rightLeader);
 
   /**
    * Returns the angle, in degrees, away from the initial gyro position.
@@ -113,17 +115,45 @@ public class Drivetrain extends Subsystem {
   }
 
   public void setPercentDrive() {
-    this.frontLeft.changeControlMode(TalonControlMode.PercentVbus);
-    this.frontRight.changeControlMode(TalonControlMode.PercentVbus);
+    this.leftLeader.changeControlMode(TalonControlMode.PercentVbus);
+    this.rightLeader.changeControlMode(TalonControlMode.PercentVbus);
   }
+  
+  /**
+   * Drives drivetrain using left and right power.
+   * @param leftPower Power number between -1 to 1 for the left side of dt
+   * @param rightPower Power number between -1 to 1 for the right side of dt
+   */
+  public void driveLR(double leftPower, double rightPower) {
+      this.leftLeader.set(leftPower);
+      this.rightLeader.set(-rightPower);
+  }
+  public void driveCheesy(double speed, double wheel, boolean holdHeading) {
+    double coeff = 1.0;
+    double invert = 1.0;
+    
+    if(Robot.OperatorInterface.getSlowDrivingMode()) coeff = 0.7;
+    
+    
+    if(holdHeading) {
+        if(!this.holdHeading.isEnabled()) this.holdHeading.enable();
+        this.holdHeading.setSetpoint(0.0);
+        driveLR((speed * 0.5 * invert) - (heading * invert), (speed * 0.5 * invert) + (heading * invert));
+    }else {
+        this.holdHeading.disable();
+        wheel = wheel * 0.6;
+        driveLR(((speed* invert) - (wheel)) * coeff  , ((speed* invert) + (wheel)) * coeff);
+    }
+}
+  
 
   public void disableBreakMode() {
-    this.frontLeft.enableBrakeMode(false);
-    this.frontRight.enableBrakeMode(false);
+    this.leftLeader.enableBrakeMode(false);
+    this.rightLeader.enableBrakeMode(false);
   }
 
   public void initDefaultCommand() {
-    drive.tankDrive(OperatorInterface.DRIVER_PAD.getY(), OperatorInterface.DRIVER_PAD.getX());
+    //empty
   }
 
   // PID
@@ -142,12 +172,33 @@ public class Drivetrain extends Subsystem {
   private static final double I_DISTANCE = 0;
   private static final double D_DISTANCE = 0;
 
+  /**
+   * Sets the heading output from PID Controller.
+   * @param val Taken param
+   */
+  private void writeHeading(double val) {
+    heading = val;
+  }
   private double heading;
   public final PIDController holdHeading = new PIDController(P_HEADING, I_HEADING, D_HEADING,
       new GyroWrapper(), new HoldHeadingOutput());
+  /**
+   * Sets the heading output from PID Controller.
+   * @param val Taken param
+   */
+  private void writeAngle(double val) {
+   angle = val;
+  }
   private double angle;
   public final PIDController turnToAngle =
       new PIDController(P_TURN, I_TURN, D_TURN, new GyroWrapper(), new TurnToAngleOutput());
+  /**
+   * Sets the heading output from PID Controller.
+   * @param val Taken param
+   */
+  private void writeDistance(double val) {
+    distance = val;
+  }
   private double distance;
   public final PIDController driveDistance = new PIDController(P_DISTANCE, I_DISTANCE, D_DISTANCE,
       new EncoderWrapper(), new DriveDistanceOutput());
@@ -181,7 +232,7 @@ public class Drivetrain extends Subsystem {
     @Override
     public double pidGet() {
       // TODO Auto-generated method stub
-      return Robot.DRIVETRAIN.frontRight.getPosition();
+      return Robot.DRIVETRAIN.rightLeader.getPosition();
     }
 
     @Override
@@ -193,8 +244,8 @@ public class Drivetrain extends Subsystem {
   private class HoldHeadingOutput implements PIDOutput {
 
     @Override
-    public void pidWrite(double wheel) {
-      heading = wheel;
+    public void pidWrite(double power) {
+      writeHeading(power);
     }
   }
 
@@ -202,7 +253,7 @@ public class Drivetrain extends Subsystem {
 
     @Override
     public void pidWrite(double power) {
-      angle = power;
+      writeAngle(power);
     }
   }
 
@@ -210,7 +261,7 @@ public class Drivetrain extends Subsystem {
 
     @Override
     public void pidWrite(double power) {
-      distance = power;
+      writeDistance(power);
     }
 
   }

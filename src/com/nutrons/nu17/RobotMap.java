@@ -57,11 +57,19 @@ public class RobotMap {
   public static final int JOYSTICK2 = 1;
 
   // Buttons
+  //TODO: Needs tune testing
   public static final int JOYSTICK_A = 0;
   public static final int JOYSTICK_B = 1;
   public static final int JOYSTICK_X = 2;
   public static final int JOYSTICK_Y = 3;
   public static final int JOYSTICK_LEFT_BUMPER = 4;
+  public static final int JOYSTICK_LEFT_TRIGGER = 5;
+  public static final int JOYSTICK_RIGHT_BUMPER = 6;
+  public static final int JOYSTICK_RIGHT_TRIGGER = 7;
+  public static final int JOYSTICK_DPAD_UP = 8;
+  public static final int JOYSTICK_DPAD_DOWN = 9; 
+  public static final int JOYSTICK_DPAD_LEFT = 10;
+  public static final int JOYSTICK_DPAD_RIGHT = 11;
 
   // TODO tune this constant for deadband
   public static final double JOYSTICK_DEADBAND = 0.05;
