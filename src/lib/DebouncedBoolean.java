@@ -7,7 +7,12 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
   private static int windowSize;
   private int count;
 
-
+  /**
+   * Creates and initializes the queue.
+   * 
+   * @param windowSize Sets the size of values being looked at
+   * @param initial Initializes the queue to a boolean type.
+   */
   public DebouncedBoolean(int windowSize, boolean initial) {
     if (initial) {
       count = windowSize;
