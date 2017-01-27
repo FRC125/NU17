@@ -7,16 +7,8 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
   private static int windowSize;
   private int count;
 
-  /**
-   * Creates the average.
-   * 
-   * @param windowSize Sets window for the queue.
-   * @param initial Boolean passed to initialize the queue.
-   */
+
   public DebouncedBoolean(int windowSize, boolean initial) {
-    if (windowSize <= 0) {
-      throw new IllegalArgumentException(windowSize + " is not a valid window size");
-    }
     if (initial) {
       count = windowSize;
     } else {
@@ -30,6 +22,7 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
   /*
    * @see lib.DebouncedBooleanInterface#add(boolean)
    */
+  @Override
   public void add(boolean value) {
     if (queue.size() == windowSize) {
       queue.removeFirst();
@@ -47,8 +40,9 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
   /*
    * @see lib.DebouncedBooleanInterface#get()
    */
+  @Override
   public boolean get() {
     return count >= 0;
-
   }
+
 }
