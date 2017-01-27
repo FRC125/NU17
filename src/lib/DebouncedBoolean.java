@@ -8,7 +8,7 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
   private int count;
 
   /**
-   * 
+   *  Creates the average.
    * @param windowSize Sets window for the queue.
    * @param initial Boolean passed to initialize the queue.
    */
@@ -26,8 +26,8 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
 
   }
 
-  /**
-   * @param value Boolean passed to into the queue.
+  /* 
+   * @see lib.DebouncedBooleanInterface#add()
    */
   public void add(boolean value) {
     if (queue.size() == windowSize) {
@@ -43,8 +43,8 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
     }
   }
 
-  /**
-   * @return Boolean that determines if the queue is true or false.
+  /* 
+   * @see lib.DebouncedBooleanInterface#get()
    */
   public boolean get() {
     return count >= 0;
