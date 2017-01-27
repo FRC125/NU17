@@ -28,6 +28,9 @@ public class Shooter extends Subsystem {
   public static double D_SHOOT = 0.01;
   public static double F_SHOOT = 0.025;
 
+  /**
+   * Constructs an instance of shooter.
+   */
   public Shooter() {
     this.shooter.configNominalOutputVoltage(+0.0f, -0.0f);
     this.shooter.configPeakOutputVoltage(+12.0f, 0.0f);

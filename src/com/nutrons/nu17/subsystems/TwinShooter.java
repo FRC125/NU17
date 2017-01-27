@@ -37,9 +37,9 @@ public class TwinShooter extends Subsystem {
   private static final double I_SHOOT = 0.0;
   private static final double D_SHOOT = 0.01;
 
-  public final PIDController SPEED_PID_A =
+  public final PIDController speedPidA =
       new PIDController(P_SHOOT, I_SHOOT, D_SHOOT, encWrap1, twinHold1);
-  public PIDController SPEED_PID_B =
+  public PIDController speedPidB =
       new PIDController(P_SHOOT, I_SHOOT, D_SHOOT, encWrap2, twinHold2);
 
   private static double holdShootA;

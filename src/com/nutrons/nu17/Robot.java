@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.nutrons.nu17.OI;
+import com.nutrons.nu17.OperatorInterface;
 import com.nutrons.nu17.subsystems.*;
 
 public class Robot extends IterativeRobot {
@@ -52,7 +52,7 @@ public class Robot extends IterativeRobot {
   public void autonomousInit() {
     autonomousCommand = chooser.getSelected();
 
-    if (autonomousCommand != null){
+    if (autonomousCommand != null) {
       autonomousCommand.start();
     }
   }
