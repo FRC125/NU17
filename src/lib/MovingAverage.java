@@ -33,7 +33,7 @@ public class MovingAverage implements MovingAverageInterface {
     queue.addLast(val);
   }
 
-  /* 
+  /*
    * @see lib.MovingAverageInterface#getAverage()
    */
   @Override
