@@ -155,6 +155,7 @@ public class Drivetrain extends Subsystem {
 
   /**
    * Sets up and initializes the DriveCheesy drive type.
+   * 
    * @param speed a y axis value to determine the speed of the robot.
    * @param wheel a x axis value to determine the turning wheel of the robot.
    * @param holdHeading a boolean to determine whether or not robot holds heading.
@@ -163,9 +164,9 @@ public class Drivetrain extends Subsystem {
     double coeff = 1.0;
     double invert = 1.0;
 
-    if (Robot.OperatorInterface.getSlowDrivingMode())
+    if (Robot.OperatorInterface.getSlowDrivingMode()) {
       coeff = 0.7;
-
+    }
 
     if (holdHeading) {
       if (!this.holdHeading.isEnabled()) {
