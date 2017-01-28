@@ -9,8 +9,6 @@ import lib.DebouncedBoolean;
 import lib.DebouncedBooleanInterface;
 
 public class BooleanTest {
-
-
   @Test
   public void allFalse() {
     DebouncedBooleanInterface x = new DebouncedBoolean(3, true);
@@ -63,7 +61,7 @@ public class BooleanTest {
     x.add(true);
     assertEquals(true, x.get());
   }
-  
+
   @Test(expected = IllegalArgumentException.class)
   public void negativeExceptionTest() {
     DebouncedBooleanInterface x = new DebouncedBoolean(-1, true);
