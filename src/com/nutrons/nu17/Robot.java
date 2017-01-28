@@ -5,7 +5,6 @@ import com.nutrons.nu17.subsystems.Drivetrain;
 import com.nutrons.nu17.subsystems.GearPlacer;
 import com.nutrons.nu17.subsystems.GroundIntake;
 import com.nutrons.nu17.subsystems.Shooter;
-import com.nutrons.nu17.subsystems.TwinShooter;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -13,7 +12,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class Robot extends IterativeRobot {
 
-  public static final TwinShooter TWIN_SHOOTER = new TwinShooter();
   public static final Shooter SHOOTER = new Shooter();
   public static final GroundIntake GROUND_INTAKE = new GroundIntake();
   public static final GearPlacer GP = new GearPlacer();
