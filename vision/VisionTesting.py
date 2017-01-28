@@ -3,24 +3,49 @@ import numpy
 import math
 import numpy as np
 
-img = cv2.imread("GripPhoto.jpg", cv2.CV_LOAD_IMAGE_COLOR);
-cv2.namedWindow("Display Window", cv2.CV_WINDOW_AUTOSIZE);
-img = cv2.resize(img, (0,0), fx=0.2, fy=0.2);
-img = img[100:501, 100:600];
-ret,thresh1 = cv2.threshold(img,220,255,cv2.THRESH_BINARY,img);
-#imgray = cv2.cvtColor(img,cv2.COLOR_BGR2HSV);
-ret,thresh2 = cv2.threshold(img,132,255,cv2.THRESH_TOZERO);
+def getLargestContour(contours):
+    largest = contours[0]
+    index = 0
+    greatestArea = 0
+    for i in range(len(contours)):
+        if cv2.contourArea(contours[i]) > greatestArea:
+            largest = contours[i]
+            index = i
+            greatestArea = cv2.contourArea(contours[i])
+    return index, greatestArea
 
-lowerGreen = np.array([0,100,0]);
-upperGreen = np.array([144,255,100]);
+def threshhold(img):
+    ret, thresh = cv2.threshold(img,200,255,cv2.THRESH_TOZERO)
+    ret, thresh2 = cv2.threshold(thresh,240,255,cv2.THRESH_BINARY,img)
 
-thresh2 = cv2.inRange(thresh2,lowerGreen, upperGreen);
+    lowerGreen = np.array([0,50,0])
+    upperGreen = np.array([255,255,100])
 
-#cv2.findContours(thresh2,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
-#cv2.drawContours(thresh2, contours, 1, (0,255,0), 50)
+    thresh2 = cv2.inRange(thresh2,lowerGreen, upperGreen)
+    return thresh2
 
+def contourImage(img):
+    contours, ret = cv2.findContours(img,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+    index = getLargestContour(contours)
+    return contours
 
-cv2.imshow("Display Window", thresh2);
-cv2.waitKey(0);
-cv2.destroyWindow("Display Window");
+def getDistanceArea(area):
+    return (0.0000023231*math.pow(area, 2)) + (-0.012738*area) + 21.584
+
+cv2.namedWindow("Display Window", cv2.CV_WINDOW_AUTOSIZE)
+
+img = cv2.imread("21ft.jpg", cv2.CV_LOAD_IMAGE_COLOR)
+img = cv2.resize(img, (0,0), fx=0.2, fy=0.2)
+img = cv2.flip(img, -1)
+thresh = threshhold(img)
+contours = contourImage(thresh)
+largestContourIndex, contourArea = getLargestContour(contours)
+cv2.drawContours(img, contours, largestContourIndex, (255,0,0), 3)
+
+print(getDistanceArea(contourArea))
+
+cv2.imshow("Display Window", img)
+cv2.waitKey(0)
+cv2.destroyWindow("Display Window")
+
 
