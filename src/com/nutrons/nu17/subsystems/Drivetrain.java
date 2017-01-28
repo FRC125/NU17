@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drivetrain extends Subsystem {
   // Constants
-  private final double HEADING_TOLERANCE = 5.0;
-  private final double TURN_TO_ANGLE_TOLERANCE = 10.0;
+  private final double headingTolerance = 5.0;
+  private final double turnToAngleTolerance = 10.0;
 
   /**
    * Drivetrain subsystem, configured for 4 wheel drive.
@@ -29,10 +29,10 @@ public class Drivetrain extends Subsystem {
 
     this.holdHeading.setInputRange(-180.0, 180.0);
     this.holdHeading.setOutputRange(-1.0, 1.0);
-    this.holdHeading.setAbsoluteTolerance(HEADING_TOLERANCE);
+    this.holdHeading.setAbsoluteTolerance(headingTolerance);
     this.holdHeading.setContinuous();
 
-    this.turnToAngle.setAbsoluteTolerance(TURN_TO_ANGLE_TOLERANCE);
+    this.turnToAngle.setAbsoluteTolerance(turnToAngleTolerance);
 
     this.leftLeader.changeControlMode(TalonControlMode.PercentVbus);
     this.leftLeader.setFeedbackDevice(FeedbackDevice.QuadEncoder);
@@ -148,11 +148,17 @@ public class Drivetrain extends Subsystem {
    * @param leftPower Power number between -1 to 1 for the left side of dt
    * @param rightPower Power number between -1 to 1 for the right side of dt
    */
-  public void driveLR(double leftPower, double rightPower) {
+  public void drive(double leftPower, double rightPower) {
     this.leftLeader.set(leftPower);
     this.rightLeader.set(-rightPower);
   }
 
+  /**
+   * Sets up and initializes the DriveCheesy drive type.
+   * @param speed a y axis value to determine the speed of the robot.
+   * @param wheel a x axis value to determine the turning wheel of the robot.
+   * @param holdHeading a boolean to determine whether or not robot holds heading.
+   */
   public void driveCheesy(double speed, double wheel, boolean holdHeading) {
     double coeff = 1.0;
     double invert = 1.0;
@@ -162,15 +168,16 @@ public class Drivetrain extends Subsystem {
 
 
     if (holdHeading) {
-      if (!this.holdHeading.isEnabled())
+      if (!this.holdHeading.isEnabled()) {
         this.holdHeading.enable();
+      }
       this.holdHeading.setSetpoint(0.0);
-      driveLR((speed * 0.5 * invert) - (heading * invert),
+      drive((speed * 0.5 * invert) - (heading * invert),
           (speed * 0.5 * invert) + (heading * invert));
     } else {
       this.holdHeading.disable();
       wheel = wheel * 0.6;
-      driveLR(((speed * invert) - (wheel)) * coeff, ((speed * invert) + (wheel)) * coeff);
+      drive(((speed * invert) - (wheel)) * coeff, ((speed * invert) + (wheel)) * coeff);
     }
   }
 
