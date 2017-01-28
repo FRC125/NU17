@@ -3,26 +3,25 @@ package lib;
 import java.util.LinkedList;
 
 public class DebouncedBoolean implements DebouncedBooleanInterface {
-  private static LinkedList<Boolean> queue;
-  private static int windowSize;
+  private LinkedList<Boolean> queue;
+  private final int windowSize;
   private int count;
 
   /**
-   * Creates and initializes the queue.
-   * 
-   * @param windowSize Sets the size of values being looked at
+   * Creates and initializes the queue. 
+   * @param size Sets the size of values being looked at
    * @param initial Initializes the queue to a boolean type.
    */
-  public DebouncedBoolean(int windowSize, boolean initial) {
-    if (windowSize <= 0) {
-      throw new IllegalArgumentException(windowSize + " is not a valid window size");
+  public DebouncedBoolean(int size, boolean initial) {
+    if (size <= 0) {
+      throw new IllegalArgumentException(size + " is not a valid window size");
     }
     if (initial) {
-      count = windowSize;
+      count = size;
     } else {
-      count = -windowSize;
+      count = -size;
     }
-    this.windowSize = windowSize;
+    windowSize = size;
     queue = new LinkedList<Boolean>();
 
   }
@@ -52,5 +51,4 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
   public boolean get() {
     return count >= 0;
   }
-
 }
