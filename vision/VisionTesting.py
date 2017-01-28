@@ -30,11 +30,11 @@ def contourImage(img):
     return contours
 
 def getDistanceArea(area):
-    return (0.0000023231*math.pow(area, 2)) + (-0.012738*area) + 21.584
+    return 17.0348*math.exp(-.0004543*area)
 
 cv2.namedWindow("Display Window", cv2.CV_WINDOW_AUTOSIZE)
 
-img = cv2.imread("21ft.jpg", cv2.CV_LOAD_IMAGE_COLOR)
+img = cv2.imread("15ft.jpg", cv2.CV_LOAD_IMAGE_COLOR)
 img = cv2.resize(img, (0,0), fx=0.2, fy=0.2)
 img = cv2.flip(img, -1)
 thresh = threshhold(img)
