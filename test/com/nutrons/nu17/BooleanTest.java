@@ -66,11 +66,11 @@ public class BooleanTest {
   
   @Test(expected = IllegalArgumentException.class)
   public void negativeExceptionTest() {
-    DebouncedBooleanInterface avg = new DebouncedBoolean(-1, true);
+    DebouncedBooleanInterface x = new DebouncedBoolean(-1, true);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void zeroExceptionTest() {
-    DebouncedBooleanInterface zero = new DebouncedBoolean(0, true);
+    DebouncedBooleanInterface x = new DebouncedBoolean(0, true);
   }
 }

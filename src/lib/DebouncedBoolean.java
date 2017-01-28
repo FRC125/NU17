@@ -14,6 +14,9 @@ public class DebouncedBoolean implements DebouncedBooleanInterface {
    * @param initial Initializes the queue to a boolean type.
    */
   public DebouncedBoolean(int windowSize, boolean initial) {
+    if (windowSize <= 0) {
+      throw new IllegalArgumentException(windowSize + " is not a valid window size");
+    }
     if (initial) {
       count = windowSize;
     } else {
