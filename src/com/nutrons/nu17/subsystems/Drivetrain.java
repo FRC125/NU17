@@ -17,12 +17,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 public class Drivetrain extends Subsystem {
-  //Constants
+  // Constants
   private final double HEADING_TOLERANCE = 5.0;
   private final double TURN_TO_ANGLE_TOLERANCE = 10.0;
+
   /**
-  * Drivetrain subsystem, configured for 4 wheel drive.
-  */
+   * Drivetrain subsystem, configured for 4 wheel drive.
+   */
   public Drivetrain() {
     this.setPercentDrive();
 
@@ -67,18 +68,23 @@ public class Drivetrain extends Subsystem {
   // Motors
   private final CANTalon leftLeader = new CANTalon(RobotMap.FRONT_LEFT);
   private final CANTalon leftFollower = new CANTalon(RobotMap.BACK_LEFT);
-  private final CANTalon rightFollower = new CANTalon(RobotMap.FRONT_RIGHT);
   private final CANTalon rightLeader = new CANTalon(RobotMap.BACK_RIGHT);
+  private final CANTalon rightFollower = new CANTalon(RobotMap.FRONT_RIGHT);
+
 
   // Sensors
   private final AnalogGyro gyro = new AnalogGyro(RobotMap.DRIVETRAIN_HEADING_GYRO);
 
   // TODO: Tune Ports
-  private final Encoder driveDistanceEncoder = new Encoder(
-      RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1, RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_2);
+  private final Encoder leftSideEncoder = new Encoder(RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_1,
+      RobotMap.LEFT_WHEEL_DRIVE_DISTANCE_ENCODER_2);
+
+  // TODO: Tune Ports
+  private final Encoder rightSideEncoder = new Encoder(
+      RobotMap.RIGHT_WHEEL_DRIVE_DISTANCE_ENCODER_1, RobotMap.RIGHT_WHEEL_DRIVE_DISTANCE_ENCODER_2);
 
   // Drive
-  private RobotDrive drive = new RobotDrive(leftLeader, leftFollower, rightFollower, rightLeader);
+  private RobotDrive drive = new RobotDrive(leftLeader, leftFollower, rightLeader, rightFollower);
 
   /**
    * Returns the angle, in degrees, away from the initial gyro position.
@@ -94,15 +100,32 @@ public class Drivetrain extends Subsystem {
    * 
    * @return Encoder Rate using the .getRate method
    */
-  public double getEncoderRate() {
-    return this.driveDistanceEncoder.getRate();
+  public double getLeftEncoderRate() {
+    return this.leftSideEncoder.getRate();
   }
 
   /**
    * Resets the encoder.
    */
-  public void resetEncoder() {
-    this.driveDistanceEncoder.reset();
+  public void resetLeftEncoder() {
+    this.leftSideEncoder.reset();
+
+  }
+
+  /**
+   * Returns the rate of the encoder in relation to the setting of the encoder
+   * 
+   * @return Encoder Rate using the .getRate method
+   */
+  public double getRightEncoderRate() {
+    return this.rightSideEncoder.getRate();
+  }
+
+  /**
+   * Resets the encoder.
+   */
+  public void resetRightEncoder() {
+    this.rightSideEncoder.reset();
 
   }
 
@@ -118,34 +141,39 @@ public class Drivetrain extends Subsystem {
     this.leftLeader.changeControlMode(TalonControlMode.PercentVbus);
     this.rightLeader.changeControlMode(TalonControlMode.PercentVbus);
   }
-  
+
   /**
    * Drives drivetrain using left and right power.
+   * 
    * @param leftPower Power number between -1 to 1 for the left side of dt
    * @param rightPower Power number between -1 to 1 for the right side of dt
    */
   public void driveLR(double leftPower, double rightPower) {
-      this.leftLeader.set(leftPower);
-      this.rightLeader.set(-rightPower);
+    this.leftLeader.set(leftPower);
+    this.rightLeader.set(-rightPower);
   }
+
   public void driveCheesy(double speed, double wheel, boolean holdHeading) {
     double coeff = 1.0;
     double invert = 1.0;
-    
-    if(Robot.OperatorInterface.getSlowDrivingMode()) coeff = 0.7;
-    
-    
-    if(holdHeading) {
-        if(!this.holdHeading.isEnabled()) this.holdHeading.enable();
-        this.holdHeading.setSetpoint(0.0);
-        driveLR((speed * 0.5 * invert) - (heading * invert), (speed * 0.5 * invert) + (heading * invert));
-    }else {
-        this.holdHeading.disable();
-        wheel = wheel * 0.6;
-        driveLR(((speed* invert) - (wheel)) * coeff  , ((speed* invert) + (wheel)) * coeff);
+
+    if (Robot.OperatorInterface.getSlowDrivingMode())
+      coeff = 0.7;
+
+
+    if (holdHeading) {
+      if (!this.holdHeading.isEnabled())
+        this.holdHeading.enable();
+      this.holdHeading.setSetpoint(0.0);
+      driveLR((speed * 0.5 * invert) - (heading * invert),
+          (speed * 0.5 * invert) + (heading * invert));
+    } else {
+      this.holdHeading.disable();
+      wheel = wheel * 0.6;
+      driveLR(((speed * invert) - (wheel)) * coeff, ((speed * invert) + (wheel)) * coeff);
     }
-}
-  
+  }
+
 
   public void disableBreakMode() {
     this.leftLeader.enableBrakeMode(false);
@@ -153,7 +181,7 @@ public class Drivetrain extends Subsystem {
   }
 
   public void initDefaultCommand() {
-    //empty
+    // empty
   }
 
   // PID
@@ -174,31 +202,39 @@ public class Drivetrain extends Subsystem {
 
   /**
    * Sets the heading output from PID Controller.
+   * 
    * @param val Taken param
    */
   private void writeHeading(double val) {
     heading = val;
   }
+
   private double heading;
   public final PIDController holdHeading = new PIDController(P_HEADING, I_HEADING, D_HEADING,
       new GyroWrapper(), new HoldHeadingOutput());
+
   /**
    * Sets the heading output from PID Controller.
+   * 
    * @param val Taken param
    */
   private void writeAngle(double val) {
-   angle = val;
+    angle = val;
   }
+
   private double angle;
   public final PIDController turnToAngle =
       new PIDController(P_TURN, I_TURN, D_TURN, new GyroWrapper(), new TurnToAngleOutput());
+
   /**
    * Sets the heading output from PID Controller.
+   * 
    * @param val Taken param
    */
   private void writeDistance(double val) {
     distance = val;
   }
+
   private double distance;
   public final PIDController driveDistance = new PIDController(P_DISTANCE, I_DISTANCE, D_DISTANCE,
       new EncoderWrapper(), new DriveDistanceOutput());
@@ -216,7 +252,7 @@ public class Drivetrain extends Subsystem {
     }
 
     @Override
-    public void setPIDSourceType(PIDSourceType arg0) {
+    public void setPIDSourceType(PIDSourceType sourceType) {
 
     }
   }
@@ -225,22 +261,20 @@ public class Drivetrain extends Subsystem {
 
     @Override
     public PIDSourceType getPIDSourceType() {
-      // TODO Auto-generated method stub
       return PIDSourceType.kDisplacement;
     }
 
     @Override
     public double pidGet() {
-      // TODO Auto-generated method stub
-      return Robot.DRIVETRAIN.rightLeader.getPosition();
+      return Robot.DRIVETRAIN.getLeftEncoderRate();
     }
 
     @Override
-    public void setPIDSourceType(PIDSourceType arg0) {
-      // TODO Auto-generated method stub
+    public void setPIDSourceType(PIDSourceType sourceType) {
+
     }
   }
-  
+
   private class HoldHeadingOutput implements PIDOutput {
 
     @Override

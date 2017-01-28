@@ -22,8 +22,10 @@ public class OperatorInterface {
   private final Button intakeSpit = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_B);
   private final Button raisePlacer = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_Y);
   private final Button lowerPlacer = new JoystickButton(OPERATOR_PAD, RobotMap.JOYSTICK_X);
-  private final Button getSlowDrivingMode = new JoystickButton(DRIVER_PAD, RobotMap.JOYSTICK_LEFT_TRIGGER);
-  private final Button holdHeadingMode = new JoystickButton(DRIVER_PAD, RobotMap.JOYSTICK_RIGHT_TRIGGER);
+  private final Button getSlowDrivingMode =
+      new JoystickButton(DRIVER_PAD, RobotMap.JOYSTICK_LEFT_TRIGGER);
+  private final Button holdHeadingMode =
+      new JoystickButton(DRIVER_PAD, RobotMap.JOYSTICK_RIGHT_TRIGGER);
 
   public static final Joystick DRIVER_PAD = new Joystick(RobotMap.JOYSTICK1);
   public static final Joystick OPERATOR_PAD = new Joystick(RobotMap.JOYSTICK2);
@@ -38,21 +40,22 @@ public class OperatorInterface {
     this.intake.whenPressed(new GroundIntakeCmd());
     this.intakeSpit.whenPressed(new GroundIntakeSpitCmd());
   }
-  
+
   /**
    * 
    * @return Will return true if button is being held, false if not.
    */
   public boolean getHoldHeadingMode() {
     return this.holdHeadingMode.get();
-}
+  }
+
   /**
    * 
    * @return Will return true if button is being held, false if not.
    */
   public boolean getSlowDrivingMode() {
     return this.getSlowDrivingMode.get();
-}
+  }
 
   /**
    * @return driver's left joystick y value.
