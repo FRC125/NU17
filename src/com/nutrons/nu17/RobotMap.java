@@ -44,10 +44,10 @@ public class RobotMap {
   public static final int FLY_ENCODER_BACK_RIGHT = 6;
   public static final int FLY_ENCODER_FRONT_LEFT = 7;
   public static final int FLY_ENCODER_BACK_LEFT = 8;
-  public static final int TWIN_LEFT_ENCODER_1 = 9;
-  public static final int TWIN_LEFT_ENCODER_2 = 10;
-  public static final int TWIN_RIGHT_ENCODER_1 = 11;
-  public static final int TWIN_RIGHT_ENCODER_2 = 12;
+  public static final int TWIN_ENCODER_1 = 9;
+  public static final int TWIN_ENCODER_2 = 10;
+  public static final int TWIN_ENCODER_3 = 11;
+  public static final int TWIN_ENCODER_4 = 12;
   public static final int SHOOT_ENCODER_1 = 0;
   public static final int SHOOT_ENCODER_2 = 1;
 
@@ -65,4 +65,5 @@ public class RobotMap {
 
   // TODO tune this constant for deadband
   public static final double JOYSTICK_DEADBAND = 0.05;
+  public static final int SHOOTER = 0;
 }
