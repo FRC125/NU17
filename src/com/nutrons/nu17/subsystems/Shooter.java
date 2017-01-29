@@ -16,12 +16,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import lib.EncoderWrapper;
 import lib.HoldPid;
 
+// Travis liked the steak
 public class Shooter extends Subsystem {
 
+  
   public static double SHOOTER_SPEED = 10.0;
 
   public CANTalon shooter = new CANTalon(RobotMap.SHOOTER_MOTOR);
-
+  
   // TODO: tune these constants
   public static double P_SHOOT = 0.025;
   public static double I_SHOOT = 0.0;
@@ -43,7 +45,9 @@ public class Shooter extends Subsystem {
     this.shooter.setF(F_SHOOT);
 
   }
-
+  /**
+   * Sets the default command to the ShootShooterCmd.
+   */
   public void initDefaultCommand() {
     setDefaultCommand(new ShootShooterCmd());
 
